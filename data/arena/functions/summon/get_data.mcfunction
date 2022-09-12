@@ -1,6 +1,6 @@
 # ストレージのデータ読み込み
-execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.MobType
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Wave
+execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
+execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
 execute if score $Temp.Wave Arena matches ..-1 run scoreboard players set $Temp.Wave Arena 5
 
 # MobTypeで絞り込み
@@ -52,7 +52,7 @@ execute if score $Temp.Wave Arena matches 5 run data modify storage arena: Temp.
     #Attributes: movement_speed, attack_damage, max_health
     #Status: ExplosionRadius
     #倍率($Temp.StatusMultiple)は%表記
-    execute store result score $Temp.Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Difficulty
+    execute store result score $Temp.Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
 
     execute if score $Temp.Difficulty Arena matches 0 run scoreboard players set $Temp.StatusMultiple Arena 100
     execute if score $Temp.Difficulty Arena matches 1 run scoreboard players set $Temp.StatusMultiple Arena 200
@@ -75,16 +75,16 @@ execute if score $Temp.Wave Arena matches 5 run data modify storage arena: Temp.
     execute if score $Temp.Speed Arena matches 3000.. run scoreboard players set $Temp.Speed Arena 3000
 
 
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Endless:1b}} store result storage arena: Temp.MobInfo.AttackDamage double 0.0001 run scoreboard players get $Temp.AttackDamage Arena
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Endless:1b}} store result storage arena: Temp.MobInfo.Health double 0.0001 run scoreboard players get $Temp.Health Arena
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Endless:1b}} store result storage arena: Temp.MobInfo.Speed double 0.0001 run scoreboard players get $Temp.Speed Arena
+    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} store result storage arena: Temp.MobInfo.AttackDamage double 0.0001 run scoreboard players get $Temp.AttackDamage Arena
+    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} store result storage arena: Temp.MobInfo.Health double 0.0001 run scoreboard players get $Temp.Health Arena
+    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} store result storage arena: Temp.MobInfo.Speed double 0.0001 run scoreboard players get $Temp.Speed Arena
 
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Endless:1b}} store result storage arena: Temp.MobInfo.ExplosionRadius double 0.0001 run scoreboard players get $Temp.ExplosionRadius Arena
+    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} store result storage arena: Temp.MobInfo.ExplosionRadius double 0.0001 run scoreboard players get $Temp.ExplosionRadius Arena
 
     # 召喚数
     execute store result score $Temp.MobCountMax Arena run data get storage arena: Temp.MobInfo.SummonCount
 
-    execute unless data entity @e[tag=Arena.COre,sort=nearest,limit=1] {data:{Endless:1b}} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Difficulty 100
+    execute unless data entity @e[tag=Arena.COre,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty 100
     scoreboard players operation $Temp.SummonCountMultiple Arena /= #2 Arena
     scoreboard players add $Temp.SummonCountMultiple Arena 100
     scoreboard players operation $Temp.MobCountMax Arena *= $Temp.SummonCountMultiple Arena

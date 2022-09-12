@@ -1,5 +1,5 @@
 # エンドレス時のステータス倍率設定
-execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Wave -8
+execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -8
 scoreboard players add $Temp.AttributesMultiple Arena 100
 
 execute store result score $Temp.AttackDamage Arena run data get storage arena: Temp.MobInfo.AttackDamage 100
@@ -14,7 +14,7 @@ scoreboard players operation $Temp.AttackDamage Arena /= #100 Arena
 scoreboard players operation $Temp.Health Arena /= #100 Arena
 
 
-execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Wave -5
+execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -5
 scoreboard players add $Temp.AttributesMultiple Arena 100
 
 scoreboard players operation $Temp.Speed Arena *= $Temp.AttributesMultiple Arena

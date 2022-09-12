@@ -5,12 +5,12 @@ execute as @a[tag=Arena.DisplayMobInfo] if score $DisplayMobInfo Arena matches 0
 tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob
 
 # エンドレス
-execute as @e[tag=Arena.Core] if data entity @s {data:{Endless:1b}} at @s run function arena:endless/boss/tick
-execute as @e[tag=Arena.Core] if score @s Arena matches -1 unless data entity @s {data:{Endless:1b}} run data modify entity @s data.Endless set value 1b
+execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{Endless:1b}}} at @s run function arena:endless/boss/tick
+execute as @e[tag=Arena.Core] if score @s Arena matches -1 unless data entity @s {data:{Arena:{Endless:1b}}} run data modify entity @s data.Arena.Endless set value 1b
 
 # 会場から離れたプレイヤーのタグ除去, スコアリセット
 execute at @e[tag=Arena.Core] as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena unless score @s Arena matches 0 run tag @s[distance=32..] remove Arena.Player
 execute as @a[tag=!Arena.Player] run scoreboard players set @s Arena 0
 
 # デバッグ用 
-execute as @a[tag=Arena.Debug] at @s run title @s actionbar ["MT: ",{"nbt":"data.MobType","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," WV: ",{"nbt":"data.Wave","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," DF: ",{"nbt":"data.Difficulty","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," T: ",{"score":{"name": "$Boss.SkillInterval","objective": "Arena"}},", ",{"score":{"name": "$Boss.SkillTimer","objective": "Arena"}}," S: ",{"score":{"name": "$Boss.Skill","objective": "Arena"}}]
+execute as @a[tag=Arena.Debug] at @s run title @s actionbar ["MT: ",{"nbt":"data.Arena.MobType","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," WV: ",{"nbt":"data.Arena.Wave","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," DF: ",{"nbt":"data.Arena.Difficulty","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," T: ",{"score":{"name": "$Boss.SkillInterval","objective": "Arena"}},", ",{"score":{"name": "$Boss.SkillTimer","objective": "Arena"}}," S: ",{"score":{"name": "$Boss.Skill","objective": "Arena"}}]

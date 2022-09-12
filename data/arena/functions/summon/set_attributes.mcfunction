@@ -9,11 +9,11 @@ execute as @e[tag=Arena.Summoned] run data modify entity @s Attributes[{Name:"mi
 execute as @e[tag=Arena.Summoned] run data modify entity @s Attributes[{Name:"minecraft:generic.attack_damage"}].Base set from storage arena: Temp.MobInfo.AttackDamage
 
 # エンドレス用: ブレイズなどはAttributesから攻撃力を操作できないため、エフェクトで対応
-execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.MobType
-execute if data entity @s {data:{Endless:1b}} run effect give @e[tag=Arena.Summoned,type=blaze] strength 86400 0 true
-execute if data entity @s {data:{Endless:1b}} run effect give @e[tag=Arena.Summoned,type=skeleton] strength 86400 0 true
+execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
+execute if data entity @s {data:{Arena:{Endless:1b}}} run effect give @e[tag=Arena.Summoned,type=blaze] strength 86400 0 true
+execute if data entity @s {data:{Arena:{Endless:1b}}} run effect give @e[tag=Arena.Summoned,type=skeleton] strength 86400 0 true
 
-execute as @e[tag=Arena.Core,sort=nearest,limit=1] if data entity @s {data:{Endless:1b}} store result score $Temp.Wave Arena run data get entity @s data.Wave -1
+execute as @e[tag=Arena.Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Endless:1b}}} store result score $Temp.Wave Arena run data get entity @s data.Arena.Wave -1
 execute as @e[tag=Arena.Summoned] store result entity @s ActiveEffects[{Id:5}].Amplifier byte 0.16 run scoreboard players get $Temp.Wave Arena
 
 # 個別に設定するモブのAttributes設定

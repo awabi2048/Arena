@@ -15,8 +15,8 @@ scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[ta
 execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run function arena:reset
 execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s positioned ~ ~1 ~2 run function arena:click_sign
 
-execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run summon armor_stand ~ ~ ~ {Tags:["Arena.Timer"],Marker:1b,Invisible:1b}
+execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run summon armor_stand ~ ~ ~ {Tags:["Arena.Timer"],Marker:1b,Invisible:1b,Silent:1b}
 execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..3.5] @s
 execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run playsound entity.experience_orb.pickup master @a ~ ~ ~ 5 2
-execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s unless data entity @s {data:{Endless:1b}} run tellraw @a[tag=Arena.Player,distance=..20] {"text":"看板を右クリックでモブの種類を、素手でシフト右クリックで難易度を変更できます","color":"aqua"}
+execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s unless data entity @s {data:{Arena:{Endless:1b}}} run tellraw @a[tag=Arena.Player,distance=..20] {"text":"看板を右クリックでモブの種類を、素手でシフト右クリックで難易度を変更できます","color":"aqua"}
 execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s as @a[distance=..20] unless score @s Arena.MaxStageR matches 1.. run scoreboard players set @s Arena.MaxStageR 0

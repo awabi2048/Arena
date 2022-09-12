@@ -1,6 +1,6 @@
 # Arena.Coreからdata(MOB種類/難易度)取得
-execute store result score $MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.MobType
-execute store result score $Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Difficulty
+execute store result score $MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
+execute store result score $Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
 
 # シフトか通常クリックかで難易度とモブの種類を設定
 execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} if predicate arena:is_sneaking run scoreboard players add $Difficulty Arena 1
@@ -12,9 +12,9 @@ execute if score $Difficulty Arena matches -1 run scoreboard players set $Diffic
 execute if score $MobType Arena matches 7.. run scoreboard players set $MobType Arena 0
 execute if score $Difficulty Arena matches 3.. run scoreboard players set $Difficulty Arena 0
 
-# Arena.Coreのdata.にモブの種類と難易度を保存
-execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.MobType int 1 run scoreboard players get $MobType Arena
-execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Difficulty int 1 run scoreboard players get $Difficulty Arena
+# Arena.Coreのdata.Arena.にモブの種類と難易度を保存
+execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType int 1 run scoreboard players get $MobType Arena
+execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty int 1 run scoreboard players get $Difficulty Arena
 
 # 演出
     # サウンド
@@ -47,7 +47,7 @@ execute at @e[tag=Arena.Core,sort=nearest,limit=1] if score $MobType Arena match
 # 看板設置
 setblock ~ ~ ~ air
 setblock ~ ~ ~ oak_wall_sign[facing=north]{Text1:'{"text":"［アリーナの種類］","bold": true,"color": "yellow","clickEvent":{"action":"run_command","value":"function arena:click_sign"}}',Text2:'{"text":"モブの種類が入るよ"}',Text3:'{"text":"〈難易度〉","bold": true,"color": "yellow"}',Text4:'{"text":"難易度が入るよ"}'} replace
-execute as @e[tag=Arena.Core,sort=nearest,limit=1] if data entity @s {data:{Endless:1b}} run setblock ~ ~ ~ air
+execute as @e[tag=Arena.Core,sort=nearest,limit=1] if data entity @s {data:{Arena:{Endless:1b}}} run setblock ~ ~ ~ air
 
     # 看板文字データ変更
     execute if score $MobType Arena matches 0 run data modify block ~ ~ ~ Text2 set value '{"text":"ゾンビ","color":"white","bold":true}'

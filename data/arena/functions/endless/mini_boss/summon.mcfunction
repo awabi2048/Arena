@@ -5,7 +5,7 @@ scoreboard players set $Temp.Health Arena 500
 scoreboard players set $Temp.AttackDamage Arena 200
 scoreboard players set $Temp.Speed Arena 20
 
-execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Wave -10
+execute store result score $Temp.AttributesMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -10
 scoreboard players add $Temp.AttributesMultiple Arena 100
 
 scoreboard players operation $Temp.Health Arena *= $Temp.AttributesMultiple Arena
