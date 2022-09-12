@@ -1,0 +1,25 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:shield",
+        "nbt": "{BlockEntityTag:{Base:9,Patterns:[{Color:0,Pattern:\"flo\"},{Color:14,Pattern:\"mc\"},{Color:1,Pattern:\"tts\"},{Color:1,Pattern:\"bts\"},{Color:9,Pattern:\"cbo\"},{Color:0,Pattern:\"bo\"}],id:\"minecraft:banner\"},Damage:0,display:{Lore:['{\"extra\":[{\"text\":\"MOB:ガーディアン\"}],\"text\":\"\"}'],Name:'{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gold\",\"text\":\"アリーナ討伐の称号\"}],\"text\":\"\"}'}}"
+      },
+      "title": {
+        "text": "孤独な挑戦(ガーディアン)",
+        "color": "yellow",
+        "italic": false
+      },
+      "description": "ハード・ガーディアンアリーナを一人でクリアする",
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "arena:display/first_clear/hard",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+      }
+    }
+  }
+  

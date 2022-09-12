@@ -1,0 +1,22 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:gold_block"
+      },
+      "title": {
+        "text": "腕試し"
+      },
+      "description": "アリーナワールドに足を踏み入れる",
+      "show_toast": true,
+      "announce_to_chat": true
+    },
+    "parent": "arena:display/root",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:changed_dimension",
+      "conditions": {
+        "to": "minecraft:arena"
+      }
+    }
+  }
+}

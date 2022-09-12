@@ -1,0 +1,21 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:netherite_helmet",
+      "nbt": "{Enchantments:[{}]}"
+    },
+    "title": {
+      "text": "挑戦者たち"
+    },
+    "description": "エンドレスアリーナに挑戦する",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "arena:display/first_join",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:impossible"
+      }
+    }
+  }

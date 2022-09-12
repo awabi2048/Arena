@@ -1,0 +1,25 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:shield",
+        "nbt": "{BlockEntityTag:{Base:15,Patterns:[{Color:14,Pattern:\"ss\"},{Color:15,Pattern:\"cbo\"},{Color:15,Pattern:\"mr\"},{Color:14,Pattern:\"flo\"}],id:\"minecraft:banner\"},Damage:0,display:{Lore:['{\"extra\":[{\"text\":\"MOB:スパイダー\"}],\"text\":\"\"}'],Name:'{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gold\",\"text\":\"アリーナ討伐の称号\"}],\"text\":\"\"}'}}"
+      },
+      "title": {
+        "text": "孤独な挑戦(スパイダー)",
+        "color": "yellow",
+        "italic": false
+      },
+      "description": "ハード・スパイダーアリーナを一人でクリアする",
+      "frame": "task",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "arena:display/first_clear/hard",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+      }
+    }
+  }
+  

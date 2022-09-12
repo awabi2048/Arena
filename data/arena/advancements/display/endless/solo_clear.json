@@ -1,0 +1,25 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:diamond_sword",
+        "nbt": "{Enchantments:[{}]}"
+      },
+      "title": {
+        "text": "孤高の挑戦者",
+        "color": "light_purple",
+        "italic": false
+      },
+      "description": "エンドレスアリーナを一人でクリアする",
+      "frame": "challenge",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "arena:display/endless/first_join",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+      }
+    }
+  }
+  

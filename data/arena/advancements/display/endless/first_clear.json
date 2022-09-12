@@ -1,0 +1,23 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:nether_star"
+      },
+      "title": {
+        "text": "最高の称号",
+        "color": "light_purple"
+      },
+      "description": "エンドレスアリーナをクリアする",
+      "frame": "challenge",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": false
+    },
+    "parent": "arena:display/endless/first_join",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+        }
+      }
+    }
+  

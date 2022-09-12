@@ -1,0 +1,21 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:egg"
+      },
+      "title": {
+        "text": "未熟な挑戦者"
+      },
+      "description": "エンドレスアリーナで、Wave 1をクリアせずに倒される",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true
+    },
+    "parent": "arena:display/first_join",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+        }
+      }
+    }
+  

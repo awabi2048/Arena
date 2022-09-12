@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond_sword"
+    },
+    "title": {
+      "text": "アリーナ",
+      "color": "yellow",
+      "bold": true
+    },
+    "description": "",
+    "background": "minecraft:textures/block/deepslate_bricks.png",
+    "show_toast": false,
+    "announce_to_chat": false
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:tick",
+      "conditions": {
+        "to": "minecraft:arena"
+      }
+    }
+  }
+}

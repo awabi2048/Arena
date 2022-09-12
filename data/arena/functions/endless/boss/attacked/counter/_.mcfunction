@@ -1,0 +1,17 @@
+# ボスが攻撃を受けたときに反撃
+execute store result score $Boss.Health Arena run bossbar get arena:boss value
+
+#反撃可否ランダム値生成
+    summon area_effect_cloud ~ ~ ~ {Tags:["Arena.Random"]}
+    execute store result score $Boss.Random Arena run data get entity @e[tag=Arena.Random,limit=1] UUID[0]
+    scoreboard players operation $Boss.Random Arena %= #100 Arena
+
+        #反撃01
+        execute if score $Boss.Random Arena matches 0..50 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/01
+
+        #反撃02
+        execute unless score $Boss.Random Arena matches ..100 if score $Boss.Random Arena matches 51..99 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/02
+        execute if score $Boss.Random Arena matches ..100 if score $Boss.Random Arena matches 76..99 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/02
+
+advancement revoke @a only arena:boss/attacked_last_boss
+

@@ -1,0 +1,20 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_sword"
+    },
+    "title": {
+      "text": "一般アリーナプレイヤー"
+    },
+    "description": "ノーマルアリーナを初めてクリアする",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "arena:display/first_clear/easy",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:impossible"
+      }
+    }
+  }
