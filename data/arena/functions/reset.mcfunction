@@ -17,6 +17,7 @@ scoreboard players set $MobCountMax Arena 0
 # Arena.Coreのデータのリセット
 data modify entity @s data.Arena.Wave set value 0
 data modify entity @s data.Arena.MobType set value -1
+data modify entity @s data.Arena.PlayerCount set value -1
 data modify entity @s data.Arena.Difficulty set value 0
 data modify entity @s data.Arena.LastMobType set value [-1,-1,-1]
 

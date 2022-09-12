@@ -34,13 +34,13 @@ execute if data entity @s {data:{Arena:{MobType:6,Difficulty:2}}} run tellraw @a
     execute if data entity @s {data:{Arena:{Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/hard
 
     ## 単独クリア
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:0,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/zombie
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:1,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/skeleton
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:2,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/blaze
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:3,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/spider
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:4,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/slime
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:5,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/creeper
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:6,Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/guardian
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:0,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/zombie
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:1,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/skeleton
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:2,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/blaze
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:3,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/spider
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:4,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/slime
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:5,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/creeper
+    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:6,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/guardian
 
 # 待機所にtp
 execute as @e[tag=Arena.Lobby] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..20] @s 

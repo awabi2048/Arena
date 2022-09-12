@@ -6,8 +6,7 @@ execute store success score $Temp.Clear Arena unless entity @e[tag=Arena.LastBos
     execute if score $Temp.Clear Arena matches 1 run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/first_clear
 
         ## 実績解除検知
-        execute if score $Temp.Clear Arena matches 1 store result score $Temp.PlayerCount Arena if entity @a[tag=Arena.Player,distance=..32]
-        execute if score $Temp.Clear Arena matches 1 if score $Temp.PlayerCount Arena matches 1 run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/solo_clear
+        execute if score $Temp.Clear Arena matches 1 if data entity @s {data:{Arena:{MobType:0,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/solo_clear
 
     execute if score $Temp.Clear Arena matches 1 as @a[tag=Arena.Notice] at @s run playsound entity.player.levelup master @s ~ ~ ~ 
 
