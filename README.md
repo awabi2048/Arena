@@ -1,4 +1,4 @@
-# KotaServer -Arena
+# KotaServer - Arena
 ![サムネイル](./2022-09-12_16.33.42.png)
 
 ## 概要
