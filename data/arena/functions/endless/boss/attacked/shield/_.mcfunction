@@ -6,14 +6,16 @@ scoreboard players operation $Boss.Temp.CurrentHealth Arena -= $Boss.Temp.LastHe
 scoreboard players operation $Boss.Temp.CurrentHealth Arena *= #-1 Arena
 scoreboard players operation $Boss.Temp.DamageAmount Arena = $Boss.Temp.CurrentHealth Arena 
 
-# 指定ダメージ設定
-execute store success score $Boss.Temp.AttackBlocked Arena if score $Boss.Temp.DamageAmount Arena matches ..20
+# 最小ダメージ設定
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 20
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 30
+execute store success score $Boss.Temp.AttackBlocked Arena if score $Boss.Temp.DamageAmount Arena <= $Boss.Temp.MinDamageAmount Arena
 
-    # 指定ダメージ以下
+    # 最小ダメージ以下
     execute if score $Boss.Temp.AttackBlocked Arena matches 1 at @e[tag=Arena.LastBoss] run function arena:endless/boss/attacked/shield/block
 
-    # 指定ダメージ以上 (指定ダメージを引いた値分ダメージを与える)
-    execute if score $Boss.Temp.AttackBlocked Arena matches 0 run scoreboard players remove $Boss.Temp.DamageAmount Arena 20
+    # 最小ダメージ以上 (最小ダメージを引いた値をダメージとする)
+    execute if score $Boss.Temp.AttackBlocked Arena matches 0 run scoreboard players operation $Boss.Temp.DamageAmount Arena -= $Boss.Temp.MinDamageAmount Arena
     execute if score $Boss.Temp.AttackBlocked Arena matches 0 run scoreboard players operation $Boss.Temp.LastHealth Arena -= $Boss.Temp.DamageAmount Arena
     execute if score $Boss.Temp.AttackBlocked Arena matches 0 store result entity @e[tag=Arena.LastBoss,limit=1] Health float 1 run scoreboard players get $Boss.Temp.LastHealth Arena
 

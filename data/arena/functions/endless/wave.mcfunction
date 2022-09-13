@@ -72,7 +72,7 @@ execute if score $Temp.Wave Arena matches 100 store success score $Temp.NextWave
     
     ## プレイヤーに設定する最大到達スコアをArena.Coreから取得
     execute if score $Temp.NextWave Arena matches 1 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-    execute if score $Temp.NextWave Arena matches 1 as @a[tag=Arena.Player,distance=..32] if score $Temp.Wave Arena > @s Arena.MaxStageR store result score @s Arena.MaxStageR run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+    execute if score $Temp.NextWave Arena matches 1 as @a[tag=Arena.Player,distance=..32] if score $Temp.Wave Arena > @s Arena.MaxStageReached store result score @s Arena.MaxStageReached run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
     ## 実績解除判定
         ### 3連同じモブ

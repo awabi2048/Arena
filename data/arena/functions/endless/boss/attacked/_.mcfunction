@@ -1,5 +1,5 @@
-# カウンター
-#反撃可否ランダム値生成
+# ボス攻撃受けたときのカウンター
+# カウンターするか乱数で決定
     summon area_effect_cloud ~ ~ ~ {Tags:["Arena.Random"]}
     execute store result score $Boss.Random Arena run data get entity @e[tag=Arena.Random,limit=1] UUID[0]
     scoreboard players operation $Boss.Random Arena %= #100 Arena

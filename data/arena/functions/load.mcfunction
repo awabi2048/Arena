@@ -1,6 +1,6 @@
 scoreboard objectives add arena dummy
 scoreboard objectives add Arena dummy
-scoreboard objectives add Arena.MaxStageR dummy {"text":"| 最高到達ウェーブ |","bold":true}
+scoreboard objectives add Arena.MaxStageReached dummy {"text":"| 最高到達ウェーブ |","bold":true}
 
 execute unless data storage arena: Core run function arena:setup/mob_attributes
 

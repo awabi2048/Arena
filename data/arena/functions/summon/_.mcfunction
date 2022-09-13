@@ -1,18 +1,17 @@
 # エンドレス
-        ## 各ボスの召喚判定
-        execute store result score $Temp.BossSummon Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-        execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-        execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} run scoreboard players operation $Temp.Wave Arena *= #-1 Arena
+    ## 各ボスの召喚判定
+    execute store result score $Temp.BossSummon Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run scoreboard players operation $Temp.Wave Arena *= #-1 Arena
 
-        scoreboard players operation $Temp.BossSummon Arena %= #10 Arena
-        execute store success score $Temp.BossSummon Arena if score $Temp.BossSummon Arena matches 0
-        execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} run scoreboard players set $Temp.BossSummon Arena 0
+    scoreboard players operation $Temp.BossSummon Arena %= #10 Arena
+    execute store success score $Temp.BossSummon Arena if score $Temp.BossSummon Arena matches 0
+    execute unless score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run scoreboard players set $Temp.BossSummon Arena 0
 
-        ## 召喚
-        execute if score $Temp.BossSummon Arena matches 1 unless score $Temp.Wave Arena matches 50 unless score $Temp.Wave Arena matches 100 run function arena:endless/mini_boss/summon
-        execute if score $Temp.BossSummon Arena matches 1 if score $Temp.Wave Arena matches 50 run function arena:endless/mid_boss/summon
-        execute if score $Temp.BossSummon Arena matches 1 if score $Temp.Wave Arena matches 100 run function arena:endless/boss/summon
-
+    ## 召喚
+    execute if score $Temp.BossSummon Arena matches 1 unless score $Temp.Wave Arena matches 50 unless score $Temp.Wave Arena matches 100 run function arena:endless/mini_boss/summon
+    execute if score $Temp.BossSummon Arena matches 1 if score $Temp.Wave Arena matches 50 run function arena:endless/mid_boss/summon
+    execute if score $Temp.BossSummon Arena matches 1 if score $Temp.Wave Arena matches 100 run function arena:endless/boss/summon
 
 # 通常アリーナ
     ## ストレージからデータ取得
@@ -37,7 +36,7 @@
 
     ## ストレージのデータをモブの Attributes に適応
     execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Endless:1b}}} run function arena:endless/status_multiple
+    execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run function arena:endless/attributes_multiple
     execute if score $Temp.BossSummon Arena matches 0 run function arena:summon/set_attributes
 
 tag @e[tag=Arena.Summoned] remove Arena.Summoned
