@@ -20,4 +20,3 @@ execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}
 execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}}} at @s run setblock ~ ~-5 ~ redstone_block
 execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}}} at @s run setblock ~ ~-5 ~ air
 
-
