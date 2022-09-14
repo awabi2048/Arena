@@ -84,7 +84,7 @@ execute if score $Temp.Wave Arena matches 5 run data modify storage arena: Temp.
     # 召喚数
     execute store result score $Temp.MobCountMax Arena run data get storage arena: Temp.MobInfo.SummonCount
 
-    execute unless data entity @e[tag=Arena.COre,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty 100
+    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty 100
     scoreboard players operation $Temp.SummonCountMultiple Arena /= #2 Arena
     scoreboard players add $Temp.SummonCountMultiple Arena 100
     scoreboard players operation $Temp.MobCountMax Arena *= $Temp.SummonCountMultiple Arena
