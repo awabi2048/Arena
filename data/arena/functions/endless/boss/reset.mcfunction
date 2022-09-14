@@ -3,17 +3,16 @@ bossbar remove arena:boss
 bossbar remove arena:boss_shield
 bossbar remove arena:mid_boss
 
-# スキル起点マーカー
+# スキル起点マーカーのキル
 tp @e[tag=Arena.Mob,distance=..40] ~ ~-100 ~
 execute positioned ~ ~-100 ~ run kill @e[tag=Arena.Mob,distance=..3] 
 kill @e[tag=Arena.Boss.Marker]
 
-# スコアリセット
-scoreboard players set $Boss.Timer Arena 0
+# スコア, ストレージリセット
 scoreboard players set $Boss.SkillTimer Arena 0
 
-scoreboard players set $Boss.Skill Arena -1
-scoreboard players set $Boss.SkillInterval Arena 300
+data modify storage arena: Boss.Skills set value []
+scoreboard players set $Boss.SkillInterval Arena 20
 
 # ストラクチャー再読み込み
 execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}}} at @s run setblock ~ ~-4 ~ air

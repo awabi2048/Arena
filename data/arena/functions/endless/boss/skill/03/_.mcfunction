@@ -4,4 +4,4 @@ particle warped_spore ~ ~2 ~ 1 0 1 1 300
 playsound block.enchantment_table.use master @a ~ ~ ~ 5 2
 playsound block.enchantment_table.use master @a ~ ~ ~ 5 0.5
 
-scoreboard players set $Boss.Skill Arena -1
+data modify storage arena: Boss.Skills set value []

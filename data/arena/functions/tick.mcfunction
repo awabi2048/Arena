@@ -5,7 +5,7 @@ execute as @a[tag=Arena.DisplayMobInfo] if score $DisplayMobInfo Arena matches 0
 tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob
 
 # エンドレス
-execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}}} at @s run function arena:endless/boss/tick
+execute as @e[tag=Arena.Core] if score @s Arena matches -1 at @s run function arena:endless/boss/tick
 execute as @e[tag=Arena.Core] if score @s Arena matches 1.. unless data entity @s {data:{Arena:{StageType:Normal}}} run data modify entity @s data.Arena.StageType set value "Normal"
 
 # 会場から離れたプレイヤーのタグ除去, スコアリセット

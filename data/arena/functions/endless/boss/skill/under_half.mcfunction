@@ -1,4 +1,4 @@
-# 手下召喚(次のスキル発動まで倒されなかった場合ボス回復)
+# 雑魚敵召喚 (次のスキル発動まで倒されなかった場合ボス回復)
 execute if score $Boss.Timer Arena matches 1 at @e[tag=Arena.SummonPoint,sort=nearest,limit=4] run summon skeleton ~ ~ ~ {HandItems:[{id:"minecraft:diamond_axe",Count:1b},{}],HandDropChances:[0.0f,0.0f],Tags:["Arena.Mob","Arena.Boss.Healer"],DeathLootTable:"empty",AbsorptionAmount:30}
 
 execute if score $Boss.Timer Arena matches 250 store result score $Temp.Boss.HealerCount Arena if entity @e[tag=Arena.Boss.Healer]
