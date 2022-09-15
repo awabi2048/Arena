@@ -12,7 +12,7 @@ kill @e[tag=Arena.Boss.Marker]
 scoreboard players set $Boss.SkillTimer Arena 0
 
 data modify storage arena: Boss.Skills set value []
-scoreboard players set $Boss.SkillInterval Arena 20
+scoreboard players set $Boss.SkillInterval Arena 300
 
 # ストラクチャー再読み込み
 execute as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Endless}}} at @s run setblock ~ ~-4 ~ air

@@ -4,6 +4,7 @@
 
     execute if score $Boss.SkillTimer Arena matches 0 run playsound entity.enderman.teleport master @a ~ ~ ~ 3 2
     execute if score $Boss.SkillTimer Arena matches 0 run playsound entity.enderman.teleport master @a ~ ~ ~ 3 0.5
+    execute if score $Boss.SkillTimer Arena matches 0 run playsound block.beacon.power_select master @a ~ ~ ~ 3 0.8
     execute if score $Boss.SkillTimer Arena matches 0 run playsound entity.shulker.shoot master @a ~ ~ ~ 3 2
 
     execute if score $Boss.SkillTimer Arena matches 20..60 at @e[tag=Arena.Boss.WitherPillar] run particle dust 0 0 0 1 ~ ~ ~ 0.125 3 0.125 1 200

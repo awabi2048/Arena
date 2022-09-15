@@ -36,3 +36,6 @@ execute if score $Boss.SkillTimer Arena matches 16 run summon magma_cube ~-4 ~ ~
     execute at @e[tag=Arena.Boss.Skill01.06] run particle dust 0 1 1 1 ~ ~ ~ 0.25 0 0.25 0.5 2
     execute at @e[tag=Arena.Boss.Skill01.07] run particle dust 0 0.5 1 1 ~ ~ ~ 0.25 0 0.25 0.5 2
     execute at @e[tag=Arena.Boss.Skill01.08] run particle dust 0 0 1 1 ~ ~ ~ 0.25 0 0.25 0.5 2
+
+# 最後にkill
+execute if score $Boss.SkillTimer Arena matches 100 run tp @e[tag=Arena.Boss.Skill01] ~ ~-300 ~

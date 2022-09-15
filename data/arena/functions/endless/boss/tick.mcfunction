@@ -9,7 +9,7 @@ execute if score $Boss.SkillTimer Arena >= $Boss.SkillInterval Arena run functio
 
 # スキル
 function arena:endless/boss/skill/tick
-execute as @e[tag=Arena.LastBoss] at @s unless block ~ ~-1 ~ air if data entity @s {NoAI:1b} run data modify entity @s NoAI set value 0b
+execute as @e[tag=Arena.Boss] at @s unless block ~ ~-1 ~ air if data entity @s {NoAI:1b} run data modify entity @s NoAI set value 0b
 
 # ボスバー操作
 execute store result bossbar arena:boss value run data get entity @e[tag=Arena.LastBoss,limit=1] Health

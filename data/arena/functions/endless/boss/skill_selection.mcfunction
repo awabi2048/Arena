@@ -45,8 +45,8 @@
     scoreboard players reset $Boss.Health Arena
     execute store result score $Boss.Health Arena run bossbar get arena:mid_boss value
 
-    execute if score $Boss.Health Arena matches 501..750 run scoreboard players set $Boss.SkillInterval Arena 300
-    execute if score $Boss.Health Arena matches 1..500 run scoreboard players set $Boss.SkillInterval Arena 200
+    execute if score $Boss.Health Arena matches 401..800 run scoreboard players set $Boss.SkillInterval Arena 300
+    execute if score $Boss.Health Arena matches 1..400 run scoreboard players set $Boss.SkillInterval Arena 200
     
     # スキル発動予備動作のタイマー設定
     scoreboard players operation $Boss.SkillNotice Arena = $Boss.SkillInterval Arena

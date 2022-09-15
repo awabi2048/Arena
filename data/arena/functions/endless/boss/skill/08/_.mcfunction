@@ -13,10 +13,12 @@
     execute if score $Boss.SkillTimer Arena matches 0 run data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value 1b
 
     # 雷落とす
-    execute if score $Boss.SkillTimer Arena matches 60 at @a[distance=..20,tag=Arena.Player] run summon lightning_bolt
-    execute if score $Boss.SkillTimer Arena matches 60 at @a[distance=..20,tag=Arena.Player] run summon lightning_bolt
+    execute if score $Boss.SkillTimer Arena matches 60 at @a[distance=..32,tag=Arena.Player] run summon lightning_bolt
+    execute if score $Boss.SkillTimer Arena matches 65 at @a[distance=..32,tag=Arena.Player] run summon lightning_bolt
+    execute if score $Boss.SkillTimer Arena matches 70 at @a[distance=..32,tag=Arena.Player] run summon lightning_bolt
 
-    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..20,tag=Arena.Player] run effect give @s instant_damage 1 2 true
+    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run effect give @s instant_damage 1 2 true
+    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run effect give @s darkness 5 0 true
 
     # 固定解除
     execute if score $Boss.SkillTimer Arena matches 60 run data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value 0b

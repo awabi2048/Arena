@@ -15,7 +15,7 @@ execute as @a[tag=Arena.Player] if score @s Arena.PlayHiddenStage matches 1 run 
 execute as @a[tag=Arena.Player] if score @s Arena.PlayHiddenStage matches 1 run playsound block.beacon.power_select master @s ~ ~ ~ 5 1.18
 
 execute as @a[tag=Arena.Player] if score @s Arena.PlayHiddenStage matches 1 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "HiddenEndless"
-execute as @a[tag=Arena.Player] if score @s Arena.PlayHiddenStage matches 1 run scoreboard objectives remove Arena.PlayHiddenStage
+scoreboard objectives remove Arena.PlayHiddenStage
 
 # 次のウェーブに 進む/終了
 execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
