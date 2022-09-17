@@ -21,3 +21,4 @@ execute store success score $Boss.Temp.AttackBlocked Arena if score $Boss.Temp.D
 
 # 最後に攻撃されたときのボスの体力を取得
 execute store result score $Boss.Temp.LastHealth Arena run data get entity @e[tag=Arena.LastBoss,limit=1] Health
+

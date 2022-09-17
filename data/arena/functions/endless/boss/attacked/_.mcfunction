@@ -16,3 +16,7 @@ execute if score $Boss.Health Arena matches 334..666 run bossbar set arena:boss 
 execute if score $Boss.Health Arena matches 1..334 run bossbar set arena:boss color red
 
 advancement revoke @a only arena:boss/attacked_last_boss
+
+# 隠しエンドレス用: 一定時間攻撃受けないと高速回復
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run scoreboard players set $Boss.LastAttackedTime Arena 0
+

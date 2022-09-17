@@ -26,15 +26,19 @@ execute as @e[tag=Arena.Summoned,type=creeper] unless score $Temp.Wave Arena mat
 # モブにエフェクト付与
 execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s weakness 86400 0 true
 execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s hunger 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s slowness 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s slow_falling 86400 0 true
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:18}].Amplifier byte 0.05 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:17}].Amplifier byte 0.03 run scoreboard players get $Temp.Wave Arena
+execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:2}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
+execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:28}].Amplifier byte 1 run scoreboard players get $Temp.Wave Arena
 
 execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=zombie] run effect give @s speed 86400 0 true
 execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=zombie] run effect give @s regeneration 86400 0 true
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:1}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:10}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
 
-# モブにエフェクト付与
+# スケルトンの弓にエンチャント付与
 execute if data storage arena:temp {StageType:HiddenEndless} as @e[tag=Arena.Summoned,type=skeleton] if predicate arena:trisect run data modify entity @s HandItems[{id:"minecraft:bow"}].tag.Enchantments append value {id:"minecraft:punch",lvl:1s}
 execute if data storage arena:temp {StageType:HiddenEndless} as @e[tag=Arena.Summoned,type=skeleton] if predicate arena:trisect run data modify entity @s HandItems[{id:"minecraft:bow"}].tag.Enchantments append value {id:"minecraft:flame",lvl:1s}
 

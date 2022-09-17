@@ -14,3 +14,13 @@ execute as @e[tag=Arena.Boss] at @s unless block ~ ~-1 ~ air if data entity @s {
 # ボスバー操作
 execute store result bossbar arena:boss value run data get entity @e[tag=Arena.LastBoss,limit=1] Health
 execute store result bossbar arena:mid_boss value run data get entity @e[tag=Arena.MidBoss,limit=1] Health
+
+execute store result score $Boss.Health Arena run bossbar get arena:boss value
+execute if score $Boss.Health Arena matches 0..333 run bossbar set arena:boss color red
+execute if score $Boss.Health Arena matches 334..666 run bossbar set arena:boss color yellow
+execute if score $Boss.Health Arena matches 666..1000 run bossbar set arena:boss color white
+
+scoreboard players reset $Boss.Health Arena
+execute store result score $Boss.Health Arena run bossbar get arena:mid_boss value
+execute if score $Boss.Health Arena matches 0..500 run bossbar set arena:mid_boss color red
+execute if score $Boss.Health Arena matches 501..1000 run bossbar set arena:mid_boss color white

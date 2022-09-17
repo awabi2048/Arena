@@ -5,15 +5,15 @@ bossbar add arena:mid_boss {"text":"中ボス","bold": true,"color": "yellow"}
 bossbar set arena:mid_boss players @a[tag=Arena.Player,distance=..32]
 
 # 通常エンドレスのAttributes設定
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.max_health"}].Base set value 800.0d
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.max_health"}].Base set value 1000.0d
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.attack_damage"}].Base set value 50.0d
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.armor"}].Base set value 10.0d
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run bossbar set arena:mid_boss max 800
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.armor"}].Base set value 0.0d
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run bossbar set arena:mid_boss max 1000
 
 # 隠しエンドレスのAttributes設定
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.max_health"}].Base set value 1000.0d
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.attack_damage"}].Base set value 100.0d
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.armor"}].Base set value 20.0d
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run data modify entity @e[tag=Arena.MidBoss,sort=nearest,limit=1] Attributes[{Name:"minecraft:generic.armor"}].Base set value 5.0d
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run bossbar set arena:mid_boss max 1000
 
 data modify entity @e[tag=Arena.MidBoss,limit=1] Health set value 1000.0d
