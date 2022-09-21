@@ -7,8 +7,8 @@ scoreboard players operation $Boss.Temp.CurrentHealth Arena *= #-1 Arena
 scoreboard players operation $Boss.Temp.DamageAmount Arena = $Boss.Temp.CurrentHealth Arena 
 
 # 最小ダメージ値設定
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 20
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 30
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 30
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} run scoreboard players set $Boss.Temp.MinDamageAmount Arena 50
 execute store success score $Boss.Temp.AttackBlocked Arena if score $Boss.Temp.DamageAmount Arena <= $Boss.Temp.MinDamageAmount Arena
 
     # 最小ダメージ値以下
