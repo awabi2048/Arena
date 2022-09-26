@@ -1,5 +1,5 @@
 # タイマースコア変更
-execute if entity @e[tag=Arena.Boss] if entity @a[tag=Arena.Player,scores={Arena=-1},distance=..32] run scoreboard players add $Boss.SkillTimer Arena 1
+execute if entity @e[tag=Arena.Boss] if entity @a[tag=Arena.Player,scores={Arena=-1},distance=..32] unless data storage arena: {Debug:{Pause:1b}} run scoreboard players add $Boss.SkillTimer Arena 1
 
 # プレイヤーいなければリセット
 execute unless entity @a[tag=Arena.Player,scores={Arena=-1},distance=..32] run function arena:endless/boss/reset

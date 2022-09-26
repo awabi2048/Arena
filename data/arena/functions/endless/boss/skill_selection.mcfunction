@@ -32,6 +32,9 @@
 
     data remove storage arena:temp Random
 
+    # デバッグ用
+    execute unless data storage arena: {Debug:{SetSkill:none}} run data remove storage arena: Boss.Skills
+    execute unless data storage arena: {Debug:{SetSkill:none}} run data modify storage arena: Boss.Skills append from storage arena: Debug.SetSkill 
 
 # ボスのHPをチェック、一定以下ならスキル発動加速
     # ラスボス
