@@ -10,7 +10,8 @@ execute at @e[tag=Arena.Boss.Skill02.Bullet] as @a[tag=Arena.Player,distance=..1
 execute at @e[tag=Arena.Boss.Skill02.Bullet] as @a[tag=Arena.Player,distance=..1] run effect give @s levitation 3 1 true
 
 # 演出
-execute if score $Boss.SkillTimer Arena matches 30 run playsound item.trident.thunder master @a ~ ~ ~ 5 0.75
+execute if score $Boss.SkillTimer Arena matches 0 run playsound item.trident.thunder master @a ~ ~ ~ 5 0.5
+execute if score $Boss.SkillTimer Arena matches 0 run playsound block.portal.travel master @a ~ ~ ~ 5 1.8
 
 execute at @e[tag=Arena.Boss.Skill02.Bullet] run particle crit ~ ~ ~ 0 0 0 0 2
 execute at @e[tag=Arena.Boss.Skill02.Bullet] run particle end_rod ~ ~ ~ 0 0 0 0 1
@@ -20,3 +21,4 @@ execute at @e[tag=Arena.Boss.Skill02.Bullet] run particle enchanted_hit ~ ~ ~ 0 
 execute if score $Boss.SkillTimer Arena matches 100 run kill @e[tag=Arena.Boss.Skill02.Bullet]
 execute if score $Boss.SkillTimer Arena matches 100 run kill @e[tag=Arena.Boss.Skill02.Core]
 
+execute as @e[tag=Arena.Boss.Skill02.Bullet] at @s unless block ~ ~ ~ air run kill @s
