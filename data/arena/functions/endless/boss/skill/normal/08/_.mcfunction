@@ -17,8 +17,9 @@
     execute if score $Boss.SkillTimer Arena matches 65 at @a[distance=..32,tag=Arena.Player] run summon lightning_bolt
     execute if score $Boss.SkillTimer Arena matches 70 at @a[distance=..32,tag=Arena.Player] run summon lightning_bolt
 
-    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run effect give @s instant_damage 1 2 true
-    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run effect give @s darkness 5 0 true
+    execute if score $Boss.SkillTimer Arena matches 60 run data modify storage score_damage: Argument set value {Damage:10.00d}
+    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run function score_damage:api/attack
+    execute if score $Boss.SkillTimer Arena matches 60 as @a[distance=..32,tag=Arena.Player] run effect give @s blindness 5 0 true
 
     # 固定解除
     execute if score $Boss.SkillTimer Arena matches 60 run data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value 0b
