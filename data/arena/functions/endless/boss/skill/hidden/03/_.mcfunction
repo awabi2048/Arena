@@ -1,5 +1,6 @@
 # マーカー兼当たり判定召喚
 execute if score $Boss.SkillTimer Arena matches 10 as @e[tag=Arena.SummonPoint,sort=nearest,limit=4] at @s facing entity @e[tag=Arena.Core,sort=nearest,limit=1] eyes run summon creeper ^7 ^ ^2 {DeathLootTable:"empty",NoAI:1b,Silent:1b,Tags:["Arena.Boss.Skill03.Core","Arena.Boss.Marker"],ActiveEffects:[{Id:14,Duration:72000,ShowParticles:0b}],Attributes:[{Name:"generic.max_health",Base:120.0d}],Health:120.0f}
+effect give @e[tag=Arena.LastBoss] invisibility 10 0 true
 
 # 演出
 execute at @e[tag=Arena.Boss.Skill03.Core] run particle falling_obsidian_tear ~ ~ ~ 0.1 3 0.1 0 3

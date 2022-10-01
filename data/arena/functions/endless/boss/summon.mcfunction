@@ -28,7 +28,7 @@ playsound entity.lightning_bolt.impact master @a ~ ~ ~ 5 1.25
 particle end_rod ~ ~1 ~ 0 0 0 0.125 100
 particle flame ~ ~1 ~ 0 0 0 0.125 100
 
-effect give @a blindness 1 1 true
+effect give @a[tag=Arena.Player,distance=..32] blindness 1 1 true
 
 # ボタン押せないように
 execute at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~ ~ air
