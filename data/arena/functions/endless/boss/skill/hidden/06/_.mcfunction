@@ -23,7 +23,7 @@
     execute if score $Boss.SkillTimer Arena matches 60 at @e[tag=Arena.Boss] run particle reverse_portal ~ ~ ~ 0 0 0 0.75 250
 
     # ダミー召喚
-    execute if score $Boss.SkillTimer Arena matches 60 at @a[tag=Arena.Player,tag=!Arena.Boss.TpTo,distance=..32] run summon vindicator ~ ~2 ~ {Tags:["Arena.Mob","Arena.Boss.Skill06.Dummy","Arena.Boss.Marker"],Attributes:[{Name:"generic.attack_damage",Base:125.0d},{Name:"generic.max_health",Base:1000.0d},{Name:"generic.armor",Base:10.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:1000f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
+    execute if score $Boss.SkillTimer Arena matches 60 at @a[tag=Arena.SummonPoint,sort=nearest,limit=4] run summon vindicator ~ ~2 ~ {Tags:["Arena.Mob","Arena.Boss.Skill06.Dummy","Arena.Boss.Marker"],Attributes:[{Name:"generic.attack_damage",Base:62.5d},{Name:"generic.max_health",Base:500.0d},{Name:"generic.armor",Base:10.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:1000f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
 
     # 後処理
     execute if score $Boss.SkillTimer Arena matches 60 run tag @a remove Arena.Boss.TpTo

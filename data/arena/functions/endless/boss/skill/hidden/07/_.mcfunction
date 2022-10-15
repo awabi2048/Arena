@@ -18,9 +18,14 @@
     execute if score $Boss.SkillTimer Arena matches 0 run playsound entity.ender_dragon.hurt master @a ~ ~ ~ 5 0.5
 
     # 牙が通ったときの処理
-    execute at @e[tag=Arena.Boss.Skill07.Core] as @a[tag=Arena.Player,distance=..1.5] run data modify storage score_damage: Argument set value {Damage:20.00d}
-    execute at @e[tag=Arena.Boss.Skill07.Core] as @a[tag=Arena.Player,distance=..1.5] if data entity @s {HurtTime:0} run function score_damage:api/attack
-    execute at @e[tag=Arena.Boss.Skill07.Core] as @a[tag=Arena.Player,distance=..1.5] run effect give @s slowness 1 1 true
+    execute at @e[tag=Arena.Boss.Skill07.Core] positioned ~ ~1 ~ as @a[tag=Arena.Player,distance=..1.5] run data modify storage score_damage: Argument set value {Damage:20.00d}
+    execute at @e[tag=Arena.Boss.Skill07.Core] positioned ~ ~1 ~ as @a[tag=Arena.Player,distance=..1.5] if data entity @s {HurtTime:0} run function score_damage:api/attack
+    execute at @e[tag=Arena.Boss.Skill07.Core] positioned ~ ~1 ~ as @a[tag=Arena.Player,distance=..1.5] run effect give @s slowness 1 1 true
 
     # マーカーの移動に関する処理
     execute as @e[tag=Arena.Boss.Skill07.Core] at @s unless block ~ ~ ~ air run kill @s
+
+    # ボスの移動制限
+    execute if score $Boss.SkillTimer Arena matches 0 run data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value true
+    execute if score $Boss.SkillTimer Arena matches 100 run data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value false
+    

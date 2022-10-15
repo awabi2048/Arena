@@ -48,3 +48,6 @@ execute at @e[tag=Arena.Boss.Skill01.08] run particle dust 0 0 1 1 ~ ~ ~1 0.25 0
 execute if score $Boss.SkillTimer Arena matches 40 run kill @e[tag=Arena.Boss.Skill01.Marker]
 
 execute if score $Boss.SkillTimer Arena matches 0 run data modify storage arena: Boss.Skill.01.Killed set value []
+
+# ボスの移動制限
+execute if score $Boss.SkillTimer Arena matches 0 run effect give @e[tag=Arena.Boss] slowness 5 64

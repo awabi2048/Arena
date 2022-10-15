@@ -20,3 +20,5 @@ scoreboard players set #40 Arena 40
 
 scoreboard players set #50 Arena 50
 scoreboard players set #100 Arena 100
+
+scoreboard players set #360 Arena 360
