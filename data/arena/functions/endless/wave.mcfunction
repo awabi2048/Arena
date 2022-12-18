@@ -37,11 +37,12 @@ execute if score $Temp.Wave Arena matches 100 store success score $Temp.NextWave
         data remove storage arena: Debug.NextMob
 
     # タイトル表示と効果音
-    execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] times 10 40 10
-    execute if score $Temp.NextWave Arena matches 1 if score $Temp.Wave Arena matches 100 run title @a[tag=Arena.Player,distance=..20] title " "
-    execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title " "
-
     execute if score $Temp.NextWave Arena matches 1 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+
+    execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] times 10 60 10
+    execute if score $Temp.NextWave Arena matches 1 if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} if score $Temp.Wave Arena matches 1.. run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Endless","color": "dark_purple","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+    execute if score $Temp.NextWave Arena matches 1 if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} if score $Temp.Wave Arena matches 1.. run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Hidden Endless","color": "red","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+    
     execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
     execute if score $Temp.NextWave Arena matches 1 run playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..20] ~ ~ ~ 1 1.2
     execute if score $Temp.NextWave Arena matches 1 run function arena:summon/_
@@ -60,6 +61,7 @@ execute if score $Temp.Wave Arena matches 100 store success score $Temp.NextWave
     execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ air
     execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ structure_block{posX:-19,posY:1,posZ:-19,mode:"LOAD",name:"arena:stage-normal"}
     
+    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:1}}} run data modify block ~ ~-4 ~ name set value "arena:stage-skeleton"
     execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:3}}} run data modify block ~ ~-4 ~ name set value "arena:stage-spider"
     execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:4}}} run data modify block ~ ~-4 ~ name set value "arena:stage-slime"
     execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:5}}} run data modify block ~ ~-4 ~ name set value "arena:stage-creeper"

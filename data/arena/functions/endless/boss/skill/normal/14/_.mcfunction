@@ -22,3 +22,4 @@
 
     # 固定解除
     execute if score $Boss.SkillTimer Arena matches 40 run data modify entity @e[tag=Arena.LastBoss,limit=1] NoAI set value 0b
+    

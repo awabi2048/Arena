@@ -3,14 +3,14 @@ execute store result score $Temp.AttributesMultiple Arena run data get entity @e
 scoreboard players add $Temp.AttributesMultiple Arena 100
 
 # 通常エンドレスのデータ取得
-execute store result score $Temp.AttackDamage Arena run data get storage arena: Temp.MobInfo.AttackDamage 100
-execute store result score $Temp.Speed Arena run data get storage arena: Temp.MobInfo.Speed 100
-execute store result score $Temp.Health Arena run data get storage arena: Temp.MobInfo.Health 100
-execute store result score $Temp.SummonCount Arena run data get storage arena: Temp.MobInfo.SummonCount 100
+execute store result score $Temp.AttackDamage Arena run data get storage arena:temp MobInfo.AttackDamage 100
+execute store result score $Temp.Speed Arena run data get storage arena:temp MobInfo.Speed 100
+execute store result score $Temp.Health Arena run data get storage arena:temp MobInfo.Health 100
+execute store result score $Temp.SummonCount Arena run data get storage arena:temp MobInfo.SummonCount 100
 
 # 隠しエンドレス用のデータ取得
-execute store result score $Temp.Health Arena run data get storage arena: Temp.MobInfo.Health 200
-execute store result score $Temp.AttackDamage Arena run data get storage arena: Temp.MobInfo.AttackDamage 200
+execute store result score $Temp.Health Arena run data get storage arena:temp MobInfo.Health 200
+execute store result score $Temp.AttackDamage Arena run data get storage arena:temp MobInfo.AttackDamage 200
 
 # AttributesMultipleの値で掛け算
 scoreboard players operation $Temp.AttackDamage Arena *= $Temp.AttributesMultiple Arena
@@ -28,6 +28,6 @@ scoreboard players operation $Temp.Speed Arena /= #100 Arena
 execute if score $Temp.Speed Arena matches 35.. run scoreboard players set $Temp.Speed Arena 35
 
 # storageに適応
-execute store result storage arena: Temp.MobInfo.AttackDamage double 0.01 run scoreboard players get $Temp.AttackDamage Arena
-execute store result storage arena: Temp.MobInfo.Speed double 0.01 run scoreboard players get $Temp.Speed Arena
-execute store result storage arena: Temp.MobInfo.Health double 0.006 run scoreboard players get $Temp.Health Arena
+execute store result storage arena:temp MobInfo.AttackDamage double 0.01 run scoreboard players get $Temp.AttackDamage Arena
+execute store result storage arena:temp MobInfo.Speed double 0.01 run scoreboard players get $Temp.Speed Arena
+execute store result storage arena:temp MobInfo.Health double 0.006 run scoreboard players get $Temp.Health Arena

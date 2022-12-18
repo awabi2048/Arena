@@ -1,3 +1,4 @@
+# スキル実行 (Normal)
 execute if data storage arena: {Boss:{Skills:[1]}} run function arena:endless/boss/skill/normal/01/_
 execute if data storage arena: {Boss:{Skills:[2]}} as @e[tag=Arena.Boss] run function arena:endless/boss/skill/normal/02/_
 execute if data storage arena: {Boss:{Skills:[3]}} as @e[tag=Arena.Boss] run function arena:endless/boss/skill/normal/03/_
