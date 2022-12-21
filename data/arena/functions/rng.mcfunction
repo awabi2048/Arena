@@ -9,5 +9,5 @@ execute if predicate arena:half run scoreboard players add $Random Arena 16
 execute if predicate arena:half run scoreboard players add $Random Arena 32
 execute if predicate arena:half run scoreboard players add $Random Arena 64
 
-scoreboard players operation $Random Arena *= #100 Arena
+scoreboard players operation $Random Arena *= #99 Arena
 scoreboard players operation $Random Arena /= #127 Arena

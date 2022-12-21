@@ -46,25 +46,29 @@ execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp M
     execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[3]
     execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[4]
 
-
 # 難易度別にステータス値, 召喚数を倍率
-    #Memo:
-    #Attributes: movement_speed, attack_damage, max_health
-    #Status: ExplosionRadius
-    #倍率($Temp.StatusMultiple)は%表記
-    execute store result score $Temp.Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
+    ##Memo:
+    ##Attributes: movement_speed, attack_damage, max_health
+    ##Status: ExplosionRadius
+    ##倍率($Temp.StatusMultiple)は%表記
 
-    execute if score $Temp.Difficulty Arena matches 0 run scoreboard players set $Temp.StatusMultiple Arena 100
-    execute if score $Temp.Difficulty Arena matches 1 run scoreboard players set $Temp.StatusMultiple Arena 200
-    execute if score $Temp.Difficulty Arena matches 2 run scoreboard players set $Temp.StatusMultiple Arena 400
+    # 難易度で倍率を指定
+    data modify storage arena:temp Difficulty set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
 
+    execute if data storage arena:temp {Difficulty:0} run scoreboard players set $Temp.StatusMultiple Arena 100
+    execute if data storage arena:temp {Difficulty:1} run scoreboard players set $Temp.StatusMultiple Arena 200
+    execute if data storage arena:temp {Difficulty:2} run scoreboard players set $Temp.StatusMultiple Arena 400
+
+    execute if data storage arena:temp {Difficulty:-1} run scoreboard players set $Temp.StatusMultiple Arena 100
+
+    # ストレージから計算用にスコアで取得
     execute store result score $Temp.AttackDamage Arena run data get storage arena:temp MobInfo.AttackDamage 100
     execute store result score $Temp.Health Arena run data get storage arena:temp MobInfo.Health 100
     execute store result score $Temp.Speed Arena run data get storage arena:temp MobInfo.Speed 100
 
     execute store result score $Temp.ExplosionRadius Arena run data get storage arena:temp MobInfo.ExplosionRadius 100
 
-
+    # 指定した倍率で各種ステータスを計算
     scoreboard players operation $Temp.AttackDamage Arena *= $Temp.StatusMultiple Arena
     scoreboard players operation $Temp.Health Arena *= $Temp.StatusMultiple Arena
     scoreboard players operation $Temp.Speed Arena *= $Temp.StatusMultiple Arena
@@ -72,19 +76,25 @@ execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp M
     scoreboard players operation $Temp.ExplosionRadius Arena *= $Temp.StatusMultiple Arena
 
 
-    execute if score $Temp.Speed Arena matches 3000.. run scoreboard players set $Temp.Speed Arena 3000
+    scoreboard players operation $Temp.AttackDamage Arena /= #100 Arena
+    scoreboard players operation $Temp.Health Arena /= #100 Arena
+    scoreboard players operation $Temp.Speed Arena /= #100 Arena
 
+    scoreboard players operation $Temp.ExplosionRadius Arena /= #100 Arena
 
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result storage arena:temp MobInfo.AttackDamage double 0.0001 run scoreboard players get $Temp.AttackDamage Arena
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result storage arena:temp MobInfo.Health double 0.0001 run scoreboard players get $Temp.Health Arena
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result storage arena:temp MobInfo.Speed double 0.0001 run scoreboard players get $Temp.Speed Arena
+    execute if score $Temp.Speed Arena matches 30.. run scoreboard players set $Temp.Speed Arena 30
 
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result storage arena:temp MobInfo.ExplosionRadius double 0.0001 run scoreboard players get $Temp.ExplosionRadius Arena
+    # ストレージに適応
+    execute store result storage arena:temp MobInfo.AttackDamage double 0.01 run scoreboard players get $Temp.AttackDamage Arena
+    execute store result storage arena:temp MobInfo.Health double 0.01 run scoreboard players get $Temp.Health Arena
+    execute store result storage arena:temp MobInfo.Speed double 0.01 run scoreboard players get $Temp.Speed Arena
 
-    # 召喚数
+    execute store result storage arena:temp MobInfo.ExplosionRadius double 0.01 run scoreboard players get $Temp.ExplosionRadius Arena
+
+    # 召喚数の計算
     execute store result score $Temp.MobCountMax Arena run data get storage arena:temp MobInfo.SummonCount
 
-    execute unless data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty 100
+    execute unless data storage arena:temp {StageType:Endless} store result score $Temp.SummonCountMultiple Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty 100
     scoreboard players operation $Temp.SummonCountMultiple Arena /= #2 Arena
     scoreboard players add $Temp.SummonCountMultiple Arena 100
     scoreboard players operation $Temp.MobCountMax Arena *= $Temp.SummonCountMultiple Arena

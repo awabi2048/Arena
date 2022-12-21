@@ -1,94 +1,97 @@
 # ウェーブ進行可否判定
 ## 通常時
 execute store result score $Temp.MobCount Arena if entity @e[tag=Arena.Mob,distance=..40]
-execute store success score $Temp.NextWave Arena if score $Temp.MobCount Arena matches 0
+data modify storage arena:temp NextWave set value false
+execute if score $Temp.MobCount Arena matches 0 run data modify storage arena:temp NextWave set value true
 
-# ボスいるかな
 ## 中・ラストボス
 execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-execute if score $Temp.Wave Arena matches 50 store success score $Temp.NextWave Arena unless entity @e[tag=Arena.MidBoss]
-execute if score $Temp.Wave Arena matches 100 store success score $Temp.NextWave Arena unless entity @e[tag=Arena.LastBoss]
+execute if score $Temp.Wave Arena matches 50 unless entity @e[tag=Arena.MidBoss] run data modify storage arena:temp NextWave set value true
+execute if score $Temp.Wave Arena matches 100 unless entity @e[tag=Arena.LastBoss] run data modify storage arena:temp NextWave set value true
 
-    # 失敗処理
-    execute if score $Temp.NextWave Arena matches 0 run tellraw @a[tag=Arena.Player,distance=..20] {"text":"敵がいない状態にしてもう一度ボタンを押してください！","color":"aqua"}
-    execute if score $Temp.NextWave Arena matches 0 run playsound entity.shulker.hurt master @a ~ ~ ~ 1 1
+# 失敗処理
+execute if data storage arena:temp {NextWave:false} run tellraw @a[tag=Arena.Player,distance=..20] {"text":"敵がいない状態にしてもう一度ボタンを押してください！","color":"aqua"}
+execute if data storage arena:temp {NextWave:false} run playsound entity.shulker.hurt master @a ~ ~ ~ 1 1
 
-    execute if score $Temp.NextWave Arena matches 0 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-    execute if score $Temp.NextWave Arena matches 0 run scoreboard players remove $Temp.Wave Arena 1
-    execute if score $Temp.NextWave Arena matches 0 store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave int -1 run scoreboard players get $Temp.Wave Arena
+execute if data storage arena:temp {NextWave:false} store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute if data storage arena:temp {NextWave:false} run scoreboard players remove $Temp.Wave Arena 1
+execute if data storage arena:temp {NextWave:false} store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave int -1 run scoreboard players get $Temp.Wave Arena
 
-    # 成功処理
-        ## 0-5 でランダムな数字を選択 (MobTypeに適応), ガーディアン除く
-        summon area_effect_cloud ~ ~ ~ {Tags:["Arena.Random"]}
-        execute store result score $Random Arena run data get entity @e[tag=Arena.Random,limit=1] UUID[0]
-        scoreboard players operation $Random Arena %= #6 Arena
-        execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType int 1 run scoreboard players get $Random Arena
+# 成功処理
+## 0-5で乱数生成 (MobTypeに適応), ガーディアン除く
+function arena:rng
+scoreboard players operation $Random Arena %= #6 Arena
+execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType int 1 run scoreboard players get $Random Arena
 
-        ## 難易度データを無効化
-        data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty set value -1
+## 難易度を無効化
+data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty set value -1
 
-    	## デバッグ用
-        execute if data storage arena: {Debug:{NextMob:"zombie"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 0
-        execute if data storage arena: {Debug:{NextMob:"skeleton"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 1
-        execute if data storage arena: {Debug:{NextMob:"blaze"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 2
-        execute if data storage arena: {Debug:{NextMob:"spider"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 3
-        execute if data storage arena: {Debug:{NextMob:"slime"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 4
-        execute if data storage arena: {Debug:{NextMob:"creeper"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 5
-        data remove storage arena: Debug.NextMob
+## デバッグ用
+execute if data storage arena: {Debug:{NextMob:"zombie"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 0
+execute if data storage arena: {Debug:{NextMob:"skeleton"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 1
+execute if data storage arena: {Debug:{NextMob:"blaze"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 2
+execute if data storage arena: {Debug:{NextMob:"spider"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 3
+execute if data storage arena: {Debug:{NextMob:"slime"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 4
+execute if data storage arena: {Debug:{NextMob:"creeper"}} run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType set value 5
+data remove storage arena: Debug.NextMob
 
-    # タイトル表示と効果音
-    execute if score $Temp.NextWave Arena matches 1 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+# タイトル表示と効果音
+execute if data storage arena:temp {NextWave:true} store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
-    execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] times 10 60 10
-    execute if score $Temp.NextWave Arena matches 1 if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} if score $Temp.Wave Arena matches 1.. run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Endless","color": "dark_purple","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
-    execute if score $Temp.NextWave Arena matches 1 if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} if score $Temp.Wave Arena matches 1.. run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Hidden Endless","color": "red","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
-    
-    execute if score $Temp.NextWave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
-    execute if score $Temp.NextWave Arena matches 1 run playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..20] ~ ~ ~ 1 1.2
-    execute if score $Temp.NextWave Arena matches 1 run function arena:summon/_
-    
-    ## チケット配布
-    execute if score $Temp.NextWave Arena matches 1 store result score $Temp.TicketGive Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-    execute if score $Temp.NextWave Arena matches 1 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute if data storage arena:temp {NextWave:true} run title @a[tag=Arena.Player,distance=..20] times 10 60 10
+execute if data storage arena:temp {NextWave:true} if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} if score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Endless","color": "dark_purple","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+execute if data storage arena:temp {NextWave:true} if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} if score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Hidden Endless","color": "red","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
 
-    execute if score $Temp.NextWave Arena matches 1 unless score $Temp.Wave Arena matches 1 run scoreboard players remove $Temp.TicketGive Arena 1
-    execute if score $Temp.NextWave Arena matches 1 run scoreboard players operation $Temp.TicketGive Arena %= #10 Arena
-    execute if score $Temp.NextWave Arena matches 1 store success score $Temp.TicketGive Arena if score $Temp.TicketGive Arena matches 0
+execute if data storage arena:temp {NextWave:true} unless score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title " "
 
-    execute if score $Temp.NextWave Arena matches 1 if score $Temp.TicketGive Arena matches 1 run function arena:endless/ticket
+execute if data storage arena:temp {NextWave:true} run title @a[tag=Arena.Player,distance=..20] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
+execute if data storage arena:temp {NextWave:true} run playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..20] ~ ~ ~ 1 1.2
+execute if data storage arena:temp {NextWave:true} run function arena:summon/_
 
-    ## ストラクチャー読み込み
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ air
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ structure_block{posX:-19,posY:1,posZ:-19,mode:"LOAD",name:"arena:stage-normal"}
-    
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:1}}} run data modify block ~ ~-4 ~ name set value "arena:stage-skeleton"
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:3}}} run data modify block ~ ~-4 ~ name set value "arena:stage-spider"
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:4}}} run data modify block ~ ~-4 ~ name set value "arena:stage-slime"
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:5}}} run data modify block ~ ~-4 ~ name set value "arena:stage-creeper"
-    
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if score $Temp.BossSummon Arena matches 1 run data modify block ~ ~-4 ~ name set value "arena:stage-normal"
-    
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ redstone_block
-    execute if score $Temp.NextWave Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ air
-    
-    ## プレイヤーに設定する最大到達スコアをArena.Coreから取得
-    execute if score $Temp.NextWave Arena matches 1 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-    execute if score $Temp.NextWave Arena matches 1 as @a[tag=Arena.Player,distance=..32] if score $Temp.Wave Arena > @s Arena.MaxStageReached store result score @s Arena.MaxStageReached run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+## チケット配布
+execute if data storage arena:temp {NextWave:true} store result score $Temp.TicketGive Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute if data storage arena:temp {NextWave:true} store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
-    ## 実績解除判定
-        ### 3連同じモブ
-        execute if score $Temp.NextWave Arena matches 1 unless score $Temp.BossSummon Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] run data modify entity @s data.Arena.LastMobType append from entity @s data.Arena.MobType
-        execute if score $Temp.NextWave Arena matches 1 unless score $Temp.BossSummon Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] run data remove entity @s data.Arena.LastMobType[0]
+execute if data storage arena:temp {NextWave:true} unless score $Temp.Wave Arena matches 1 run scoreboard players remove $Temp.TicketGive Arena 1
+execute if data storage arena:temp {NextWave:true} run scoreboard players operation $Temp.TicketGive Arena %= #10 Arena
+execute if data storage arena:temp {NextWave:true} store success score $Temp.TicketGive Arena if score $Temp.TicketGive Arena matches 0
 
-        execute if score $Temp.NextWave Arena matches 1 store result score $Temp.LastMobType1 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[0]
-        execute if score $Temp.NextWave Arena matches 1 store result score $Temp.LastMobType2 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[1]
-        execute if score $Temp.NextWave Arena matches 1 store result score $Temp.LastMobType3 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[2]
+execute if data storage arena:temp {NextWave:true} if score $Temp.TicketGive Arena matches 1 run function arena:endless/ticket
 
-        execute if score $Temp.LastMobType1 Arena = $Temp.LastMobType2 Arena if score $Temp.LastMobType2 Arena = $Temp.LastMobType3 Arena run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/same_mobs
+## ストラクチャー読み込み
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ air
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-4 ~ structure_block{posX:-19,posY:1,posZ:-19,mode:"LOAD",name:"arena:stage-normal"}
 
-        ### 初エンドレス
-        execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Wave:-1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/first_join
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:1}}} run data modify block ~ ~-4 ~ name set value "arena:stage-skeleton"
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:3}}} run data modify block ~ ~-4 ~ name set value "arena:stage-spider"
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:4}}} run data modify block ~ ~-4 ~ name set value "arena:stage-slime"
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s if data entity @s {data:{Arena:{MobType:5}}} run data modify block ~ ~-4 ~ name set value "arena:stage-creeper"
 
-        ### 壁に閉じ込める
-        execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{MobType:3}}} at @e[tag=Arena.SummonPoint2,sort=nearest,limit=4] if entity @a[tag=Arena.Player,distance=..2] at @e[tag=Arena.Core,sort=nearest,limit=1] run advancement grant @a[tag=Arena.Player,distance=..5] only arena:display/endless/leave_in_wall
-        execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{MobType:4}}} at @e[tag=Arena.SummonPoint2,sort=nearest,limit=4] if entity @a[tag=Arena.Player,distance=..2] at @e[tag=Arena.Core,sort=nearest,limit=1] run advancement grant @a[tag=Arena.Player,distance=..5] only arena:display/endless/leave_in_wall
+execute if data storage arena:temp {NextWave:true} at @e[tag=Arena.Core,sort=nearest,limit=1] if data storage arena:temp {SummonBoss:true} run data modify block ~ ~-4 ~ name set value "arena:stage-normal"
+
+execute if data storage arena:temp {NextWave:true} at @e[tag=Arena.Core,sort=nearest,limit=1] if data storage arena:temp {SummonBoss:true} if data entity @s {data:{Arena:{Wave:100,StageType:HiddenEndless}}} run data modify block ~ ~-4 ~ name set value "arena:stage-large"
+
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ redstone_block
+execute if data storage arena:temp {NextWave:true} as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ air
+
+## プレイヤーに設定する最大到達スコアをArena.Coreから取得
+execute if data storage arena:temp {NextWave:true} store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute if data storage arena:temp {NextWave:true} as @a[tag=Arena.Player,distance=..32] if score $Temp.Wave Arena > @s Arena.MaxStageReached store result score @s Arena.MaxStageReached run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+
+# 実績解除判定
+    ## 3連同じモブ
+    execute if data storage arena:temp {NextWave:true} unless score $Temp.BossSummon Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] run data modify entity @s data.Arena.LastMobType append from entity @s data.Arena.MobType
+    execute if data storage arena:temp {NextWave:true} unless score $Temp.BossSummon Arena matches 1 as @e[tag=Arena.Core,sort=nearest,limit=1] run data remove entity @s data.Arena.LastMobType[0]
+
+    execute if data storage arena:temp {NextWave:true} store result score $Temp.LastMobType1 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[0]
+    execute if data storage arena:temp {NextWave:true} store result score $Temp.LastMobType2 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[1]
+    execute if data storage arena:temp {NextWave:true} store result score $Temp.LastMobType3 Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.LastMobType[2]
+
+    execute if score $Temp.LastMobType1 Arena = $Temp.LastMobType2 Arena if score $Temp.LastMobType2 Arena = $Temp.LastMobType3 Arena run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/same_mobs
+
+    ## 初エンドレス
+    execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Wave:-1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/first_join
+
+    ## 壁に閉じ込める
+    execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{MobType:3}}} at @e[tag=Arena.SummonPoint2,sort=nearest,limit=4] if entity @a[tag=Arena.Player,distance=..2] at @e[tag=Arena.Core,sort=nearest,limit=1] run advancement grant @a[tag=Arena.Player,distance=..5] only arena:display/endless/leave_in_wall
+    execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{MobType:4}}} at @e[tag=Arena.SummonPoint2,sort=nearest,limit=4] if entity @a[tag=Arena.Player,distance=..2] at @e[tag=Arena.Core,sort=nearest,limit=1] run advancement grant @a[tag=Arena.Player,distance=..5] only arena:display/endless/leave_in_wall

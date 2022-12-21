@@ -3,10 +3,12 @@ bossbar remove arena:boss
 bossbar remove arena:boss_shield
 bossbar remove arena:mid_boss
 
-# スキル起点マーカーのキル
+# 各種エンティティのキル
 tp @e[tag=Arena.Mob,distance=..40] ~ ~-100 ~
 execute positioned ~ ~-100 ~ run kill @e[tag=Arena.Mob,distance=..3] 
 kill @e[tag=Arena.Boss.Marker]
+
+function arena:endless/boss/hidden/kill
 
 # スコア, ストレージリセット
 scoreboard players set $Boss.SkillTimer Arena 0

@@ -29,8 +29,7 @@
 
 # 規定のモブ数より少なければ再帰処理
 execute store result score $Temp.MobCountCurrent Arena if entity @e[tag=Arena.Summoned]
-scoreboard players operation $Temp.MobCountCurrent Arena *= #4 Arena
 
-execute if score $Temp.MobCountCurrent Arena < $Temp.MobCountMax Arena if score $Temp.SummonPoint Arena matches 1 as @e[tag=Arena.SummonPoint] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena at @s run function arena:summon/loop
-execute if score $Temp.MobCountCurrent Arena < $Temp.MobCountMax Arena if score $Temp.SummonPoint Arena matches 2 as @e[tag=Arena.SummonPoint2] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena at @s run function arena:summon/loop
+execute if score $Temp.MobCountCurrent Arena < $Temp.MobCountMax Arena if data storage arena:temp {SummonPoint:1b} as @e[tag=Arena.SummonPoint] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena at @s run function arena:summon/loop
+execute if score $Temp.MobCountCurrent Arena < $Temp.MobCountMax Arena if data storage arena:temp {SummonPoint:2b} as @e[tag=Arena.SummonPoint2] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena at @s run function arena:summon/loop
 

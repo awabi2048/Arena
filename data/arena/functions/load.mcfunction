@@ -19,6 +19,10 @@ scoreboard players set #20 Arena 20
 scoreboard players set #40 Arena 40
 
 scoreboard players set #50 Arena 50
+
+scoreboard players set #29 Arena 29
+
+scoreboard players set #99 Arena 99
 scoreboard players set #100 Arena 100
 
 scoreboard players set #127 Arena 127

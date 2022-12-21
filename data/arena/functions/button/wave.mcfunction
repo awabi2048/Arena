@@ -1,4 +1,4 @@
-# モブ召喚 (Wave [1..5])
+# モブ召喚 (Wave [1-5])
     # ウェーブ進行可否判定
     execute at @e[tag=Arena.Core,sort=nearest,limit=1] store result score $Temp.MobCount Arena if entity @e[tag=Arena.Mob,distance=..40]
     execute store success score $Temp.NextWave Arena if score $Temp.MobCount Arena matches ..39

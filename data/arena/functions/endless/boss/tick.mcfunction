@@ -12,8 +12,8 @@ function arena:endless/boss/skill/tick
 execute as @e[tag=Arena.Boss] at @s if data entity @s {NoAI:1b,OnGround:0b} run data modify entity @s NoAI set value 0b
 
 # ボスバー操作
-execute store result bossbar arena:boss value run data get entity @e[tag=Arena.LastBoss,limit=1] Health
-execute store result bossbar arena:mid_boss value run data get entity @e[tag=Arena.MidBoss,limit=1] Health
+execute if entity @e[tag=Arena.LastBoss] store result bossbar arena:boss value run data get entity @e[tag=Arena.LastBoss,limit=1] Health
+execute if entity @e[tag=Arena.MidBoss] store result bossbar arena:mid_boss value run data get entity @e[tag=Arena.MidBoss,limit=1] Health
 
 execute store result score $Boss.Health Arena run bossbar get arena:boss value
 execute if score $Boss.Health Arena matches 0..333 run bossbar set arena:boss color red
@@ -24,3 +24,6 @@ scoreboard players reset $Boss.Health Arena
 execute store result score $Boss.Health Arena run bossbar get arena:mid_boss value
 execute if score $Boss.Health Arena matches 0..500 run bossbar set arena:mid_boss color red
 execute if score $Boss.Health Arena matches 501..1000 run bossbar set arena:mid_boss color white
+
+# Hidden Endless
+function arena:endless/boss/hidden/tick

@@ -22,19 +22,21 @@ execute as @e[tag=Arena.Summoned,type=skeleton] if data entity @s HandItems[{id:
 execute as @e[tag=Arena.Summoned,type=creeper] if score $Temp.Wave Arena matches ..5 store result entity @s ExplosionRadius byte 1 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] unless score $Temp.Wave Arena matches ..5 store result entity @s ExplosionRadius byte 0.2 run scoreboard players get $Temp.Wave Arena
 
-# 隠しエンドレス用: 
+# 隠しエンドレス用
 # モブにエフェクト付与
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s weakness 86400 0 true
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s hunger 86400 0 true
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s slowness 86400 0 true
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=creeper] run effect give @s slow_falling 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=creeper] run effect give @s weakness 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=creeper] run effect give @s hunger 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=creeper] run effect give @s slowness 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=creeper] run effect give @s slow_falling 86400 0 true
+
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:18}].Amplifier byte 0.05 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:17}].Amplifier byte 0.03 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:2}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:28}].Amplifier byte 1 run scoreboard players get $Temp.Wave Arena
 
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=zombie] run effect give @s speed 86400 0 true
-execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:half as @e[tag=Arena.Summoned,type=zombie] run effect give @s regeneration 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=zombie] run effect give @s speed 86400 0 true
+execute if data storage arena:temp {StageType:HiddenEndless} if predicate arena:trisect as @e[tag=Arena.Summoned,type=zombie] run effect give @s regeneration 86400 0 true
+
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:1}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
 execute as @e[tag=Arena.Summoned,type=creeper] store result entity @s ActiveEffects[{Id:10}].Amplifier byte 0.02 run scoreboard players get $Temp.Wave Arena
 
