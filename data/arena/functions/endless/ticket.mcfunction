@@ -7,4 +7,4 @@ scoreboard players operation $TicketCount Arena /= #10 Arena
 
 scoreboard players add $TicketCount Arena 1
 
-loot give @a[tag=Arena.Player,distance=..32] loot arena:endless/ticket
+loot give @a[tag=Arena.Player,distance=..32] loot arena:ticket/hard

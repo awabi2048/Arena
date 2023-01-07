@@ -1,11 +1,5 @@
-# エンドレス
-    # 各ボスの召喚判定
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    scoreboard players operation $Temp.Wave Arena %= #10 Arena
-    execute if score $Temp.Wave Arena matches 0 run data modify storage arena:temp SummonBoss set value true
-    execute unless score $Temp.Wave Arena matches 0 run data modify storage arena:temp SummonBoss set value false
-    
-    # 召喚
+# エンドレス  
+    # ボスの召喚
     data modify storage arena:temp Wave set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
     data modify storage arena:temp StageType set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType
     execute if data storage arena:temp {SummonBoss:true} unless data storage arena:temp {Wave:-50} unless data storage arena:temp {Wave:-100} run function arena:endless/mini_boss/summon
@@ -13,7 +7,6 @@
     execute if data storage arena:temp {SummonBoss:true,Wave:-100} if data storage arena:temp {StageType:Endless} run function arena:endless/boss/summon
     execute if data storage arena:temp {SummonBoss:true,Wave:-100} if data storage arena:temp {StageType:HiddenEndless} run function arena:endless/boss/hidden/summon
     
-
 # 通常アリーナ
     # ストレージからデータ取得
     execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType

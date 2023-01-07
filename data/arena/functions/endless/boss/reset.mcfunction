@@ -1,6 +1,5 @@
 # ボスバー
 bossbar remove arena:boss
-bossbar remove arena:boss_shield
 bossbar remove arena:mid_boss
 
 # 各種エンティティのキル

@@ -1,51 +1,45 @@
 # クリア通知
-execute if data entity @s {data:{Arena:{MobType:0,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・ゾンビアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:0,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・ゾンビアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:0,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・ゾンビアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
+# 告知内容の設定
+data modify storage arena:temp NoticeDisplay.Difficulty set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
+data modify storage arena:temp NoticeDisplay.MobType set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
 
-execute if data entity @s {data:{Arena:{MobType:1,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・スケルトンアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:1,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・スケルトンアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:1,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・スケルトンアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
+# 難易度
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:0}} run data modify storage arena:temp NoticeDisplay.Difficulty set value "イージー"
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:1}} run data modify storage arena:temp NoticeDisplay.Difficulty set value "ノーマル"
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:2}} run data modify storage arena:temp NoticeDisplay.Difficulty set value "ハード"
 
-execute if data entity @s {data:{Arena:{MobType:2,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・ブレイズアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:2,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・ブレイズアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:2,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・ブレイズアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
+# モブ種類
+execute if data storage arena:temp {NoticeDisplay:{MobType:0}} run data modify storage arena:temp NoticeDisplay.MobType set value "ゾンビ"
+execute if data storage arena:temp {NoticeDisplay:{MobType:1}} run data modify storage arena:temp NoticeDisplay.MobType set value "スケルトン"
+execute if data storage arena:temp {NoticeDisplay:{MobType:2}} run data modify storage arena:temp NoticeDisplay.MobType set value "ブレイズ"
+execute if data storage arena:temp {NoticeDisplay:{MobType:3}} run data modify storage arena:temp NoticeDisplay.MobType set value "スパイダー"
+execute if data storage arena:temp {NoticeDisplay:{MobType:4}} run data modify storage arena:temp NoticeDisplay.MobType set value "スライム"
+execute if data storage arena:temp {NoticeDisplay:{MobType:5}} run data modify storage arena:temp NoticeDisplay.MobType set value "クリーパー"
+execute if data storage arena:temp {NoticeDisplay:{MobType:6}} run data modify storage arena:temp NoticeDisplay.MobType set value "クリーパー"
 
-execute if data entity @s {data:{Arena:{MobType:3,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・スパイダーアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:3,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・スパイダーアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:3,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・スパイダーアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-
-execute if data entity @s {data:{Arena:{MobType:4,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・スライムアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:4,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・スライムアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:4,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・スライムアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-
-execute if data entity @s {data:{Arena:{MobType:5,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・クリーパーアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:5,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・クリーパーアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:5,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・クリーパーアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-
-execute if data entity @s {data:{Arena:{MobType:6,Difficulty:0}}} run tellraw @a[tag=Arena.Notice] [{"text":"イージー・ガーディアンアリーナ","bold": true,"color": "blue"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:6,Difficulty:1}}} run tellraw @a[tag=Arena.Notice] [{"text":"ノーマル・ガーディアンアリーナ","bold": true,"color": "green"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-execute if data entity @s {data:{Arena:{MobType:6,Difficulty:2}}} run tellraw @a[tag=Arena.Notice] [{"text":"ハード・ガーディアンアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..16]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
+# 難易度別で色分け
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeDisplay.Difficulty","color": "aqua","bold": true},{"text":"・","bold": false,"color": "aqua"},{"storage":"arena:temp","nbt":"NoticeDisplay.MobType","color": "aqua","bold": true},{"text":"アリーナ","bold": true,"color": "aqua"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeDisplay.Difficulty","color": "green","bold": true},{"text":"・","bold": false,"color": "green"},{"storage":"arena:temp","nbt":"NoticeDisplay.MobType","color": "green","bold": true},{"text":"アリーナ","bold": true,"color": "green"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
+execute if data storage arena:temp {NoticeDisplay:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeDisplay.Difficulty","color": "red","bold": true},{"text":"・","bold": false,"color": "red"},{"storage":"arena:temp","nbt":"NoticeDisplay.MobType","color": "red","bold": true},{"text":"アリーナ","bold": true,"color": "red"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
 
 # 実績解除検知
     ## 初クリア
-    execute if data entity @s {data:{Arena:{Difficulty:0}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/easy
-    execute if data entity @s {data:{Arena:{Difficulty:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/normal
-    execute if data entity @s {data:{Arena:{Difficulty:2}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/hard
+    execute if data storage arena:temp {NoticeDisplay:{Difficulty:"イージー"}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/easy
+    execute if data storage arena:temp {NoticeDisplay:{Difficulty:"ノーマル"}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/normal
+    execute if data storage arena:temp {NoticeDisplay:{Difficulty:"ハード"}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/first_clear/hard
 
     ## 単独クリア
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:0,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/zombie
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:1,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/skeleton
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:2,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/blaze
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:3,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/spider
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:4,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/slime
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:5,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/creeper
-    execute if score $Temp.PlayerCount Arena matches 1 if data entity @s {data:{Arena:{MobType:6,Difficulty:2,PlayerCount:1}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/guardian
+    execute if data entity @s {data:{Arena:{MobType:0,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/zombie
+    execute if data entity @s {data:{Arena:{MobType:1,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/skeleton
+    execute if data entity @s {data:{Arena:{MobType:2,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/blaze
+    execute if data entity @s {data:{Arena:{MobType:3,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/spider
+    execute if data entity @s {data:{Arena:{MobType:4,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/slime
+    execute if data entity @s {data:{Arena:{MobType:5,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/creeper
+    execute if data entity @s {data:{Arena:{MobType:6,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/guardian
 
 # 待機所にtp
-execute as @e[tag=Arena.Lobby] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..20] @s 
+execute as @e[tag=Arena.Lobby] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..32] @s 
 
 # リセット
 execute as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tag @s remove Arena.Player
 function arena:reset
-
