@@ -6,7 +6,7 @@
     execute if data storage arena:temp {SummonBoss:true,Wave:-50} run function arena:endless/mid_boss/summon
     execute if data storage arena:temp {SummonBoss:true,Wave:-100} if data storage arena:temp {StageType:Endless} run function arena:endless/boss/summon
     execute if data storage arena:temp {SummonBoss:true,Wave:-100} if data storage arena:temp {StageType:HiddenEndless} run function arena:endless/boss/hidden/summon
-    
+
 # 通常アリーナ
     # ストレージからデータ取得
     execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType

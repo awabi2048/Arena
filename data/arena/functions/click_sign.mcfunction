@@ -17,8 +17,7 @@ execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.M
 execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty int 1 run scoreboard players get $Difficulty Arena
 
 # 演出
-    # サウンド
-    execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 1
+execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 1
 
 # 看板クリック時処理のクールダウン設定
 execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} run data modify entity @e[tag=Arena.Timer,sort=nearest,limit=1] PortalCooldown set value 12

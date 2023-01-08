@@ -1,5 +1,6 @@
 scoreboard objectives add arena dummy
 scoreboard objectives add Arena dummy
+scoreboard objectives add Arena.Temp dummy
 scoreboard objectives add Arena.MaxStageReached dummy {"text":"| 最高到達ウェーブ |","bold":true}
 
 execute unless data storage arena: Core run function arena:setup/mob_attributes
@@ -8,6 +9,7 @@ execute unless data storage arena: Core run function arena:setup/mob_attributes
 scoreboard players set #-1 Arena -1
 scoreboard players set #2 Arena 2
 scoreboard players set #4 Arena 4
+scoreboard players set #5 Arena 5
 scoreboard players set #6 Arena 6
 
 scoreboard players set #9 Arena 9
@@ -28,3 +30,6 @@ scoreboard players set #100 Arena 100
 scoreboard players set #127 Arena 127
 
 scoreboard players set #360 Arena 360
+
+# ランキングの更新
+function arena:endless/reflesh_ranking
