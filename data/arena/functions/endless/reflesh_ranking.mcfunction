@@ -9,9 +9,9 @@ kill @e[tag=Arena.RankingDisplay-3]
 execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.85 ~ {Tags:["Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"エンドレスアリーナ","color": "red","bold": true}',CustomNameVisible:true}
 execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.6 ~ {Tags:["Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"最高到達ウェーブランキング","color": "gold","bold": true}',CustomNameVisible:true}
 
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.2 ~ {Tags:["Arena.RankingDisplay-1"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true}
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.75 ~ {Tags:["Arena.RankingDisplay-2"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true}
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.3 ~ {Tags:["Arena.RankingDisplay-3"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true}
+execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.2 ~ {Tags:["Arena.RankingDisplay-1"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
+execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.75 ~ {Tags:["Arena.RankingDisplay-2"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
+execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.3 ~ {Tags:["Arena.RankingDisplay-3"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
 
 # 最高到達ウェーブをソート
 execute as @a if score @s Arena.MaxStageReached matches 1.. run scoreboard players operation @s Arena.Temp = @s Arena.MaxStageReached

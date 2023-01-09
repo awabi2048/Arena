@@ -23,7 +23,7 @@ execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.D
 playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 1
 
 # 看板クリック時処理のクールダウン設定
-summon armor_stand ~ ~ ~ {Tags:["Arena.Timer"],PortalCooldown:15,Marker:1b,Invisible:1b}
+summon armor_stand ~ ~ ~ {Tags:["Arena.Timer"],PortalCooldown:15,Marker:true,Invisible:true,Silent:true}
 
 # ストラクチャー読み込み
 execute at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~-4 ~ air
