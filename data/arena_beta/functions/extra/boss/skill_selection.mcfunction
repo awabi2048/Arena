@@ -1,5 +1,4 @@
 # 乱数で発動スキルを決定
-
     # storageリセット
     data modify storage arena: Boss.Skills set value []
 

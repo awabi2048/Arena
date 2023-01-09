@@ -1,7 +1,14 @@
-# エンドレス  
-    # ボスの召喚
+# エンドレス
+    # ボス周り
     data modify storage arena:temp Wave set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
     data modify storage arena:temp StageType set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType
+
+    # ボスを召喚すべきか判定
+    data modify storage arena:temp SummonBoss set value false
+    execute store result score $SummonBoss Arena.Temp run data get storage arena:temp Wave
+    scoreboard players operation $SummonBoss Arena.Temp %= #10 Arena
+    execute if score $SummonBoss Arena.Temp matches 0 run data modify storage arena:temp SummonBoss set value true
+
     execute if data storage arena:temp {SummonBoss:true} unless data storage arena:temp {Wave:-50} unless data storage arena:temp {Wave:-100} run function arena:endless/mini_boss/summon
     execute if data storage arena:temp {SummonBoss:true,Wave:-50} run function arena:endless/mid_boss/summon
     execute if data storage arena:temp {SummonBoss:true,Wave:-100} if data storage arena:temp {StageType:Endless} run function arena:endless/boss/summon
@@ -15,10 +22,10 @@
     execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run scoreboard players set $Temp.Wave Arena 5
     function arena:summon/get_data
 
-        # 召喚場所を指定
-        execute if score $Temp.MobType Arena matches 1..4 run data modify storage arena:temp SummonPoint set value 1b
-        execute unless score $Temp.MobType Arena matches 1..4 run data modify storage arena:temp SummonPoint set value 2b
-        execute if score $Temp.MobType Arena matches 6 run data modify storage arena:temp SummonPoint set value 1b
+    # 召喚場所を設定
+    execute if score $Temp.MobType Arena matches 1..4 run data modify storage arena:temp SummonPoint set value 1b
+    execute unless score $Temp.MobType Arena matches 1..4 run data modify storage arena:temp SummonPoint set value 2b
+    execute if score $Temp.MobType Arena matches 6 run data modify storage arena:temp SummonPoint set value 1b
 
     # 召喚場所別でループで召喚
     #Memo: Arena.SummonPointは手前、Arena.SummonPoint2は奥側

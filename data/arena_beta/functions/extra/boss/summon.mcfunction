@@ -2,7 +2,7 @@
 function arena:endless/boss/reset
 
 # 本体召喚
-summon vindicator ~ ~2 ~ {Tags:["Arena.Boss","Arena.LastBoss","Arena.Mob"],Attributes:[{Name:"generic.attack_damage",Base:20.0d},{Name:"generic.max_health",Base:800.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:800f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
+summon vindicator ~ ~2 ~ {Tags:["Arena.ExtraBoss","Arena.Mob"],Attributes:[{Name:"generic.attack_damage",Base:20.0d},{Name:"generic.max_health",Base:800.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:800.0f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
 
 # エフェクト
 effect give @e[tag=Arena.LastBoss] fire_resistance 86400 1 true

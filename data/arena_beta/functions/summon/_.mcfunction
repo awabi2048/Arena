@@ -7,7 +7,7 @@
 
     execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
     execute if data storage arena:temp {SummonBoss:true} if score $Temp.Wave Arena matches -5 run function arena_beta:extra/mini_boss/summon
-    execute if data storage arena:temp {SummonBoss:true} if score $Temp.Wave Arena matches -10 run function arena:endless/boss/summon
+    execute if data storage arena:temp {SummonBoss:true} if score $Temp.Wave Arena matches -10 run function arena_beta:extra/boss/summon
     
     # ストレージからデータ取得
     execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
