@@ -7,6 +7,9 @@ execute at @a[tag=Arena.Player] as @e[tag=Arena.Core,distance=..32] if data enti
 # スライム分裂時にタグ
 tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob
 
+# 看板クールダウン設定用
+execute as @e[tag=Arena.Timer] if data entity @s {PortalCooldown:0} run kill @s
+
 # エンドレス
 #execute as @e[tag=Arena.Core] if score @s Arena matches -1 at @s run function arena:endless/boss/tick
 #execute as @e[tag=Arena.Core] if score @s Arena matches 1.. unless data entity @s {data:{Arena:{StageType:Normal}}} unless data entity @s {data:{Arena:{StageType:BetaExtra}}} run data modify entity @s data.Arena.StageType set value "Normal"

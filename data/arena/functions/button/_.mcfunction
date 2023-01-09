@@ -3,9 +3,8 @@
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena_beta:button/_
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena:empty
 
-# 開始時の処理: 看板削除, タイマー用エンティティの削除, プレイヤー数を保存
+# 開始時の処理: 看板削除, プレイヤー数の保存
 execute if score $Temp.Wave Arena matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~1 ~2 air 
-execute if score $Temp.Wave Arena matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] run kill @e[tag=Arena.Timer,sort=nearest,limit=1]
 
 execute if score $Temp.Wave Arena matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] store result score $Temp.PlayerCount Arena if entity @a[tag=Arena.Player,distance=..32]
 execute if score $Temp.Wave Arena matches 0 as @e[tag=Arena.Core,sort=nearest,limit=1] if score $Temp.PlayerCount Arena matches 1 run data modify entity @s data.Arena.Solo set value true

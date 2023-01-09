@@ -1,10 +1,13 @@
+# クールタイム中なら中断
+execute if entity @e[tag=Arena.Timer,distance=..3] run function arena:empty
+
 # Arena.Coreからdata(MOB種類/難易度)取得
 execute store result score $MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
 execute store result score $Difficulty Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
 
 # シフトか通常クリックかで難易度とモブの種類を設定
-execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} if predicate arena:is_sneaking run scoreboard players add $Difficulty Arena 1
-execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} unless predicate arena:is_sneaking run scoreboard players add $MobType Arena 1
+execute if predicate arena:is_sneaking run scoreboard players add $Difficulty Arena 1
+execute unless predicate arena:is_sneaking run scoreboard players add $MobType Arena 1
 execute if score $MobType Arena matches -1 run scoreboard players set $MobType Arena 0
 execute if score $Difficulty Arena matches -1 run scoreboard players set $Difficulty Arena 0
 
@@ -17,10 +20,10 @@ execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.M
 execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty int 1 run scoreboard players get $Difficulty Arena
 
 # 演出
-execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} run playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 1
+playsound entity.experience_orb.pickup master @a ~ ~ ~ 1 1
 
 # 看板クリック時処理のクールダウン設定
-execute if data entity @e[tag=Arena.Timer,sort=nearest,limit=1] {PortalCooldown:0} run data modify entity @e[tag=Arena.Timer,sort=nearest,limit=1] PortalCooldown set value 12
+summon armor_stand ~ ~ ~ {Tags:["Arena.Timer"],PortalCooldown:15,Marker:1b,Invisible:1b}
 
 # ストラクチャー読み込み
 execute at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~-4 ~ air
