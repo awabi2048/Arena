@@ -33,7 +33,7 @@ scoreboard players reset @a Arena.Temp
     execute as @a if score @s Arena.MaxStageReached = $Rank1st Arena.Temp run tag @s add Arena.Temp.Ranked
 
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"1位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank1st","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
-    data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] CustomName set from block 0 -64 0 Text1
+    execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] CustomName set from block 0 -64 0 Text1
 
     execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-1]
 
@@ -45,7 +45,7 @@ scoreboard players reset @a Arena.Temp
     execute as @a if score @s Arena.MaxStageReached = $Rank2nd Arena.Temp run tag @s add Arena.Temp.Ranked
 
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"2位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank2nd","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
-    data modify entity @e[tag=Arena.RankingDisplay-2,limit=1] CustomName set from block 0 -64 0 Text1
+    execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-2,limit=1] CustomName set from block 0 -64 0 Text1
 
     execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-2]
 
@@ -57,7 +57,7 @@ scoreboard players reset @a Arena.Temp
     execute as @a if score @s Arena.MaxStageReached = $Rank3rd Arena.Temp run tag @s add Arena.Temp.Ranked
 
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"3位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank3rd","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
-    data modify entity @e[tag=Arena.RankingDisplay-3,limit=1] CustomName set from block 0 -64 0 Text1
+    execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-3,limit=1] CustomName set from block 0 -64 0 Text1
 
     execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-3]
 
