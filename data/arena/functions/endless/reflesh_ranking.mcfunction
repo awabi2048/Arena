@@ -35,7 +35,7 @@ scoreboard players reset @a Arena.Temp
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"1位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank1st","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
     execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-1,limit=1] CustomName set from block 0 -64 0 Text1
 
-    execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-1]
+    execute unless score $Rank1st Arena.Temp matches 1.. run kill @e[tag=Arena.RankingDisplay-1]
 
     setblock 0 -64 0 bedrock
     tag @a[tag=Arena.Temp.Ranked] remove Arena.Temp.Ranked
@@ -47,7 +47,7 @@ scoreboard players reset @a Arena.Temp
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"2位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank2nd","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
     execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-2,limit=1] CustomName set from block 0 -64 0 Text1
 
-    execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-2]
+    execute unless score $Rank2nd Arena.Temp matches 1.. run kill @e[tag=Arena.RankingDisplay-2]
 
     setblock 0 -64 0 bedrock
     tag @a[tag=Arena.Temp.Ranked] remove Arena.Temp.Ranked
@@ -59,7 +59,7 @@ scoreboard players reset @a Arena.Temp
     setblock 0 -64 0 oak_sign{Text1:'[{"text":"3位 ","color": "white","bold": true},{"selector":"@a[tag=Arena.Temp.Ranked]","color": "yellow","bold": true},{"text": " (Wave ","color": "aqua","bold": true},{"score":{"name": "$Rank3rd","objective": "Arena.Temp"},"color": "aqua","bold": true},{"text": ")","color": "aqua","bold": true}]'} replace
     execute in minecraft:overworld run data modify entity @e[tag=Arena.RankingDisplay-3,limit=1] CustomName set from block 0 -64 0 Text1
 
-    execute unless entity @a[tag=Arena.Temp.Ranked] run kill @e[tag=Arena.RankingDisplay-3]
+    execute unless score $Rank3rd Arena.Temp matches 1.. run kill @e[tag=Arena.RankingDisplay-3]
 
     setblock 0 -64 0 bedrock
     tag @a[tag=Arena.Temp.Ranked] remove Arena.Temp.Ranked
