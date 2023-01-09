@@ -1,0 +1,45 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:shield",
+            "functions": [
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{BlockEntityTag:{Base:11,Patterns:[{Color:13,Pattern:\"sku\"},{Color:9,Pattern:\"hhb\"},{Color:11,Pattern:\"bo\"}],id:\"minecraft:banner\"},Damage:0,display:{Name:'{\"extra\":[{\"bold\":true,\"italic\":false,\"underlined\":false,\"strikethrough\":false,\"obfuscated\":false,\"color\":\"gold\",\"text\":\"アリーナ討伐の称号\"}],\"text\":\"\"}'},RepairCost:40,HideFlags:127}"
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "text": "MOB:ゾンビ",
+                    "italic": false
+                  },
+                  {
+                    "text": "※エンチャントを付与するとクラフトができなくなります！",
+                    "color": "red",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "text": "アリーナ討伐の称号",
+                  "color": "gold",
+                  "italic": false,
+                  "bold": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

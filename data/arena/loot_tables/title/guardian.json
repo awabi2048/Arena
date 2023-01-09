@@ -1,0 +1,45 @@
+{
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:shield",
+            "functions": [
+              {
+                "function": "minecraft:set_nbt",
+                "tag": "{BlockEntityTag:{Base:9,Patterns:[{Color:0,Pattern:\"flo\"},{Color:14,Pattern:\"mc\"},{Color:1,Pattern:\"tts\"},{Color:1,Pattern:\"bts\"},{Color:9,Pattern:\"cbo\"},{Color:0,Pattern:\"bo\"}],id:\"minecraft:banner\"},Damage:0,RepairCost:40,HideFlags:127}"
+              },
+              {
+                "function": "minecraft:set_lore",
+                "entity": "this",
+                "lore": [
+                  {
+                    "text": "MOB:ガーディアン",
+                    "italic": false
+                  },
+                  {
+                    "text": "※エンチャントを付与するとクラフトができなくなります！",
+                    "color": "red",
+                    "italic": false
+                  }
+                ]
+              },
+              {
+                "function": "minecraft:set_name",
+                "entity": "this",
+                "name": {
+                  "text": "アリーナ討伐の称号",
+                  "color": "gold",
+                  "italic": false,
+                  "bold": true
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -15,7 +15,7 @@ execute if data storage arena:temp {NoticeDisplay:{MobType:2}} run data modify s
 execute if data storage arena:temp {NoticeDisplay:{MobType:3}} run data modify storage arena:temp NoticeDisplay.MobType set value "スパイダー"
 execute if data storage arena:temp {NoticeDisplay:{MobType:4}} run data modify storage arena:temp NoticeDisplay.MobType set value "スライム"
 execute if data storage arena:temp {NoticeDisplay:{MobType:5}} run data modify storage arena:temp NoticeDisplay.MobType set value "クリーパー"
-execute if data storage arena:temp {NoticeDisplay:{MobType:6}} run data modify storage arena:temp NoticeDisplay.MobType set value "クリーパー"
+execute if data storage arena:temp {NoticeDisplay:{MobType:6}} run data modify storage arena:temp NoticeDisplay.MobType set value "ガーディアン"
 
 # 難易度別で色分け
 execute if data storage arena:temp {NoticeDisplay:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeDisplay.Difficulty","color": "aqua","bold": true},{"text":"・","bold": false,"color": "aqua"},{"storage":"arena:temp","nbt":"NoticeDisplay.MobType","color": "aqua","bold": true},{"text":"アリーナ","bold": true,"color": "aqua"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
