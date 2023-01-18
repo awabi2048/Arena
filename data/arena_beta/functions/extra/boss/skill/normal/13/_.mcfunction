@@ -16,7 +16,7 @@
     execute if score $Boss.SkillTimer Arena matches 40 run summon marker ~ ~ ~ {Rotation:[0.0f,0.0f],Tags:["Arena.Boss.LaserPoint"]}
 
     execute if score $Boss.SkillTimer Arena matches 40..60 as @e[tag=Arena.Boss.LaserPoint] at @s run tp @s ~ ~ ~ ~29 ~
-    execute if score $Boss.SkillTimer Arena matches 40..60 at @e[tag=Arena.Boss.LaserPoint] run function arena:endless/boss/skill/normal/13/laser
+    execute if score $Boss.SkillTimer Arena matches 40..60 at @e[tag=Arena.Boss.LaserPoint] run function arena_beta:extra/boss/skill/normal/13/laser
 
     # 後処理
     execute if score $Boss.SkillTimer Arena matches 70 run kill @e[tag=Arena.Boss.LaserPoint]

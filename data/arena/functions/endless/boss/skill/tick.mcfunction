@@ -19,8 +19,8 @@
 
     # 自動回復スキル
     execute if score $Boss.HealCooldown Arena matches 1.. run scoreboard players remove $Boss.HealCooldown Arena 1
-    execute if score $Boss.HealCooldown Arena matches 0 unless data entity @e[tag=Arena.LastBoss,limit=1] {Health:1000f} run function arena:endless/boss/skill/huge_heal
+    execute if score $Boss.HealCooldown Arena matches 0 if score $BossHealth Arena matches ..600 run function arena:endless/boss/skill/huge_heal
 
     # 一定時間攻撃受けないと高速回復
     execute if score $Boss.LastAttackedTime Arena matches 0.. run scoreboard players add $Boss.LastAttackedTime Arena 1
-    execute if data entity @s {data:{Arena:{StageType:HiddenEndless}}} if score $Boss.LastAttackedTime Arena matches 300.. run function arena:endless/boss/skill/mini_heal
+    execute if data entity @s {data:{Arena:{StageType:HiddenEndless}}} if score $Boss.LastAttackedTime Arena matches 1200.. run function arena:endless/boss/skill/mini_heal

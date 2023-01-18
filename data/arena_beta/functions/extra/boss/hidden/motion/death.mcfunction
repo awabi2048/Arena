@@ -22,9 +22,9 @@ execute if score $MotionTimer Arena matches 120 at @e[tag=Arena.LastBoss.Core] r
 execute if score $MotionTimer Arena matches 120..125 at @e[tag=Arena.LastBoss.Core] run particle ash ~ ~ ~ 0.25 1.25 0.25 1 100
 execute if score $MotionTimer Arena matches 120..125 at @e[tag=Arena.LastBoss.Core] run particle smoke ~ ~ ~ 0.1 0.1 0.1 0.05 100
 
-execute if score $MotionTimer Arena matches 125 run function arena:endless/boss/hidden/kill
+execute if score $MotionTimer Arena matches 125 run function arena_beta:extra/boss/hidden/kill
 execute if score $MotionTimer Arena matches 125 at @e[tag=Arena.LastBoss.Core] run playsound entity.enderman.death master @a ~ ~ ~ 3 0.5
 
-execute if score $MotionTimer Arena matches 125.. run function arena:endless/boss/hidden/motion/reset_pose
+execute if score $MotionTimer Arena matches 125.. run function arena_beta:extra/boss/hidden/motion/reset_pose
 
 execute if score $MotionTimer Arena matches 125.. run data modify storage arena: Boss.Motion.Name set value "none"

@@ -19,4 +19,4 @@ execute if data storage arena:temp {NextWave:false} if data storage arena:temp {
 execute if data storage arena:temp {StageType:Endless} if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 1.. run data modify storage arena:temp StageType set value Normal
 
 # 失敗したらここで処理中断
-execute if data storage arena:temp {NextWave:false} run function arena:empty
+execute if data storage arena:temp {NextWave:false} run function arena:stop_process

@@ -15,7 +15,7 @@
     execute if score $Boss.SkillTimer Arena matches 0 run summon fireball ~ ~2 ~ {Tags:["Arena.Boss.Fireball","Arena.Boss.Marker"]}
     execute if score $Boss.SkillTimer Arena matches 0..40 as @e[tag=Arena.Boss] at @s run tp @s ~ ~ ~ facing entity @p[tag=Arena.Boss.FireballTarget]
 
-    execute if score $Boss.SkillTimer Arena matches 40 run function arena:endless/boss/skill/normal/14/set_motion
+    execute if score $Boss.SkillTimer Arena matches 40 run function arena_beta:extra/boss/skill/normal/14/set_motion
 
     # タグ除去
     execute if score $Boss.SkillTimer Arena matches 40 run tag @a[tag=Arena.Player] remove Arena.Boss.FireballTarget

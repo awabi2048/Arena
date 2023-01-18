@@ -1,6 +1,6 @@
 # タイマーループ時処理
     # スキル再抽選, ボス移動
-    function arena:endless/boss/skill_selection
+    function arena_beta:extra/boss/skill_selection
     tp @e[tag=Arena.Boss] ~ ~-0.5 ~
     data modify entity @e[tag=Arena.Boss,limit=1] NoAI set value 0b
 

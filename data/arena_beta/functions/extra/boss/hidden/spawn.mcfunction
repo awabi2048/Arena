@@ -11,6 +11,6 @@ summon skeleton ~ ~ ~ {Tags:["Arena.LastBoss.Hitbox","Arena.LastBoss.Body"],NoAI
 data modify storage arena: Boss.Health set value 1000.0f
 
 # ボスバー
-bossbar add arena:boss {"text":"アリーナマスター","color": "white","bold": true}
-bossbar set arena:boss color red
-bossbar set arena:boss max 1000
+bossbar add arena_beta:extra_boss {"text":"アリーナマスター","color": "white","bold": true}
+bossbar set arena_beta:extra_boss color red
+bossbar set arena_beta:extra_boss max 1000

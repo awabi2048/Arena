@@ -28,8 +28,8 @@ execute if score $MotionTimer Arena matches 110 run data merge entity @e[tag=Are
 execute if score $MotionTimer Arena matches 111..120 as @e[tag=Arena.LastBoss.Core] at @s run tp @s ~ ~ ~ ~-36 ~
 execute if score $MotionTimer Arena matches 111..120 as @e[tag=Arena.LastBoss.Body] at @s run tp @s ~ ~ ~ ~-36 ~
 
-execute if score $MotionTimer Arena matches 111..120 at @e[tag=Arena.LastBoss.Core] run function arena:endless/boss/hidden/skill/slash/03
-execute if score $MotionTimer Arena matches 111..120 at @e[tag=Arena.LastBoss.Core] rotated ~18 ~ run function arena:endless/boss/hidden/skill/slash/03
+execute if score $MotionTimer Arena matches 111..120 at @e[tag=Arena.LastBoss.Core] run function arena_beta:extra/boss/hidden/skill/slash/03
+execute if score $MotionTimer Arena matches 111..120 at @e[tag=Arena.LastBoss.Core] rotated ~18 ~ run function arena_beta:extra/boss/hidden/skill/slash/03
 
 execute if score $MotionTimer Arena matches 110 run data modify entity @e[tag=Arena.LastBoss.Upper,limit=1] ArmorItems[{id:"minecraft:stick"}].tag.CustomModelData set value 11121
 execute if score $MotionTimer Arena matches 110 run data modify entity @e[tag=Arena.LastBoss.Lower,limit=1] ArmorItems[{id:"minecraft:stick"}].tag.CustomModelData set value 11212
@@ -46,7 +46,7 @@ execute if score $MotionTimer Arena matches 120 run data modify entity @e[tag=Ar
 
 
 # 後始末
-execute if score $MotionTimer Arena matches 150.. run function arena:endless/boss/hidden/motion/reset_pose
+execute if score $MotionTimer Arena matches 150.. run function arena_beta:extra/boss/hidden/motion/reset_pose
 
 execute if score $MotionTimer Arena matches 150.. run data modify storage arena: Boss.Motion.Name set value "none"
 

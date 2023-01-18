@@ -1,7 +1,7 @@
 # ボタン押したときの処理
 # Betaステージか検証
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena_beta:button/_
-execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena:empty
+execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena:stop_process
 
 # 開始時の処理: 看板削除, プレイヤー数の保存
 execute if score $Temp.Wave Arena matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~1 ~2 air 

@@ -42,7 +42,7 @@
 
     execute if score $MotionTimer Arena matches 7 as @e[tag=Arena.LastBoss.Core] at @s run tp @s ^ ^ ^0.75
 
-    execute if score $MotionTimer Arena matches 7 at @e[tag=Arena.LastBoss.Core] run function arena:endless/boss/hidden/skill/slash/02
+    execute if score $MotionTimer Arena matches 7 at @e[tag=Arena.LastBoss.Core] run function arena_beta:extra/boss/hidden/skill/slash/02
 
     execute if score $MotionTimer Arena matches 15 as @e[tag=Arena.LastBoss.Core] at @s run tp @s ~ ~ ~ facing entity @a[tag=Arena.Player.Target,limit=1]
 
@@ -51,7 +51,7 @@
 
     execute if score $MotionTimer Arena matches 20.. run kill @e[tag=Arena.LastBoss.Skill.Slash]
 
-    execute if score $MotionTimer Arena matches 20.. run function arena:endless/boss/hidden/motion/reset_pose
+    execute if score $MotionTimer Arena matches 20.. run function arena_beta:extra/boss/hidden/motion/reset_pose
 
     execute if score $MotionTimer Arena matches 20.. run data modify storage arena: Boss.Motion.Name set value "none"
 

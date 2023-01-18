@@ -6,4 +6,4 @@ kill @e[tag=Arena.LastBoss.Sword]
 kill @e[tag=Arena.LastBoss.Hitbox]
 
 # ボスバー
-bossbar remove arena:boss
+bossbar remove arena_beta:extra_boss

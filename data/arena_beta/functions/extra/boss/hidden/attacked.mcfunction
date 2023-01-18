@@ -12,7 +12,7 @@ scoreboard players operation $Temp.Health Arena -= $Temp.DealtDamage Arena
 
 execute store result storage arena: Boss.Health float 1 run scoreboard players get $Temp.Health Arena
 
-execute store result bossbar arena:boss value run data get storage arena: Boss.Health
+execute store result bossbar arena_beta:extra_boss value run data get storage arena: Boss.Health
 
 # ハメ対策
 scoreboard players add $AttackedCount Arena 1

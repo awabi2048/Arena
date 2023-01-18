@@ -1,7 +1,7 @@
-function arena:endless/boss/hidden/motion/tick
-function arena:endless/boss/hidden/skill/tick
+function arena_beta:extra/boss/hidden/motion/tick
+function arena_beta:extra/boss/hidden/skill/tick
 
-execute unless data entity @e[tag=Arena.LastBoss.Hitbox,limit=1] {Health:1024.0f} run function arena:endless/boss/hidden/attacked
+execute unless data entity @e[tag=Arena.LastBoss.Hitbox,limit=1] {Health:1024.0f} run function arena_beta:extra/boss/hidden/attacked
 
 
 # ボス本体の操作

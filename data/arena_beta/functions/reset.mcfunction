@@ -22,7 +22,7 @@ data modify entity @s data.Arena.Difficulty set value 0
 data modify entity @s data.Arena.LastMobType set value [-1,-1,-1]
 
 # ボスバー
-bossbar remove arena:boss
+bossbar remove arena_beta:extra_boss
 bossbar remove arena:mid_boss
 
 # 各種エンティティのキル

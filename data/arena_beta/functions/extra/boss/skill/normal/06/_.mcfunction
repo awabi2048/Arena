@@ -6,7 +6,7 @@
 
     # ターゲットのいる地点にパーティクル
     execute if score $Boss.SkillTimer Arena matches 0..60 as @e[tag=Arena.Boss] at @s run tp @s ~ ~ ~ facing entity @p[tag=Arena.Boss.TpTo]
-    execute if score $Boss.SkillTimer Arena matches 0..60 at @a[tag=Arena.Boss.TpTo] rotated 0 0 run function arena:endless/boss/skill/normal/06/particle
+    execute if score $Boss.SkillTimer Arena matches 0..60 at @a[tag=Arena.Boss.TpTo] rotated 0 0 run function arena_beta:extra/boss/skill/normal/06/particle
 
     # 演出
     execute if score $Boss.SkillTimer Arena matches 10 run playsound entity.enderman.teleport master @a ~ ~ ~ 1 0.8

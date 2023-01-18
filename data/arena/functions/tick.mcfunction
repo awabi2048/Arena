@@ -12,6 +12,8 @@ execute as @e[tag=Arena.Timer] if data entity @s {PortalCooldown:0} run kill @s
 
 # エンドレス
 #execute as @e[tag=Arena.Core] if score @s Arena matches -1 at @s run function arena:endless/boss/tick
+execute as @e[tag=Arena.Core] if score @s Arena matches 99 at @s run function arena_beta:extra/boss/tick
+
 #execute as @e[tag=Arena.Core] if score @s Arena matches 1.. unless data entity @s {data:{Arena:{StageType:Normal}}} unless data entity @s {data:{Arena:{StageType:BetaExtra}}} run data modify entity @s data.Arena.StageType set value "Normal"
 
 # 会場から離れたプレイヤーのタグ除去, スコアリセット

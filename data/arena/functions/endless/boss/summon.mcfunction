@@ -14,7 +14,7 @@ bossbar set arena:boss players @a[tag=Arena.Player,distance=..20]
 
 # スキル関連タイマー設定
 scoreboard players set $Boss.Temp.LastHealth Arena 1000
-scoreboard players set $Boss.HealCooldown Arena 50
+scoreboard players set $Boss.HealCooldown Arena 200
 
 # 演出
 playsound entity.lightning_bolt.thunder master @a ~ ~ ~ 5 0.75

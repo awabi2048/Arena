@@ -1,5 +1,5 @@
 # 一定時間ごとにアサヒハイツ
-execute store result score $Temp.BossHealth Arena run bossbar get arena:boss value
+execute store result score $Temp.BossHealth Arena run bossbar get arena_beta:extra_boss value
 
 scoreboard players add $Temp.BossHealth Arena 1
 

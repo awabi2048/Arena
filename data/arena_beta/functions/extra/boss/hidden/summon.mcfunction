@@ -1,14 +1,14 @@
 # リセット
-function arena:endless/boss/reset
+function arena_beta:extra/boss/reset
 
 # 召喚時モーション用のセットアップ
 scoreboard players set $MotionTimer Arena 0
 data modify storage arena: Boss.Motion.Name set value "Spawning"
 
 # ボスバー設定
-bossbar add arena:boss {"text":"アリーナマスター","bold": true,"color": "gold"}
-bossbar set arena:boss max 1000
-bossbar set arena:boss players @a[tag=Arena.Player,distance=..32]
+bossbar add arena_beta:extra_boss {"text":"アリーナマスター","bold": true,"color": "gold"}
+bossbar set arena_beta:extra_boss max 1000
+bossbar set arena_beta:extra_boss players @a[tag=Arena.Player,distance=..32]
 
 
 # スキル関連タイマー設定

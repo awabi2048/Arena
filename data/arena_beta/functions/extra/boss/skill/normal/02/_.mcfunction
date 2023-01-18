@@ -30,5 +30,5 @@
     execute at @e[tag=Arena.Boss.ShulkerBullet] run particle crit ~ ~ ~ 0 0 0 0 1
     execute at @e[tag=Arena.Boss.ShulkerBullet] run particle enchanted_hit ~ ~ ~ 0 0 0 0.5 1
 
-    execute as @e[tag=Arena.Boss.ShulkerBullet] at @s if entity @a[tag=Arena.Player,distance=..1] run function arena:endless/boss/skill/normal/02/hit
+    execute as @e[tag=Arena.Boss.ShulkerBullet] at @s if entity @a[tag=Arena.Player,distance=..1] run function arena_beta:extra/boss/skill/normal/02/hit
 

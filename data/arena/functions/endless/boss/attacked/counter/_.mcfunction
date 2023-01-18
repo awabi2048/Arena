@@ -1,17 +1,16 @@
 # ボスが攻撃を受けたときにカウンター
 execute store result score $Boss.Health Arena run bossbar get arena:boss value
 
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:"BetaExtra"}}} store result score $Boss.Health Arena run bossbar get arena_beta:extra_boss value
+
+# 人数取得
+execute store result score $PlayerCount Arena.Temp if entity @a[tag=Arena.Player,scores={Arena=-1}]
+
 # カウンターの種類を乱数で決定
-    summon area_effect_cloud ~ ~ ~ {Tags:["Arena.Random"]}
-    execute store result score $Boss.Random Arena run data get entity @e[tag=Arena.Random,limit=1] UUID[0]
-    scoreboard players operation $Boss.Random Arena %= #100 Arena
+function arena:rng
 
-        # カウンター01
-        execute if score $Boss.Random Arena matches 0..50 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/01
+    # カウンター01
+    execute if score $Random Arena matches 0..50 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/01
 
-        # カウンター02
-        execute unless score $Boss.Random Arena matches ..100 if score $Boss.Random Arena matches 51..99 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/02
-        execute if score $Boss.Random Arena matches ..100 if score $Boss.Random Arena matches 76..99 as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/02
-
-advancement revoke @a only arena:boss/attacked_last_boss
-
+    # カウンター02
+    execute if score $Random Arena matches 51..99 if score $PlayerCount Arena.Temp matches 2.. as @e[tag=Arena.Boss] at @s run function arena:endless/boss/attacked/counter/02

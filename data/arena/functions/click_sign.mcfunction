@@ -1,5 +1,5 @@
 # クールタイム中なら中断
-execute if entity @e[tag=Arena.Timer,distance=..3] run function arena:empty
+execute if entity @e[tag=Arena.Timer,distance=..3] run function arena:stop_process
 
 # Arena.Coreからdata(MOB種類/難易度)取得
 execute store result score $MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType

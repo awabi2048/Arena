@@ -1,19 +1,19 @@
 # リセット
-function arena:endless/boss/reset
+function arena_beta:extra/boss/reset
 
 # 本体召喚
-summon vindicator ~ ~2 ~ {Tags:["Arena.ExtraBoss","Arena.Mob"],Attributes:[{Name:"generic.attack_damage",Base:20.0d},{Name:"generic.max_health",Base:800.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:800.0f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
+summon vindicator ~ ~2 ~ {Tags:["Arena.LastBoss","Arena.Boss","Arena.Mob"],Attributes:[{Name:"generic.attack_damage",Base:20.0d},{Name:"generic.max_health",Base:800.0d}],HandItems:[{id:"minecraft:golden_sword",Count:1b},{}],Health:800.0f,CustomName:'{"text":"アリーナマスター","color":"gold","bold": true}',CustomNameVisible:1b,HandDropChances:[0.0f,0.0f],DeathLootTable:"empty"}
 
 # エフェクト
 effect give @e[tag=Arena.LastBoss] fire_resistance 86400 1 true
 
 # ボスバー設定
-bossbar add arena:boss {"text":"アリーナマスター","bold": true,"color": "gold"}
-bossbar set arena:boss max 800
-bossbar set arena:boss players @a[tag=Arena.Player,distance=..20]
+bossbar add arena_beta:extra_boss {"text":"アリーナマスター","bold": true,"color": "gold"}
+bossbar set arena_beta:extra_boss max 800
+bossbar set arena_beta:extra_boss players @a[tag=Arena.Player,distance=..20]
 
-# スキル関連タイマー設定
-scoreboard players set $Boss.Temp.LastHealth Arena 800
+# スキル関連
+data modify storage arena: Boss.LastHealth set value 800.0d
 
 # 演出
 playsound entity.lightning_bolt.thunder master @a ~ ~ ~ 5 0.75
