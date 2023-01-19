@@ -27,7 +27,7 @@ execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{Sta
 
 execute unless score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..32] title " "
 
-title @a[tag=Arena.Player,distance=..32] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
+title @a[tag=Arena.Player,distance=..32] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Wave","objective": "Arena.Temp"},"color": "gold"}]
 playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..32] ~ ~ ~ 4 1.2
 
 # 召喚
