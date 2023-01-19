@@ -1,7 +1,7 @@
 # クリア通知
 # 告知内容の設定
-data modify storage arena:temp NoticeDisplay.Difficulty set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty
-data modify storage arena:temp NoticeDisplay.MobType set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
+data modify storage arena:temp NoticeDisplay.Difficulty set from entity @s data.Arena.Difficulty
+data modify storage arena:temp NoticeDisplay.MobType set from entity @s data.Arena.MobType
 
 # 難易度
 execute if data storage arena:temp {NoticeDisplay:{Difficulty:0}} run data modify storage arena:temp NoticeDisplay.Difficulty set value "イージー"
@@ -38,8 +38,8 @@ execute if data storage arena:temp {NoticeDisplay:{Difficulty:"ハード"}} run 
     execute if data entity @s {data:{Arena:{MobType:6,Difficulty:2,Solo:true}}} run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/solo_clear/guardian
 
 # 待機所にtp
-execute as @e[tag=Arena.Lobby] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..32] @s 
+execute at @s as @e[tag=Arena.Lobby] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..32] @s 
 
 # リセット
-execute as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tag @s remove Arena.Player
+execute at @s as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run tag @s remove Arena.Player
 function arena:reset

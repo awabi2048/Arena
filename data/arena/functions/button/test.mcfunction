@@ -1,9 +1,9 @@
 # ウェーブ進行可否判定
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
 execute at @e[tag=Arena.Core,sort=nearest,limit=1] store result score $Temp.MobCount Arena if entity @e[tag=Arena.Mob,distance=..40]
 
 data modify storage arena:temp StageType set from entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType
-execute if data storage arena:temp {StageType:Normal} if score $Temp.Wave Arena matches 5 run data modify storage arena:temp StageType set value Endless
+execute if data storage arena:temp {StageType:Normal} if score $Wave Arena.Temp matches 5 run data modify storage arena:temp StageType set value Endless
 
 # ステージの種類によって場合分け
 data modify storage arena:temp NextWave set value false

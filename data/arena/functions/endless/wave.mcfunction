@@ -19,32 +19,32 @@
     data remove storage arena: Debug.NextMob
 
 # タイトル表示と効果音
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
 title @a[tag=Arena.Player,distance=..32] times 10 60 10
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} if score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..32] title [{"text":"||| ","obfuscated": true},{"text": "Endless","color": "dark_purple","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
-execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} if score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..32] title [{"text":"||| ","obfuscated": true},{"text": "Hidden Endless","color": "red","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless}}} if score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..32] title [{"text":"||| ","obfuscated": true},{"text": "Endless","color": "dark_purple","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:HiddenEndless}}} if score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..32] title [{"text":"||| ","obfuscated": true},{"text": "Hidden Endless","color": "red","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
 
-execute unless score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..32] title " "
+execute unless score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..32] title " "
 
 title @a[tag=Arena.Player,distance=..32] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
 playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..32] ~ ~ ~ 4 1.2
 
 # 召喚
     ## 各ボスの召喚判定
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    scoreboard players operation $Temp.Wave Arena %= #10 Arena
-    execute if score $Temp.Wave Arena matches 0 run data modify storage arena:temp SummonBoss set value true
-    execute unless score $Temp.Wave Arena matches 0 run data modify storage arena:temp SummonBoss set value false
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    scoreboard players operation $Wave Arena.Temp %= #10 Arena
+    execute if score $Wave Arena.Temp matches 0 run data modify storage arena:temp SummonBoss set value true
+    execute unless score $Wave Arena.Temp matches 0 run data modify storage arena:temp SummonBoss set value false
 
     ## 実際に召喚
     function arena:summon/_
 
 # チケット配布
 execute store result score $Temp.TicketGive Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
-execute unless score $Temp.Wave Arena matches 1 run scoreboard players remove $Temp.TicketGive Arena 1
+execute unless score $Wave Arena.Temp matches 1 run scoreboard players remove $Temp.TicketGive Arena 1
 scoreboard players operation $Temp.TicketGive Arena %= #10 Arena
 execute store success score $Temp.TicketGive Arena if score $Temp.TicketGive Arena matches 0
 
@@ -66,8 +66,8 @@ execute as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ re
 execute as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run setblock ~ ~-5 ~ air
 
 # プレイヤーに設定する最大到達スコアをArena.Coreから取得
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
-execute as @a[tag=Arena.Player,distance=..32] if score $Temp.Wave Arena > @s Arena.MaxStageReached run scoreboard players operation @s Arena.MaxStageReached = $Temp.Wave Arena
+execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+execute as @a[tag=Arena.Player,distance=..32] if score $Wave Arena.Temp > @s Arena.MaxStageReached run scoreboard players operation @s Arena.MaxStageReached = $Wave Arena.Temp
 
 # 実績解除判定
     ## 3連同じモブ

@@ -15,6 +15,6 @@ execute store success score $Temp.Clear Arena unless entity @e[tag=Arena.ExtraBo
     execute if score $Temp.Clear Arena matches 0 run tellraw @a[tag=Arena.Player,distance=..20] {"text":"敵がいない状態にしてもう一度ボタンを押してください","color":"aqua"}
     execute if score $Temp.Clear Arena matches 0 run playsound entity.shulker.hurt master @a ~ ~ ~ 5 1
 
-    execute if score $Temp.Clear Arena matches 0 store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    execute if score $Temp.Clear Arena matches 0 store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave int 1 run scoreboard players add $Temp.Wave Arena 1
+    execute if score $Temp.Clear Arena matches 0 store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute if score $Temp.Clear Arena matches 0 store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave int 1 run scoreboard players add $Wave Arena.Temp 1
     

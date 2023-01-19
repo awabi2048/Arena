@@ -17,9 +17,9 @@
 # 通常アリーナ
     # ストレージからデータ取得
     execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
 
-    execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run scoreboard players set $Temp.Wave Arena 5
+    execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run scoreboard players set $Wave Arena.Temp 5
     function arena:summon/get_data
 
     # 召喚場所を設定
@@ -33,10 +33,10 @@
     execute if data storage arena:temp {SummonBoss:false} if data storage arena:temp {SummonPoint:2b} at @e[tag=Arena.SummonPoint2,sort=nearest,limit=4] run function arena:summon/loop
 
     # 一体だけ召喚するモブを召喚
-    execute if data storage arena:temp {SummonBoss:false} as @e[tag=Arena.SummonPoint,sort=nearest,limit=4] if score $Temp.MobType Arena matches 6 if score $Temp.Wave Arena matches 3..5 at @s run summon elder_guardian ~ ~ ~ {Attributes:[{Name:"generic.max_health",Base:1},{Name:"generic.movement_speed",Base:0.1},{Name:"generic.attack_damage",Base:1}],Tags:["Arena.Mob","Arena.Summoned"]}
+    execute if data storage arena:temp {SummonBoss:false} as @e[tag=Arena.SummonPoint,sort=nearest,limit=4] if score $Temp.MobType Arena matches 6 if score $Wave Arena.Temp matches 3..5 at @s run summon elder_guardian ~ ~ ~ {Attributes:[{Name:"generic.max_health",Base:1},{Name:"generic.movement_speed",Base:0.1},{Name:"generic.attack_damage",Base:1}],Tags:["Arena.Mob","Arena.Summoned"]}
 
     # ストレージのデータをモブの Attributes に適応
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
     execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run function arena:endless/attributes_multiple
     execute if data storage arena:temp {SummonBoss:false} run function arena:summon/set_attributes
 

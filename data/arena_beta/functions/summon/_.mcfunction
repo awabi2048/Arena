@@ -1,19 +1,19 @@
 # ボス召喚
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    scoreboard players operation $Temp.Wave Arena %= #5 Arena
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    scoreboard players operation $Wave Arena.Temp %= #5 Arena
 
     data modify storage arena:temp SummonBoss set value false
-    execute if score $Temp.Wave Arena matches 0 run data modify storage arena:temp SummonBoss set value true
+    execute if score $Wave Arena.Temp matches 0 run data modify storage arena:temp SummonBoss set value true
 
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-    execute if data storage arena:temp {SummonBoss:true} if score $Temp.Wave Arena matches -5 run function arena_beta:extra/mini_boss/summon
-    execute if data storage arena:temp {SummonBoss:true} if score $Temp.Wave Arena matches -10 run function arena_beta:extra/boss/summon
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute if data storage arena:temp {SummonBoss:true} if score $Wave Arena.Temp matches -5 run function arena_beta:extra/mini_boss/summon
+    execute if data storage arena:temp {SummonBoss:true} if score $Wave Arena.Temp matches -10 run function arena_beta:extra/boss/summon
     
     # ストレージからデータ取得
     execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
 
-    scoreboard players set $Temp.Wave Arena 5
+    scoreboard players set $Wave Arena.Temp 5
     scoreboard players set $Temp.SummonCountMultiple Arena 50
     function arena:summon/get_data
 

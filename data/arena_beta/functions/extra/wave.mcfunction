@@ -8,12 +8,12 @@
     data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty set value -1
 
     # タイトル表示と効果音
-    execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
+    execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -1
 
     title @a[tag=Arena.Player,distance=..20] times 10 60 10
-    execute if score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Extra Arena","color": "yellow","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
+    execute if score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..20] title [{"text":"||| ","obfuscated": true},{"text": "Extra Arena","color": "yellow","bold": true,"obfuscated": false},{"text": " |||","obfuscated": true}]
 
-    execute unless score $Temp.Wave Arena matches 1 run title @a[tag=Arena.Player,distance=..20] title " "
+    execute unless score $Wave Arena.Temp matches 1 run title @a[tag=Arena.Player,distance=..20] title " "
 
     title @a[tag=Arena.Player,distance=..20] subtitle [{"text":"Wave ","color": "gold"},{"score":{"name": "$Temp.Wave","objective": "Arena"},"color": "gold"}]
     playsound entity.experience_orb.pickup master @a[tag=Arena.Player,distance=..20] ~ ~ ~ 1 1.2

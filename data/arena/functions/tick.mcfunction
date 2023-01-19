@@ -2,7 +2,7 @@
 execute as @a[tag=Arena.DisplayMobInfo] if score $DisplayMobInfo Arena matches 0.. run function arena:mob_data/detail
 
 # プレイヤー数が変化した場合に
-execute at @a[tag=Arena.Player] as @e[tag=Arena.Core,distance=..32] if data entity @s {data:{Arena:{Solo:true}}} if entity @a[tag=!Arena.Player,distance=..32] run data modify entity @s data.Arena.Solo set value false
+execute at @a[tag=Arena.Player] as @e[tag=Arena.Core,distance=..32] at @s if data entity @s {data:{Arena:{Solo:true}}} as @a[distance=..32] unless score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Solo set value false
 
 # スライム分裂時にタグ
 tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob

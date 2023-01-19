@@ -8,7 +8,7 @@ tp @e[type=experience_orb,distance=..40] ~ ~-100 ~
 execute positioned ~ ~-100 ~ run kill @e[tag=Arena.Mob,distance=..3]
 
 # スコアのリセット
-scoreboard players set $Temp.Wave Arena 0
+scoreboard players set $Wave Arena.Temp 0
 
 scoreboard players set $MobCount Arena 0
 scoreboard players set $MobSummonCount Arena 0

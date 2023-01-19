@@ -1,7 +1,7 @@
 # ストレージのデータ読み込み
 execute store result score $Temp.MobType Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType
-execute store result score $Temp.Wave Arena run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
-execute if score $Temp.Wave Arena matches ..-1 run scoreboard players set $Temp.Wave Arena 5
+execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
+execute if score $Wave Arena.Temp matches ..-1 run scoreboard players set $Wave Arena.Temp 5
 
 # MobTypeで絞り込み
 execute if score $Temp.MobType Arena matches 0 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Zombie
@@ -13,38 +13,38 @@ execute if score $Temp.MobType Arena matches 5 run data modify storage arena:tem
 execute if score $Temp.MobType Arena matches 6 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Guardian
 
 # Wave数で絞り込み
-execute if score $Temp.Wave Arena matches 1 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[0]
-execute if score $Temp.Wave Arena matches 1 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[0]
-execute if score $Temp.Wave Arena matches 1 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[0]
-execute if score $Temp.Wave Arena matches 1 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[0]
+execute if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[0]
+execute if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[0]
+execute if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[0]
+execute if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[0]
 
-execute if score $Temp.Wave Arena matches 2 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[1]
-execute if score $Temp.Wave Arena matches 2 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[1]
-execute if score $Temp.Wave Arena matches 2 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[1]
-execute if score $Temp.Wave Arena matches 2 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[1]
+execute if score $Wave Arena.Temp matches 2 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[1]
+execute if score $Wave Arena.Temp matches 2 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[1]
+execute if score $Wave Arena.Temp matches 2 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[1]
+execute if score $Wave Arena.Temp matches 2 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[1]
 
-execute if score $Temp.Wave Arena matches 3 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[2]
-execute if score $Temp.Wave Arena matches 3 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[2]
-execute if score $Temp.Wave Arena matches 3 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[2]
-execute if score $Temp.Wave Arena matches 3 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[2]
+execute if score $Wave Arena.Temp matches 3 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[2]
+execute if score $Wave Arena.Temp matches 3 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[2]
+execute if score $Wave Arena.Temp matches 3 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[2]
+execute if score $Wave Arena.Temp matches 3 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[2]
 
-execute if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[3]
-execute if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[3]
-execute if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[3]
-execute if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[3]
+execute if score $Wave Arena.Temp matches 4 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[3]
+execute if score $Wave Arena.Temp matches 4 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[3]
+execute if score $Wave Arena.Temp matches 4 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[3]
+execute if score $Wave Arena.Temp matches 4 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[3]
 
-execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[4]
-execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[4]
-execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[4]
-execute if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[4]
+execute if score $Wave Arena.Temp matches 5 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[4]
+execute if score $Wave Arena.Temp matches 5 run data modify storage arena:temp MobInfo.AttackDamage set from storage arena:temp MobInfo.AttackDamage[4]
+execute if score $Wave Arena.Temp matches 5 run data modify storage arena:temp MobInfo.Health set from storage arena:temp MobInfo.Health[4]
+execute if score $Wave Arena.Temp matches 5 run data modify storage arena:temp MobInfo.Speed set from storage arena:temp MobInfo.Speed[4]
 
 # 固有データ読み込み
     # クリーパー: ExplosionRadius
-    execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 1 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[0]
-    execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 2 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[1]
-    execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 3 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[2]
-    execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 4 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[3]
-    execute if score $Temp.MobType Arena matches 5 if score $Temp.Wave Arena matches 5 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[4]
+    execute if score $Temp.MobType Arena matches 5 if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[0]
+    execute if score $Temp.MobType Arena matches 5 if score $Wave Arena.Temp matches 2 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[1]
+    execute if score $Temp.MobType Arena matches 5 if score $Wave Arena.Temp matches 3 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[2]
+    execute if score $Temp.MobType Arena matches 5 if score $Wave Arena.Temp matches 4 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[3]
+    execute if score $Temp.MobType Arena matches 5 if score $Wave Arena.Temp matches 5 run data modify storage arena:temp MobInfo.ExplosionRadius set from storage arena:temp MobInfo.ExplosionRadius[4]
 
 # 難易度別にステータス値, 召喚数を倍率
     ##Memo:
