@@ -1,19 +1,15 @@
 # ボスバー
 bossbar remove arena_beta:extra_boss
-bossbar remove arena_beta:extra_boss_shield
-bossbar remove arena:mid_boss
 
 # 各種エンティティのキル
 tp @e[tag=Arena.Mob,distance=..40] ~ ~-100 ~
 execute positioned ~ ~-100 ~ run kill @e[tag=Arena.Mob,distance=..3] 
 kill @e[tag=Arena.Boss.Marker]
 
-function arena_beta:extra/boss/hidden/kill
-
 # スコア, ストレージリセット
 scoreboard players set $Boss.SkillTimer Arena 0
 
-data modify storage arena: Boss.Skills set value []
+data modify storage arena:boss Skills set value []
 scoreboard players set $Boss.SkillInterval Arena 300
 
 # ストラクチャー再読み込み

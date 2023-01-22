@@ -18,8 +18,8 @@
     # 自動回復スキル
     execute if score $Boss.HealCooldown Arena matches 1.. run scoreboard players remove $Boss.HealCooldown Arena 1
     execute store result score $BossHealth Arena.Temp run bossbar get arena_beta:extra_boss value
-    execute if score $Boss.HealCooldown Arena matches 0 if score $Bosshealth Arena.Temp matches ..500 run function arena_beta:extra/boss/skill/huge_heal
+    #execute if score $Boss.HealCooldown Arena matches 0 if score $Bosshealth Arena.Temp matches ..500 run function arena_beta:extra/boss/skill/huge_heal
 
     # 一定時間攻撃受けないと高速回復
     execute if score $Boss.LastAttackedTime Arena matches 0.. run scoreboard players add $Boss.LastAttackedTime Arena 1
-    execute if score $Boss.LastAttackedTime Arena matches 1200.. run function arena_beta:extra/boss/skill/mini_heal
+    #execute if score $Boss.LastAttackedTime Arena matches 1200.. run function arena_beta:extra/boss/skill/mini_heal

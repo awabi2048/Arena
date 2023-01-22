@@ -1,5 +1,5 @@
 # タイマースコア変更
-execute if entity @e[tag=Arena.LastBoss] if entity @a[tag=Arena.Player,scores={Arena=-1},distance=..32] unless data storage arena: {Debug:{Pause:true}} run scoreboard players add $Boss.SkillTimer Arena 1
+execute if entity @e[tag=Arena.LastBoss] if entity @a[tag=Arena.Player,scores={Arena=99},distance=..32] unless data storage arena: {Debug:{Pause:true}} run scoreboard players add $Boss.SkillTimer Arena 1
 
 # タイマーループ時処理
 execute if score $Boss.SkillTimer Arena >= $Boss.SkillInterval Arena run function arena_beta:extra/boss/timer_loop

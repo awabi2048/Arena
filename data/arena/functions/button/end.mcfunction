@@ -3,4 +3,4 @@
 execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave
 
 execute if score $Wave Arena.Temp matches 6 run function arena:button/reward
-execute if score $Wave Arena.Temp matches 7 as @e[tag=Arena.Core,sort=nearest,limit=1] run function arena:end
+execute if score $Wave Arena.Temp matches 7 as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run function arena:end

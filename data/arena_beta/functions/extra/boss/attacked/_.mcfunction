@@ -7,10 +7,14 @@ execute if score $Temp.Random Arena matches ..8 run function arena:endless/boss/
 function arena:endless/boss/attacked/shield/_
 
 # ボスの体力によってボスバーの色変更
-execute store result score $Boss.Health Arena run data get entity @e[tag=Arena.LastBoss,limit=1] Health
-execute if score $Boss.Health Arena matches 667..1000 run bossbar set arena_beta:extra_boss color white
-execute if score $Boss.Health Arena matches 334..666 run bossbar set arena_beta:extra_boss color yellow
-execute if score $Boss.Health Arena matches 1..334 run bossbar set arena_beta:extra_boss color red
+execute store result score $Boss.Health Arena.Temp run data get entity @e[tag=Arena.LastBoss,limit=1] Health
+
+execute if score $Boss.Health Arena.Temp matches 667..1000 run bossbar set arena_beta:extra_boss color white
+execute if score $Boss.Health Arena.Temp matches 334..666 run bossbar set arena_beta:extra_boss color yellow
+execute if score $Boss.Health Arena.Temp matches 1..334 run bossbar set arena_beta:extra_boss color red
+
+# ボスバー同期
+execute store result bossbar arena_beta:extra_boss value run scoreboard players get $Boss.Health Arena.Temp
 
 advancement revoke @a only arena_beta:extra_boss/attacked_last_boss
 

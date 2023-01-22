@@ -3,7 +3,7 @@ function arena:endless/boss/reset
 
 # 召喚時モーション用のセットアップ
 scoreboard players set $MotionTimer Arena 0
-data modify storage arena: Boss.Motion.Name set value "Spawning"
+data modify storage arena:boss Motion.Name set value "Spawning"
 
 # ボスバー設定
 bossbar add arena:boss {"text":"アリーナマスター","bold": true,"color": "gold"}

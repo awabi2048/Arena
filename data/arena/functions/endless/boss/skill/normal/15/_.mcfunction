@@ -5,4 +5,4 @@
     # 演出
     execute at @e[tag=Arena.SummonPoint,sort=nearest,limit=4,distance=..32] run particle effect ~ ~ ~ 0.5 0 0.5 1 100 
 
-    data modify storage arena: Boss.Skills set value []
+    data modify storage arena:boss Skills set value []

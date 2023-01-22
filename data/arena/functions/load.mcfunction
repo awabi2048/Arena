@@ -13,6 +13,7 @@ scoreboard players set #5 Arena 5
 scoreboard players set #6 Arena 6
 
 scoreboard players set #9 Arena 9
+scoreboard players set #13 Arena 13
 scoreboard players set #16 Arena 16
 
 scoreboard players set #10 Arena 10
@@ -33,3 +34,7 @@ scoreboard players set #360 Arena 360
 
 # ランキングの更新
 function arena:endless/reflesh_ranking
+
+# Constant
+scoreboard players set #60 Constant 60
+scoreboard players set #20 Constant 20

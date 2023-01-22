@@ -1,13 +1,12 @@
 # ボタン押したときの処理
-# Betaステージか検証
-execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena_beta:button/_
-execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run function arena:stop_process
-
-# 開始時の処理: 看板削除, プレイヤー数の保存
+# 開始時の処理
 execute if score $Wave Arena.Temp matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~1 ~2 air 
 
 execute if score $Wave Arena.Temp matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] store result score $PlayerCount Arena.Temp if entity @a[tag=Arena.Player,distance=..32]
 execute if score $Wave Arena.Temp matches 0 if score $PlayerCount Arena.Temp matches 1 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Solo set value true
+
+# 開始時のgametimeを取得
+execute if score $Wave Arena.Temp matches 0 store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StartTime int 1 run time query gametime
 
 # ステージ種類データの設定
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 1.. run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "Normal"

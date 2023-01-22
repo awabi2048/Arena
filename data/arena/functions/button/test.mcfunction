@@ -13,8 +13,8 @@ execute unless data storage arena:temp {StageType:Normal} if score $Temp.MobCoun
 # 通知・効果音
 execute if data storage arena:temp {NextWave:false} run playsound entity.shulker.hurt master @a ~ ~ ~ 1 1
 
-execute if data storage arena:temp {NextWave:false} unless data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] {"text":"敵がいない状態にしてもう一度ボタンを押してください。","color":"red"}
-execute if data storage arena:temp {NextWave:false} if data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] {"text":"敵が多すぎます！敵を減らしてからもう一度ボタンを押してください。","color":"red"}
+execute if data storage arena:temp {NextWave:false} unless data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"敵がいない状態にしてもう一度ボタンを押してください。","color":"red"}]
+execute if data storage arena:temp {NextWave:false} if data storage arena:temp {StageType:Normal} run tellraw @a[tag=Arena.Player,distance=..32] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"敵が多すぎます！敵を減らしてからもう一度ボタンを押してください。","color":"red"}]
 
 execute if data storage arena:temp {StageType:Endless} if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 1.. run data modify storage arena:temp StageType set value Normal
 

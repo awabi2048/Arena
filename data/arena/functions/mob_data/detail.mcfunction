@@ -1,5 +1,5 @@
 # モブごとに詳細情報表示
-tellraw @s {"text":"[以下の値は現在の設定値です]","color":"light_purple","italic":false}
+tellraw @s [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"以下の値は現在の設定値です","color":"light_purple","italic":false}]
 
     # Zombie
     execute if score $DisplayMobInfo Arena matches 0 run tellraw @s ["- ",{"text":"体力: ","italic": false,"color": "gold"},{"storage":"arena:","nbt":"Core.MobInfo.Zombie.Health","hoverEvent": {"action":"show_text","contents": "クリックして編集"},"clickEvent": {"action":"suggest_command","value": "/data modify storage arena: Core.MobInfo.Zombie.Health set value [15, 20, 25, 30, 35]"}}]

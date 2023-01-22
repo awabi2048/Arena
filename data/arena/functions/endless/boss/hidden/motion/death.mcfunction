@@ -27,4 +27,4 @@ execute if score $MotionTimer Arena matches 125 at @e[tag=Arena.LastBoss.Core] r
 
 execute if score $MotionTimer Arena matches 125.. run function arena:endless/boss/hidden/motion/reset_pose
 
-execute if score $MotionTimer Arena matches 125.. run data modify storage arena: Boss.Motion.Name set value "none"
+execute if score $MotionTimer Arena matches 125.. run data modify storage arena:boss Motion.Name set value "none"

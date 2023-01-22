@@ -3,7 +3,6 @@ execute store success score $Temp.Clear Arena unless entity @e[tag=Arena.ExtraBo
 
     # 成功
     execute if score $Temp.Clear Arena matches 1 run tellraw @a[tag=Arena.Notice] [{"text":"Extraアリーナ (β)","bold": true,"color": "gold"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
-    execute if score $Temp.Clear Arena matches 1 run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/first_clear
 
     execute if score $Temp.Clear Arena matches 1 as @a[tag=Arena.Notice] at @s run playsound entity.player.levelup master @s ~ ~ ~ 
 

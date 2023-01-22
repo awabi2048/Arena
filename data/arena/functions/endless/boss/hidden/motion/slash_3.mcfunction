@@ -48,7 +48,7 @@ execute if score $MotionTimer Arena matches 120 run data modify entity @e[tag=Ar
 # 後始末
 execute if score $MotionTimer Arena matches 150.. run function arena:endless/boss/hidden/motion/reset_pose
 
-execute if score $MotionTimer Arena matches 150.. run data modify storage arena: Boss.Motion.Name set value "none"
+execute if score $MotionTimer Arena matches 150.. run data modify storage arena:boss Motion.Name set value "none"
 
 
 

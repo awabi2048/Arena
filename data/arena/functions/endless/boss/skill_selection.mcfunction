@@ -1,7 +1,7 @@
 # 乱数で発動スキルを決定
 
     # storageリセット
-    data modify storage arena: Boss.Skills set value []
+    data modify storage arena:boss Skills set value []
 
     # 抽選
     function arena:rng
@@ -10,7 +10,7 @@
     scoreboard players add $Random Arena 1
 
     execute store result storage arena:temp Random int 1 run scoreboard players get $Random Arena
-    data modify storage arena: Boss.Skills append from storage arena:temp Random
+    data modify storage arena:boss Skills append from storage arena:temp Random
 
     # ラスボスの場合はもう一つ抽選
     function arena:rng
@@ -18,7 +18,7 @@
     scoreboard players add $Random Arena 1
 
     execute store result storage arena:temp Random int 1 run scoreboard players get $Random Arena
-    execute if data entity @s {data:{Arena:{Wave:-100}}} run data modify storage arena: Boss.Skills append from storage arena:temp Random
+    execute if data entity @s {data:{Arena:{Wave:-100}}} run data modify storage arena:boss Skills append from storage arena:temp Random
 
     # モブ召喚系スキルの場合特定条件下で再抽選
     execute if data storage arena: {Boss:{Skills:[1]}} if entity @e[tag=Arena.Boss.Skill01] run function arena:endless/boss/skill_selection 
@@ -28,8 +28,8 @@
     data remove storage arena:temp Random
 
     # デバッグ用
-    execute unless data storage arena: {Debug:{SetSkill:none}} if data storage arena: Debug.SetSkill run data remove storage arena: Boss.Skills
-    execute unless data storage arena: {Debug:{SetSkill:none}} if data storage arena: Debug.SetSkill run data modify storage arena: Boss.Skills append from storage arena: Debug.SetSkill 
+    execute unless data storage arena: {Debug:{SetSkill:none}} if data storage arena: Debug.SetSkill run data remove storage arena:boss Skills
+    execute unless data storage arena: {Debug:{SetSkill:none}} if data storage arena: Debug.SetSkill run data modify storage arena:boss Skills append from storage arena: Debug.SetSkill 
 
 # ボスのHPをチェック、一定以下ならスキル発動加速
     # ラスボス

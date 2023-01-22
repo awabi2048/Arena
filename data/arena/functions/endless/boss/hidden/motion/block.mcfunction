@@ -11,11 +11,11 @@ execute if score $MotionTimer Arena matches 1 run data modify entity @e[tag=Aren
 # カウンター
 execute if score $MotionTimer Arena matches 10 run function arena:rng
 
-execute if score $MotionTimer Arena matches 10 store result score $Temp.Health Arena run data get storage arena: Boss.Health
+execute if score $MotionTimer Arena matches 10 store result score $Temp.Health Arena run data get storage arena:boss Health
 execute if score $MotionTimer Arena matches 10 unless score $Temp.Health Arena matches ..500 if score $Random Arena matches ..33 run function arena:endless/boss/hidden/skill/slash/_
 execute if score $MotionTimer Arena matches 10 if score $Temp.Health Arena matches ..500 if score $Random Arena matches ..66 run function arena:endless/boss/hidden/skill/slash/_
 
 # 後始末
     execute if score $MotionTimer Arena matches 15.. run function arena:endless/boss/hidden/motion/reset_pose
 
-    execute if score $MotionTimer Arena matches 15.. run data modify storage arena: Boss.Motion.Name set value "none"
+    execute if score $MotionTimer Arena matches 15.. run data modify storage arena:boss Motion.Name set value "none"

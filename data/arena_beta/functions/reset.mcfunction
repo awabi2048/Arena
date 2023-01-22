@@ -33,7 +33,7 @@ kill @e[tag=Arena.Boss.Marker]
 # スコア, ストレージリセット
 scoreboard players set $Boss.SkillTimer Arena 0
 
-data modify storage arena: Boss.Skills set value []
+data modify storage arena:boss Skills set value []
 scoreboard players set $Boss.SkillInterval Arena 300
 
 # ストラクチャー再読み込み

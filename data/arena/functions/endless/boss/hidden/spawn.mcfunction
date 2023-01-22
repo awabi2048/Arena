@@ -8,7 +8,7 @@ summon armor_stand ~ ~ ~ {Tags:["Arena.LastBoss.Sword","Arena.LastBoss.Body"],In
 summon skeleton ~ ~ ~ {Tags:["Arena.LastBoss.Hitbox","Arena.LastBoss.Body"],NoAI:1b,Silent:1b,ActiveEffects:[{Ambient:0b,Id:14,Duration:2100000000,ShowParticles:0b},{Ambient:0b,Id:12,Duration:2100000000,ShowParticles:0b}],Attributes:[{Name:"generic.max_health",Base:1024.0d}],Health:1024.0f,ArmorItems:[{},{},{},{id:"minecraft:stick",Count:1b,tag:{CustomModelData:11999}}]}
 
 # 体力等値設定
-data modify storage arena: Boss.Health set value 1000.0f
+data modify storage arena:boss Health set value 1000.0f
 
 # ボスバー
 bossbar add arena:boss {"text":"アリーナマスター","color": "white","bold": true}

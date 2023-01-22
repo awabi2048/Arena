@@ -13,7 +13,7 @@ bossbar set arena_beta:extra_boss max 800
 bossbar set arena_beta:extra_boss players @a[tag=Arena.Player,distance=..20]
 
 # スキル関連
-data modify storage arena: Boss.LastHealth set value 800.0d
+data modify storage arena:boss LastHealth set value 800.0d
 
 # 演出
 playsound entity.lightning_bolt.thunder master @a ~ ~ ~ 5 0.75

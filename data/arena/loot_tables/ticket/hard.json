@@ -39,7 +39,7 @@
                     "type": "minecraft:fixed",
                     "name": "$TicketCount"
                   },
-                  "score": "Arena",
+                  "score": "Arena.Temp",
                   "scale": 1
                 },
                 "add": false

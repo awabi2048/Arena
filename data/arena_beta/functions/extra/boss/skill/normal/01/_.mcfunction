@@ -35,4 +35,4 @@ execute at @e[tag=Arena.Boss.Skill01.06] run particle dust 0 1 1 1 ~ ~ ~ 0.25 0 
 execute at @e[tag=Arena.Boss.Skill01.07] run particle dust 0 0.5 1 1 ~ ~ ~ 0.25 0 0.25 0.5 2
 execute at @e[tag=Arena.Boss.Skill01.08] run particle dust 0 0 1 1 ~ ~ ~ 0.25 0 0.25 0.5 2
 
-execute if score $Boss.SkillTimer Arena matches 0 run data modify storage arena: Boss.Skill.01.Killed set value []
+execute if score $Boss.SkillTimer Arena matches 0 run data modify storage arena:boss Skill.01.Killed set value []

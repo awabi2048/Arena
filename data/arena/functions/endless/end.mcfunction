@@ -2,7 +2,7 @@
 execute store success score $Temp.Clear Arena unless entity @e[tag=Arena.LastBoss]
 
     # 成功
-    execute if score $Temp.Clear Arena matches 1 run tellraw @a[tag=Arena.Notice] [{"text":"エンドレスアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
+    execute if score $Temp.Clear Arena matches 1 run tellraw @a[tag=Arena.Notice] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"エンドレスアリーナ","bold": true,"color": "red"},{"text":"を","color": "aqua","italic": false,"bold": true},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": true,"color": "aqua"}]
     execute if score $Temp.Clear Arena matches 1 run advancement grant @a[tag=Arena.Player,distance=..32] only arena:display/endless/first_clear
 
         ## 実績解除検知
@@ -15,7 +15,7 @@ execute store success score $Temp.Clear Arena unless entity @e[tag=Arena.LastBos
     execute if score $Temp.Clear Arena matches 1 run function arena:reset
 
     # 失敗
-    execute if score $Temp.Clear Arena matches 0 run tellraw @a[tag=Arena.Player,distance=..20] {"text":"敵がいない状態にしてもう一度ボタンを押してください","color":"aqua"}
+    execute if score $Temp.Clear Arena matches 0 run tellraw @a[tag=Arena.Player,distance=..20] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"敵がいない状態にしてもう一度ボタンを押してください","color":"aqua"}]
     execute if score $Temp.Clear Arena matches 0 run playsound entity.shulker.hurt master @a ~ ~ ~ 5 1
 
     execute if score $Temp.Clear Arena matches 0 store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave

@@ -1,6 +1,6 @@
 # APあるか判定
     # AP不足
-    execute as @a[distance=..3.5] unless score @s arena matches 1.. run tellraw @s [{"text": "アリーナポイントが不足していたため、入場できませんでした","color": "red"}]
+    execute as @a[distance=..3.5] unless score @s arena matches 1.. run tellraw @s [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text": "アリーナポイントが不足していたため、入場できませんでした","color": "red"}]
     execute as @a[distance=..3.5] unless score @s arena matches 1.. run playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5
 
     # APあり
@@ -24,7 +24,7 @@ scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[ta
     # TPしてから
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..3.5] @s
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run playsound entity.experience_orb.pickup master @a ~ ~ ~ 5 2
-    execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} run tellraw @a[tag=Arena.Player,distance=..20] {"text":"看板を右クリックでモブの種類を、素手でシフト右クリックで難易度を変更できます","color":"aqua"}
+    execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} run tellraw @a[tag=Arena.Player,distance=..20] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"看板を右クリックでモブの種類を、\n素手でシフト右クリックで難易度を変更できます","color":"yellow"}]
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s unless data entity @s {data:{Arena:{StageType:Normal}}} as @a[distance=..20] unless score @s Arena.MaxStageReached matches 1.. run scoreboard players set @s Arena.MaxStageReached 0
     
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Endless}}} if data storage arena:temp {PlayerCount:1b} if entity @p[advancements={arena:display/endless/solo_clear=true}] run scoreboard objectives add Arena.PlayHiddenStage trigger
