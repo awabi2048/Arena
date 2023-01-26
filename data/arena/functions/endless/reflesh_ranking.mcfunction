@@ -1,31 +1,21 @@
 # ランキング表示
-# 表示をリセット
-kill @e[tag=Arena.RankingDisplay-Note]
-
-kill @e[tag=Arena.RankingDisplay-1]
-kill @e[tag=Arena.RankingDisplay-2]
-kill @e[tag=Arena.RankingDisplay-3]
-
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.85 ~ {Tags:["Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"エンドレスアリーナ","color": "red","bold": true}',CustomNameVisible:true}
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.6 ~ {Tags:["Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"最高到達ウェーブランキング","color": "gold","bold": true}',CustomNameVisible:true}
-
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~1.2 ~ {Tags:["Arena.RankingDisplay-1"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.75 ~ {Tags:["Arena.RankingDisplay-2"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
-execute at @e[tag=Arena.RankingCore] run summon armor_stand ~ ~0.3 ~ {Tags:["Arena.RankingDisplay-3"],Marker:1b,Small:1b,Invisible:1b,CustomName:'',CustomNameVisible:true,Silent:true}
-
 # 最高到達ウェーブをソート
-execute as @a if score @s Arena.MaxStageReached matches 1.. run scoreboard players operation @s Arena.Temp = @s Arena.MaxStageReached
+    # 1st
+    execute as @a if score @s Arena.MaxStageReached matches 1.. run scoreboard players operation @s Arena.Temp = @s Arena.MaxStageReached
 
-scoreboard players operation $Rank1st Arena.Temp > @a Arena.Temp
-execute as @a if score @s Arena.Temp = $Rank1st Arena.Temp run scoreboard players reset @s Arena.Temp
+    scoreboard players operation $Rank1st Arena.Temp > @a Arena.Temp
+    execute as @a if score @s Arena.Temp = $Rank1st Arena.Temp run scoreboard players reset @s Arena.Temp
 
-scoreboard players operation $Rank2nd Arena.Temp > @a Arena.Temp
-execute as @a if score @s Arena.Temp = $Rank2nd Arena.Temp run scoreboard players reset @s Arena.Temp
+    # 2nd
+    scoreboard players operation $Rank2nd Arena.Temp > @a Arena.Temp
+    execute as @a if score @s Arena.Temp = $Rank2nd Arena.Temp run scoreboard players reset @s Arena.Temp
 
-scoreboard players operation $Rank3rd Arena.Temp > @a Arena.Temp
-execute as @a if score @s Arena.Temp = $Rank3rd Arena.Temp run scoreboard players reset @s Arena.Temp
+    # 3rd
+    scoreboard players operation $Rank3rd Arena.Temp > @a Arena.Temp
+    execute as @a if score @s Arena.Temp = $Rank3rd Arena.Temp run scoreboard players reset @s Arena.Temp
 
-scoreboard players reset @a Arena.Temp
+    # リセット
+    scoreboard players reset @a Arena.Temp
 
 # 表示データを作成
     # 1st
@@ -63,6 +53,4 @@ scoreboard players reset @a Arena.Temp
 
     setblock 0 -64 0 bedrock
     tag @a[tag=Arena.Temp.Ranked] remove Arena.Temp.Ranked
-
-
 

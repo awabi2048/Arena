@@ -32,9 +32,10 @@ scoreboard players set #127 Arena 127
 
 scoreboard players set #360 Arena 360
 
-# ランキングの更新
-function arena:endless/reflesh_ranking
 
 # Constant
-scoreboard players set #60 Constant 60
+scoreboard objectives add Constant dummy
+
+scoreboard players set #5 Constant 5
 scoreboard players set #20 Constant 20
+scoreboard players set #60 Constant 60
