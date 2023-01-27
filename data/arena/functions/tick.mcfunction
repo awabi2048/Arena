@@ -10,12 +10,6 @@ tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob
 # 看板クールダウン設定用
 execute as @e[tag=Arena.Timer] if data entity @s {PortalCooldown:0} run kill @s
 
-# エンドレス
-#execute as @e[tag=Arena.Core] if score @s Arena matches -1 at @s run function arena:endless/boss/tick
-execute as @e[tag=Arena.Core] if score @s Arena matches 99 at @s run function arena_beta:extra/boss/tick
-
-#execute as @e[tag=Arena.Core] if score @s Arena matches 1.. unless data entity @s {data:{Arena:{StageType:Normal}}} unless data entity @s {data:{Arena:{StageType:BetaExtra}}} run data modify entity @s data.Arena.StageType set value "Normal"
-
 # 会場から離れたプレイヤーのタグ除去, スコアリセット
 execute at @e[tag=Arena.Core] as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena unless score @s Arena matches 0 run tag @s[distance=32..] remove Arena.Player
 execute as @a[tag=!Arena.Player] run scoreboard players set @s Arena 0

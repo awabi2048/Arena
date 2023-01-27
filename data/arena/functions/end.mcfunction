@@ -17,24 +17,16 @@ execute if data storage arena:temp {NoticeInfo:{Name:4}} run data modify storage
 execute if data storage arena:temp {NoticeInfo:{Name:5}} run data modify storage arena:temp NoticeInfo.Name set value "クリーパー"
 execute if data storage arena:temp {NoticeInfo:{Name:6}} run data modify storage arena:temp NoticeInfo.Name set value "ガーディアン"
 
-# tick時間を分・秒に
-execute store result score $StartTime Arena.Temp run data get entity @s data.Arena.StartTime
-execute store result score $Time:tick Arena.Temp run time query gametime
-
-scoreboard players operation $Time:tick Arena.Temp -= $StartTime Arena.Temp
-
-function arena:record/calc_time
+# クリアタイム通知
+tellraw @a[tag=Arena.Player,distance=..32] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"クリアタイム: ","color": "white","bold": true},{"nbt":"data.Arena.DisplayTime","entity":"@s","interpret":true,"color": "aqua","bold": true}]
 
 # ソロなら記録リストに追加
 execute if data entity @s {data:{Arena:{Solo:true}}} if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run function arena:record/add
 
-# クリアタイム通知
-tellraw @a[tag=Arena.Player,distance=..32] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"クリアタイム: ","color": "white","bold": true},{"nbt":"TimeDisplay.Combined","storage":"arena:temp","interpret":true,"color": "aqua","bold": true}]
-
 # 難易度別で色分け
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "aqua","bold": true},{"text":"・","bold": false,"color": "aqua"},{"storage":"arena:temp","nbt":"NoticeInfo.Type","color": "aqua","bold": true},{"text":"アリーナ","bold": true,"color": "aqua"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "green","bold": true},{"text":"・","bold": false,"color": "green"},{"storage":"arena:temp","nbt":"NoticeInfo.Type","color": "green","bold": true},{"text":"アリーナ","bold": true,"color": "green"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
-execute if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "red","bold": true},{"text":"・","bold": false,"color": "red"},{"storage":"arena:temp","nbt":"NoticeInfo.Type","color": "red","bold": true},{"text":"アリーナ","bold": true,"color": "red"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"イージー"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "aqua","bold": true},{"text":"・","bold": false,"color": "aqua"},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "aqua","bold": true},{"text":"アリーナ","bold": true,"color": "aqua"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"ノーマル"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "green","bold": true},{"text":"・","bold": false,"color": "green"},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "green","bold": true},{"text":"アリーナ","bold": true,"color": "green"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
+execute if data storage arena:temp {NoticeInfo:{Difficulty:"ハード"}} run tellraw @a[tag=Arena.Notice] [{"storage":"arena:temp","nbt":"NoticeInfo.Difficulty","color": "red","bold": true},{"text":"・","bold": false,"color": "red"},{"storage":"arena:temp","nbt":"NoticeInfo.Name","color": "red","bold": true},{"text":"アリーナ","bold": true,"color": "red"},{"text":"を","bold": false,"color": "white"},{"selector":"@a[tag=Arena.Player,distance=..32]","bold": true,"color": "gold"},{"text":"さんがクリアしました！","bold": false,"color": "white"}]
 
 # 実績解除検知
     ## 初クリア

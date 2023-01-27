@@ -8,7 +8,7 @@
               "condition": "minecraft:entity_properties",
               "entity": "this",
               "predicate": {
-                "nbt": "{Tags:[\"Arena.Ranking.PageNext\"]}"
+                "nbt": "{Tags:[\"Arena.RankingDisplay.PageNext\"]}"
               }
             }
           ]

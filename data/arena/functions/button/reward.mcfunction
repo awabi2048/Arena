@@ -28,3 +28,13 @@ execute if data storage arena:temp {Reward:{MobType:3,Difficulty:2}} if predicat
 execute if data storage arena:temp {Reward:{MobType:4,Difficulty:2}} if predicate arena:drop_chance/title run loot give @a[tag=Arena.Player,distance=..32] loot arena:title/slime
 execute if data storage arena:temp {Reward:{MobType:5,Difficulty:2}} if predicate arena:drop_chance/title run loot give @a[tag=Arena.Player,distance=..32] loot arena:title/creeper
 execute if data storage arena:temp {Reward:{MobType:6,Difficulty:2}} if predicate arena:drop_chance/title run loot give @a[tag=Arena.Player,distance=..32] loot arena:title/guardian
+
+# クリアタイムの取得
+execute store result score $StartTime Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StartTime
+execute store result score $Time:tick Arena.Temp run time query gametime
+
+scoreboard players operation $Time:tick Arena.Temp -= $StartTime Arena.Temp
+
+function arena:record/calc_time
+data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.DisplayTime set from storage arena:temp TimeDisplay.Combined
+execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.TickTime int 1 run scoreboard players get $Time:tick Arena.Temp
