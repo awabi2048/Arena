@@ -5,7 +5,7 @@ execute as @a[tag=Arena.DisplayMobInfo] if score $DisplayMobInfo Arena matches 0
 execute at @a[tag=Arena.Player] as @e[tag=Arena.Core,distance=..32] at @s if data entity @s {data:{Arena:{Solo:true}}} as @a[distance=..32] unless score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Solo set value false
 
 # スライム分裂時にタグ
-tag @e[type=slime,tag=!Arena.Mob] add Arena.Mob
+execute at @e[tag=Arena.Core] as @e[type=slime,distance=..32,tag=!Arena.Mob] run tag @s add Arena.Mob
 
 # 看板クールダウン設定用
 execute as @e[tag=Arena.Timer] if data entity @s {PortalCooldown:0} run kill @s

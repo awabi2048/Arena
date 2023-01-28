@@ -7,8 +7,6 @@ execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} stor
 execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} store result score $DupeCheck.OldData Arena.Temp run data get storage arena:temp PlayerData[0].weight
 execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} store result score $DupeCheck.NewData Arena.Temp run data get storage arena:temp MergingRecord.CompareTarget.weight
 
-execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} if score $DupeCheck.OldData Arena.Temp <= $DupeCheck.NewData Arena.Temp run say FUJI
-
 execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} if score $DupeCheck.OldData Arena.Temp <= $DupeCheck.NewData Arena.Temp run data modify storage arena:temp MergingRecord.PlayerData set from storage arena:temp PlayerData[0]
 execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} if score $DupeCheck.OldData Arena.Temp <= $DupeCheck.NewData Arena.Temp run data modify storage arena:temp MergingRecord.CompareSucceeded set value true
 

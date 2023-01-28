@@ -13,35 +13,40 @@ execute unless data storage arena:temp {MergingRecord:{PlayerData:{Type:"ガー�
 
 execute unless data storage arena:temp {MergingRecord:{PlayerData:{Type:"エンドレス"}}} run data remove storage arena:temp PlayerData[{Type:"エンドレス"}]
 
+# ソート
+#Memo: ソートは赤石氏作のAiMathライブラリを使用
+data modify storage math: in set from storage arena:temp PlayerData
+
+function #math:sort/ascend
+
+data modify storage arena:temp PlayerData set from storage math: out
+
 # 一時データリセット
 data modify storage arena:temp Ranking set value []
 
-setblock 0 -64 0 oak_sign{Text1:''}
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:''}
 
 # 1st
-data modify block 0 -64 0 Text1 set value '[{"text": "1st. ","color": "white","bold": true},{"nbt":"PlayerData[0].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[0].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "1st. ","color": "white","bold": true},{"nbt":"PlayerData[0].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[0].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
 execute in minecraft:overworld if data storage arena:temp PlayerData[0] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 # 2nd
-data modify block 0 -64 0 Text1 set value '[{"text": "2nd. ","color": "white","bold": true},{"nbt":"PlayerData[1].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[1].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "2nd. ","color": "white","bold": true},{"nbt":"PlayerData[1].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[1].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
 execute in minecraft:overworld if data storage arena:temp PlayerData[1] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 # 3rd
-data modify block 0 -64 0 Text1 set value '[{"text": "3rd. ","color": "white","bold": true},{"nbt":"PlayerData[2].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[2].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "3rd. ","color": "white","bold": true},{"nbt":"PlayerData[2].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[2].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
 execute in minecraft:overworld if data storage arena:temp PlayerData[2] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 # 4th
-data modify block 0 -64 0 Text1 set value '[{"text": "4th. ","color": "white","bold": true},{"nbt":"PlayerData[3].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[3].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "4th. ","color": "white","bold": true},{"nbt":"PlayerData[3].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[3].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
 execute in minecraft:overworld if data storage arena:temp PlayerData[3] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 # 5th
-data modify block 0 -64 0 Text1 set value '[{"text": "5th. ","color": "white","bold": true},{"nbt":"PlayerData[4].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[4].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "5th. ","color": "white","bold": true},{"nbt":"PlayerData[4].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[4].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
 execute in minecraft:overworld if data storage arena:temp PlayerData[4] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
-setblock 0 -64 0 bedrock
-
-# forceload
-
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
 
 # 取得データを適切なパスに格納
 execute if data storage arena:temp {MergingRecord:{PlayerData:{Type:"ゾンビ"}}} run data modify storage arena: Ranking.Zombie set from storage arena:temp Ranking

@@ -5,8 +5,8 @@ kill @e[tag=Arena.RankingDisplay-Note]
 kill @e[tag=Arena.RankingDisplay]
 
 # 各種表示用エンティティ召喚
-summon armor_stand ~ ~2.75 ~ {Tags:["Arena.RankingDisplay.Note-0","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "red","bold": true}',CustomNameVisible:true}
-summon armor_stand ~ ~2.5 ~ {Tags:["Arena.RankingDisplay.Note-1","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "gold","bold": true}',CustomNameVisible:true}
+summon armor_stand ~ ~2.75 ~ {Tags:["Arena.RankingDisplay.Note-0","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "red","bold": true}',CustomNameVisible:true,Silent:true}
+summon armor_stand ~ ~2.5 ~ {Tags:["Arena.RankingDisplay.Note-1","Arena.RankingDisplay-Note"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":" ","color": "gold","bold": true}',CustomNameVisible:true,Silent:true}
 
 summon armor_stand ~ ~2.1 ~ {Tags:["Arena.RankingDisplay-0","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
 summon armor_stand ~ ~1.65 ~ {Tags:["Arena.RankingDisplay-1","Arena.RankingDisplay"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":""}',CustomNameVisible:true,Silent:true}
