@@ -24,7 +24,7 @@ data modify storage arena:temp PlayerData set from storage math: out
 # 一時データリセット
 data modify storage arena:temp Ranking set value []
 
-execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:''}
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign
 
 # 1st
 execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "1st. ","color": "white","bold": true},{"nbt":"PlayerData[0].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[0].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
@@ -47,6 +47,9 @@ execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{
 execute in minecraft:overworld if data storage arena:temp PlayerData[4] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 execute in minecraft:overworld run setblock 0 -64 0 bedrock
+
+# ランキングを初期化
+data modify storage arena: Ranking set value {Zombie:[],Skeleton:[],Blaze:[],Spider:[],Slime:[],Creeper:[],Guardian:[],Endless:[]}
 
 # 取得データを適切なパスに格納
 execute if data storage arena:temp {MergingRecord:{PlayerData:{Type:"ゾンビ"}}} run data modify storage arena: Ranking.Zombie set from storage arena:temp Ranking

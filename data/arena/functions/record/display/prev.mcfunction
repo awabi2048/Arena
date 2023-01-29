@@ -14,3 +14,6 @@ playsound ui.button.click master @a ~ ~ ~ 1 1
 
 # 表示更新
 execute as @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] at @s run function arena:record/display/reflesh
+
+# スライム回復
+data modify entity @e[tag=Arena.RankingDisplay.PagePrev,limit=1] Health set value 1024.0f

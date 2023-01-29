@@ -18,3 +18,6 @@ summon armor_stand ~ ~ ~ {Tags:["ArenaBoss.Part08","ArenaBoss.Element","ArenaBos
 # 当たり判定
 summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Hitbox","ArenaBoss.Element"],Silent:true,NoAI:true,AbsorptionAmount:1024.0f,ActiveEffects:[{Id:14,Duration:2147483647,ShowParticles:false}],DeathLootTable:"empty"}
 
+# ふわふわ
+summon marker ~ ~ ~ {Tags:["ArenaBoss.Extra01","ArenaBoss.Element"]}
+

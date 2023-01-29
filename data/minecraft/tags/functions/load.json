@@ -1,5 +1,6 @@
 {
   "values": [
-    "arena:load"
+    "arena:load",
+    "arena-boss:load"
   ]
 }

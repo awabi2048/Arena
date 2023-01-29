@@ -9,3 +9,4 @@ playsound entity.ender_dragon.flap master @s ~ ~ ~ 1 1.2
 playsound ui.button.click master @s ~ ~ ~ 1 1.5
 
 execute as @e[type=potion,distance=..2.5] if data entity @s {Item:{tag:{Arena:{Item:DebugTool}}}} run kill @s
+
