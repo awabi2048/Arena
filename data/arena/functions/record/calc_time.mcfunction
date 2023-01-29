@@ -22,6 +22,7 @@ execute if score $Time:second Arena.Temp matches ..9 run data modify storage are
 execute if score $Time:decimal Arena.Temp matches ..9 run data modify storage arena:temp TimeDisplay.Separator[2] set value ".0"
 
 # データをひとまとまりに
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
 execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"nbt":"TimeDisplay.Separator[0]","storage": "arena:temp"},{"score":{"name": "$Time:minute","objective": "Arena.Temp"}},{"nbt":"TimeDisplay.Separator[1]","storage": "arena:temp"},{"score":{"name": "$Time:second","objective": "Arena.Temp"}},{"nbt":"TimeDisplay.Separator[2]","storage": "arena:temp"},{"score":{"name": "$Time:decimal","objective": "Arena.Temp"}}]'}
 execute in minecraft:overworld run data modify storage arena:temp TimeDisplay.Combined set from block 0 -64 0 Text1
 

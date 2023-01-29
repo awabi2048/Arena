@@ -33,4 +33,4 @@ execute if data storage arena:temp PlayerData[0] run function arena:record/check
 data modify storage arena: PlayerData set from storage arena:temp MergingRecord.ComparedPlayerData
 
 # ランキングデータを更新, 適応
-function arena:record/update_ranking
+schedule function arena:record/update_ranking 1t

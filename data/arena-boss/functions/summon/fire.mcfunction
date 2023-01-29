@@ -21,3 +21,6 @@ summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Hitbox","ArenaBoss.Element"],Sile
 # ふわふわ
 summon marker ~ ~ ~ {Tags:["ArenaBoss.Extra01","ArenaBoss.Element"]}
 
+# Motion用
+summon armor_stand ~ ~ ~ {Tags:["ArenaBoss.Motion","ArenaBoss.Element"],Invisible:true,Small:true}
+

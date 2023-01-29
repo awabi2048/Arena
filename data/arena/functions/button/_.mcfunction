@@ -10,17 +10,9 @@ execute if score $Wave Arena.Temp matches 0 store result entity @e[tag=Arena.Cor
 
 # ステージ種類データの設定
 execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 1.. run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "Normal"
-execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches ..-1 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "Endless"
+execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "Endless"
 
-execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches 99 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "BetaExtra"
-
-execute as @a[tag=Arena.Player,distance=..32] if score @s Arena.PlayHiddenStage matches 1 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.StageType set value "HiddenEndless"
-
-# エンドレス隠しステージ入場の処理
-execute as @a[tag=Arena.Player,distance=..32] if score @s Arena.PlayHiddenStage matches 1 run playsound block.beacon.power_select master @s ~ ~ ~ 5 0.84
-execute as @a[tag=Arena.Player,distance=..32] if score @s Arena.PlayHiddenStage matches 1 run playsound block.beacon.power_select master @s ~ ~ ~ 5 1.18
-
-scoreboard objectives remove Arena.PlayHiddenStage
+execute if score @e[tag=Arena.Core,sort=nearest,limit=1] Arena matches -1 if score $Wave Arena.Temp matches 0 run data modify storage arena: Endless.LastSummonedMob set value [-1, -1, -1]
 
 # 次のウェーブに 進む/終了
 function arena:button/test
@@ -38,5 +30,4 @@ execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.W
     execute if score $Wave Arena.Temp matches 6..7 run function arena:button/end
 
     # エンドレス
-    execute if score $Wave Arena.Temp matches -100..-1 run function arena:endless/wave
-    execute if score $Wave Arena.Temp matches -101 run function arena:endless/end
+    execute if score $Wave Arena.Temp matches ..-1 run function arena:endless/wave

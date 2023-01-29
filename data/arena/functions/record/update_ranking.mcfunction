@@ -24,26 +24,32 @@ data modify storage arena:temp PlayerData set from storage math: out
 # 一時データリセット
 data modify storage arena:temp Ranking set value []
 
-execute in minecraft:overworld run setblock 0 -64 0 oak_sign
-
 # 1st
-execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "1st. ","color": "white","bold": true},{"nbt":"PlayerData[0].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[0].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"text": "1st. ","color": "white","bold": true},{"nbt":"PlayerData[0].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[0].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'}
 execute in minecraft:overworld if data storage arena:temp PlayerData[0] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
+
 # 2nd
-execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "2nd. ","color": "white","bold": true},{"nbt":"PlayerData[1].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[1].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"text": "2nd. ","color": "white","bold": true},{"nbt":"PlayerData[1].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[1].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'}
 execute in minecraft:overworld if data storage arena:temp PlayerData[1] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
+
 # 3rd
-execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "3rd. ","color": "white","bold": true},{"nbt":"PlayerData[2].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[2].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"text": "3rd. ","color": "white","bold": true},{"nbt":"PlayerData[2].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[2].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'}
 execute in minecraft:overworld if data storage arena:temp PlayerData[2] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
+
 # 4th
-execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "4th. ","color": "white","bold": true},{"nbt":"PlayerData[3].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[3].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"text": "4th. ","color": "white","bold": true},{"nbt":"PlayerData[3].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[3].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'}
 execute in minecraft:overworld if data storage arena:temp PlayerData[3] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
+
 # 5th
-execute in minecraft:overworld run data modify block 0 -64 0 Text1 set value '[{"text": "5th. ","color": "white","bold": true},{"nbt":"PlayerData[4].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[4].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'
+execute in minecraft:overworld run setblock 0 -64 0 oak_sign{Text1:'[{"text": "5th. ","color": "white","bold": true},{"nbt":"PlayerData[4].Name","storage": "arena:temp","color": "yellow","bold": true},{"text": "","bold": true,"color": "aqua","extra":[{"text": "("},{"nbt":"PlayerData[4].DisplayData","storage": "arena:temp","interpret": true},{"text": ")"}]}]'}
 execute in minecraft:overworld if data storage arena:temp PlayerData[4] run data modify storage arena:temp Ranking append from block 0 -64 0 Text1
 
 execute in minecraft:overworld run setblock 0 -64 0 bedrock
