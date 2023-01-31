@@ -1,3 +1,3 @@
 # tick
 
-execute if data entity @s {data:{ArenaBoss:{Name:"Fire"}}} run function arena-boss:animation/fire/tick
+execute if data storage arena-boss: {Name:Fire} run function arena-boss:animation/fire/tick

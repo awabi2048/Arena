@@ -5,7 +5,7 @@ particle flame ~ ~ ~ 0 0 0 0.25 20
 # ダメージ & 炎上ダメージ
 function #arena-boss:damage/fire
 
-data modify storage score_damage: Argument set value {Damage:18.0d,DamageType:Fire,DisableParticle:true}
+data modify storage score_damage: Argument set value {Damage:40.0d,DamageType:Fire,DisableParticle:true}
 function score_damage:api/attack
 
 # kill

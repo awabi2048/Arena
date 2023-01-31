@@ -6,7 +6,7 @@ playsound block.fire.extinguish master @a ~ ~ ~ 2 1.5
 playsound block.metal.break master @a ~ ~ ~ 2 1.25
 
 # 周囲のプレイヤーにダメージ
-data modify storage score_damage: Argument set value {Damage:8.0d,DamageType:Blast,DisableParticle:true}
+data modify storage score_damage: Argument set value {Damage:15.0d,DamageType:Blast,DisableParticle:true}
 execute as @e[tag=Arena.Player,distance=..4] run function score_damage:api/attack
 
 # kill
