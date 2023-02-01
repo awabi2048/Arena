@@ -16,9 +16,9 @@ execute if score $AnimationTimer ArenaBoss matches 1..15 run function arena-boss
 execute if score $AnimationTimer ArenaBoss matches 16..25 run function arena-boss:animation/fire/body_spin/fastest
 
 # 発射
-execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~15 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.Temp"]}
-execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~ ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.Temp"]}
-execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~-15 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.Temp"]}
+execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~15 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.SkillMarker","ArenaBoss.Temp"]}
+execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~ ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.SkillMarker","ArenaBoss.Temp"]}
+execute if score $AnimationTimer ArenaBoss matches 22 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~-15 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.SkillMarker","ArenaBoss.Temp"]}
 
 execute if score $AnimationTimer ArenaBoss matches 22 as @e[tag=ArenaBoss.Temp] at @s facing entity @e[tag=ArenaBoss.Core] eyes rotated ~ 0 run tp @s ~ ~ ~ ~180 ~
 execute if score $AnimationTimer ArenaBoss matches 22 run tag @e[tag=ArenaBoss.Temp] remove ArenaBoss.Temp
@@ -26,8 +26,8 @@ execute if score $AnimationTimer ArenaBoss matches 22 run tag @e[tag=ArenaBoss.T
 execute if score $AnimationTimer ArenaBoss matches 22 run playsound entity.blaze.shoot master @a ~ ~ ~ 2 0.6
 
 
-execute if score $AnimationTimer ArenaBoss matches 25 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~7.5 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.Temp"]}
-execute if score $AnimationTimer ArenaBoss matches 25 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~-7.5 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.Temp"]}
+execute if score $AnimationTimer ArenaBoss matches 25 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~7.5 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.SkillMarker","ArenaBoss.Temp"]}
+execute if score $AnimationTimer ArenaBoss matches 25 at @e[tag=ArenaBoss.Core] positioned ~ ~1 ~ rotated ~-7.5 ~ positioned ^ ^ ^1 run summon marker ~ ~ ~ {Tags:["ArenaBoss.Skill01","ArenaBoss.SkillMarker","ArenaBoss.Temp"]}
 
 execute if score $AnimationTimer ArenaBoss matches 25 as @e[tag=ArenaBoss.Temp] at @s facing entity @e[tag=ArenaBoss.Core] eyes rotated ~ 0 run tp @s ~ ~ ~ ~180 ~
 execute if score $AnimationTimer ArenaBoss matches 25 run tag @e[tag=ArenaBoss.Temp] remove ArenaBoss.Temp

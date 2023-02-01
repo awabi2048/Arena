@@ -1,0 +1,16 @@
+[
+    {
+      "function": "minecraft:set_damage",
+      "damage": {
+        "type": "minecraft:score",
+        "target": {
+          "type": "minecraft:fixed",
+          "name": "$DurabilityRemoved"
+        },
+        "score": "ArenaBoss.Temp",
+        "scale": -0.001
+      },
+      "add": true
+    }
+  ]
+  

@@ -1,0 +1,25 @@
+{
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:player_killed_entity",
+        "conditions": {
+          "player": [
+            {
+              "condition": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "nbt": "{Tags:[\"Arena.Player\"]}"
+              }
+            }
+          ],
+          "entity": {
+            "nbt": "{Tags:[\"ArenaBoss.Skill03-Hitbox\"]}"
+          }
+        }
+      }
+    },
+    "rewards": {
+      "function": "arena-boss:skill/fire/burning_pillar/broken"
+    }
+  }
+  

@@ -16,8 +16,8 @@ execute if score $AnimationTimer ArenaBoss matches 1..20 run function arena-boss
 execute if score $AnimationTimer ArenaBoss matches 21..40 run function arena-boss:animation/fire/body_spin/fastest
 
 # 発射
-execute if score $AnimationTimer ArenaBoss matches 21..40 at @e[tag=ArenaBoss.Core] rotated ~9 ~ positioned ^ ^ ^1 run summon marker ~ ~0.6 ~ {Tags:["ArenaBoss.Skill02"]}
-execute if score $AnimationTimer ArenaBoss matches 21..40 at @e[tag=ArenaBoss.Core] rotated ~-9 ~ positioned ^ ^ ^1 run summon marker ~ ~0.6 ~ {Tags:["ArenaBoss.Skill02"]}
+execute if score $AnimationTimer ArenaBoss matches 21..40 at @e[tag=ArenaBoss.Core] rotated ~9 ~ positioned ^ ^ ^1 run summon marker ~ ~0.6 ~ {Tags:["ArenaBoss.Skill02","ArenaBoss.SkillMarker"]}
+execute if score $AnimationTimer ArenaBoss matches 21..40 at @e[tag=ArenaBoss.Core] rotated ~-9 ~ positioned ^ ^ ^1 run summon marker ~ ~0.6 ~ {Tags:["ArenaBoss.Skill02","ArenaBoss.SkillMarker"]}
 
 # 演出
 execute if score $AnimationTimer ArenaBoss matches 1..3 run playsound block.fire.extinguish master @a ~ ~ ~ 2 0.66

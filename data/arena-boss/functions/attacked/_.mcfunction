@@ -1,34 +1,14 @@
 # トリガー
 advancement revoke @s only arena-boss:attacked
 
-
 # 被攻撃時処理
-execute if data entity @e[tag=ArenaBoss.Core,limit=1] {data:{ArenaBoss:{Name:"Fire"}}} run function arena-boss:attacked/fire
+execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health 100
+execute if data storage arena-boss: {Name:"Fire"} run function arena-boss:attacked/fire
 
-# ダメージ与える
-    # 被ダメージ量計算
-    execute store result score $DamageDealt ArenaBoss.Temp run data get entity @e[tag=ArenaBoss.Hitbox,limit=1] Health 100
-    scoreboard players remove $DamageDealt ArenaBoss.Temp 102400
+# ボスバー
+execute store result bossbar arena-boss: value run data get storage arena-boss: Health
 
-    scoreboard players operation $DamageDealt ArenaBoss.Temp /= #2 Constant
-
-    # 体力から減算
-    execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health 100
-    scoreboard players operation $Health ArenaBoss.Temp += $DamageDealt ArenaBoss.Temp
-
-    # 体力に適用
-    execute store result storage arena-boss: Health float 0.01 run scoreboard players get $Health ArenaBoss.Temp
-
-    data modify entity @e[tag=ArenaBoss.Hitbox,limit=1] Health set value 1024.0f
-
-    # ボスバー
-    execute store result bossbar arena-boss: value run data get storage arena-boss: Health
-
-    execute if score $Health ArenaBoss.Temp matches ..-1 run bossbar remove arena-boss:
-
-# 個体別処理
-function arena-boss:attacked/fire
-
+execute if score $Health ArenaBoss.Temp matches ..-1 run bossbar remove arena-boss:
 
 # アニメーション中なら中断
 execute unless data storage arena-boss: {Animation:{Name:"Regular"}} run function arena:stop_process
