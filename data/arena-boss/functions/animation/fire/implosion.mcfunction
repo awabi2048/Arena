@@ -26,7 +26,7 @@ execute if score $AnimationTimer ArenaBoss matches 11..40 as @e[tag=ArenaBoss.Mo
 execute if score $AnimationTimer ArenaBoss matches 11..40 as @e[tag=ArenaBoss.Motion] at @s if entity @p[tag=ArenaBoss.SkillTarget,distance=3..8] run tp @s ^ ^ ^0.25 facing entity @p[tag=ArenaBoss.SkillTarget]
 
 # 攻撃
-execute if score $AnimationTimer ArenaBoss matches 10 run data modify storage score_damage: Arugment set value {Damage:5.0d,DamageType:Blast}
+execute if score $AnimationTimer ArenaBoss matches 10 run data modify storage score_damage: Argument set value {Damage:10.0d,DamageType:Blast}
 execute if score $AnimationTimer ArenaBoss matches 11..40 as @a[tag=Arena.Player,distance=..4] run function score_damage:api/attack
 
 # リセット

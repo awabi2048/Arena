@@ -16,7 +16,9 @@ execute as @a[tag=!Arena.Player] run scoreboard players set @s Arena 0
 
 # デバッグ用
 ## 情報表示
-execute as @a[tag=Arena.Debug] at @s run title @s actionbar ["MT: ",{"nbt":"data.Arena.MobType","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," WV: ",{"nbt":"data.Arena.Wave","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," DF: ",{"nbt":"data.Arena.Difficulty","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"},"Skill: ",{"nbt":"Animation.Name","storage": "arena-boss:"}]
+execute as @a[tag=Arena.Debug,tag=!Arena.DebugBoss] at @s run title @s actionbar ["Normal: [","MT: ",{"nbt":"data.Arena.MobType","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," WV: ",{"nbt":"data.Arena.Wave","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"}," DF: ",{"nbt":"data.Arena.Difficulty","entity": "@e[tag=Arena.Core,sort=nearest,limit=1]"},"]"]
+execute as @a[tag=Arena.Debug,tag=Arena.DebugBoss] at @s run title @s actionbar [" Boss: [","Behavior: ",{"nbt":"Animation.Name","storage": "arena-boss:"}," Health: ",{"nbt":"Health","storage": "arena-boss:"},"]"]
+
 
 ## デバッグツール
 execute at @a[tag=Arena.Debug] as @e[type=potion,distance=..2.5] if data entity @s {Item:{tag:{Arena:{Item:DebugTool}}}} as @p[tag=Arena.Debug] run function arena:debug/tool/used_general

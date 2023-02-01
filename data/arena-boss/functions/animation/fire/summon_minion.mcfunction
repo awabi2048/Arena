@@ -23,10 +23,10 @@ execute store result score $MinionCount ArenaBoss.Temp if entity @e[tag=ArenaBos
 data modify storage arena-boss: SummonMinion set value false
 execute if score $MinionCount ArenaBoss.Temp matches ..12 run data modify storage arena-boss: SummonMinion set value true
 
-execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health
-scoreboard players add $Health ArenaBoss.Temp 60
+execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health 100
+scoreboard players add $Health ArenaBoss.Temp 4000
 
-execute if data storage arena-boss: {SummonMinion:false} store result storage arena-boss: Health float 1 run scoreboard players get $Health ArenaBoss.Temp
+execute if data storage arena-boss: {SummonMinion:false} store result storage arena-boss: Health float 0.01 run scoreboard players get $Health ArenaBoss.Temp
 execute if data storage arena-boss: {SummonMinion:false} run tag @e[tag=ArenaBoss.Minion,limit=4,sort=random] add ArenaBoss.Temp
 
 execute if data storage arena-boss: {SummonMinion:false} at @e[tag=ArenaBoss.Core] run playsound entity.elder_guardian.curse master @a ~ ~ ~ 2 1.47
@@ -36,18 +36,18 @@ execute if data storage arena-boss: {SummonMinion:false} at @e[tag=ArenaBoss.Tem
 
 execute if data storage arena-boss: {SummonMinion:false} run kill @e[tag=ArenaBoss.Temp]
 
+execute if data storage arena-boss: {SummonMinion:false} run function arena-boss:animation/reset
+
 # 召喚
-execute if score $AnimationTimer ArenaBoss matches 20 if data storage arena-boss: {SummonMinion:true} run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,0.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:80.0f,DeathLootTable:"empty"}
-execute if score $AnimationTimer ArenaBoss matches 20 if data storage arena-boss: {SummonMinion:true} run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,0.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:80.0f,DeathLootTable:"empty"}
-execute if score $AnimationTimer ArenaBoss matches 20 if data storage arena-boss: {SummonMinion:true} run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[0.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:80.0f,DeathLootTable:"empty"}
-execute if score $AnimationTimer ArenaBoss matches 20 if data storage arena-boss: {SummonMinion:true} run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[0.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:80.0f,DeathLootTable:"empty"}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,0.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:100.0f,DeathLootTable:"empty"}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,0.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:100.0f,DeathLootTable:"empty"}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[0.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:100.0f,DeathLootTable:"empty"}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon blaze ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[0.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.15},{Name:"minecraft:generic.max_health",Base:100.0d}],Health:100.0f,DeathLootTable:"empty"}
 
-execute if score $AnimationTimer ArenaBoss matches 30 if data storage arena-boss: {SummonMinion:true} run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.25},{Name:"minecraft:generic.max_health",Base:100.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:80.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
-execute if score $AnimationTimer ArenaBoss matches 30 if data storage arena-boss: {SummonMinion:true} run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.3},{Name:"minecraft:generic.max_health",Base:100.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:80.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
-execute if score $AnimationTimer ArenaBoss matches 30 if data storage arena-boss: {SummonMinion:true} run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.3},{Name:"minecraft:generic.max_health",Base:100.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:80.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
-execute if score $AnimationTimer ArenaBoss matches 30 if data storage arena-boss: {SummonMinion:true} run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.25},{Name:"minecraft:generic.max_health",Base:100.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:80.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
-
-# 
+execute if score $AnimationTimer ArenaBoss matches 30 run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.25},{Name:"minecraft:generic.max_health",Base:120.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:120.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
+execute if score $AnimationTimer ArenaBoss matches 30 run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.3},{Name:"minecraft:generic.max_health",Base:120.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:120.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
+execute if score $AnimationTimer ArenaBoss matches 30 run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[-1.0d,0.25d,1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.3},{Name:"minecraft:generic.max_health",Base:120.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:120.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
+execute if score $AnimationTimer ArenaBoss matches 30 run summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Minion"],Motion:[1.0d,0.25d,-1.0d],Attributes:[{Name:"minecraft:generic.movement_speed",Base:0.25},{Name:"minecraft:generic.max_health",Base:120.0d},{Name:"minecraft:generic.attack_knockback",Base:0.1d}],Health:120.0f,DeathLootTable:"empty",HandItems:[{id:"minecraft:diamond_sword",Count:1b},{}]}
 
 # リセット
 execute if score $AnimationTimer ArenaBoss matches 40 run function arena-boss:animation/reset

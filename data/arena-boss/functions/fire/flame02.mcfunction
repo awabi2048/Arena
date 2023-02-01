@@ -1,6 +1,6 @@
 # tick: 弾
 # 演出
-particle flame ~ ~ ~ 0 0 0 0.05 3
+particle flame ~ ~ ~ 0 0 0 0.025 3
 
 # 本体操作
 execute facing entity @e[tag=ArenaBoss.Core,limit=1] eyes rotated ~ 0 run tp @s ^0.5 ^ ^-0.75 

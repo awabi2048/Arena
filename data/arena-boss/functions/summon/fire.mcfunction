@@ -27,6 +27,7 @@ summon armor_stand ~ ~ ~ {Tags:["ArenaBoss.Motion","ArenaBoss.Element"],Invisibl
 
 # Health
 data modify storage arena-boss: Health set value 2500.0f
+data modify storage arena-boss: MaxHealth set from storage arena-boss: Health 
 
 bossbar add arena-boss: [{"text":"【","bold": true},{"text":"キングブレイズ","color": "gold","bold": true,"obfuscated": false},{"text":"】","bold": true}]
 
