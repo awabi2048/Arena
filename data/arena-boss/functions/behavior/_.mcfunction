@@ -15,7 +15,7 @@ function arena:rng
 
 # 攻撃
 execute if score $Random Arena matches 1..99 run function arena-boss:behavior/attack/_
-
+    
 
 
 

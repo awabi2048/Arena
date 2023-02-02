@@ -39,6 +39,7 @@ execute if score $AnimationTimer ArenaBoss matches 200 run function arena-boss:a
 
 # その他
 execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular
+execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/shield
 
 # 動き停止
 execute if score $AnimationTimer ArenaBoss matches 1 run data modify storage arena-boss: Animation.Flag.NoMove set value true

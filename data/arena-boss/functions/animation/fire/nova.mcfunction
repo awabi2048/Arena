@@ -11,7 +11,7 @@ execute if score $AnimationTimer ArenaBoss matches 1..10 as @e[tag=ArenaBoss.Mot
 # いい感じの球体パーティクル
 execute if score $AnimationTimer ArenaBoss matches 10 run summon marker ~ ~ ~ {Tags:["ArenaBoss.SkillMarker"],Rotation:[0.0f,-90.0f]}
 
-execute if score $AnimationTimer ArenaBoss matches 11..70 as @e[tag=ArenaBoss.SkillMarker] at @s run tp @s ~ ~ ~ ~10 ~3
+execute if score $AnimationTimer ArenaBoss matches 11..70 as @e[tag=ArenaBoss.SkillMarker] at @s run tp @s ~ ~ ~ ~3 ~3
 execute if score $AnimationTimer ArenaBoss matches 11..70 at @e[tag=ArenaBoss.SkillMarker] run function arena-boss:animation/fire/particle/circle
 
 # 回転速度変更

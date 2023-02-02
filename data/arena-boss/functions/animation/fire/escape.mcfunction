@@ -18,8 +18,9 @@ execute if score $AnimationTimer ArenaBoss matches 20 run playsound entity.ender
 # tp & 置き土産(デバフ爆弾)
 execute if score $AnimationTimer ArenaBoss matches 20 run tp @e[tag=ArenaBoss.Motion] @e[tag=ArenaBoss.EscapeTo,sort=random,limit=1]
 
-execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] hunger 15 2
-execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] wither 5 2
+execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] slowness 20 3
+execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] darkness 10 2
+execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] poison 10 2
 
 execute if score $AnimationTimer ArenaBoss matches 20 run particle dust_color_transition 0 0.25 0 1 0 0.5 0.125 ~ ~ ~ 2 0 2 1 100
 

@@ -7,11 +7,14 @@
     # ダメージ軽減
     scoreboard players operation $DamageDealt ArenaBoss.Temp /= #2 Constant
 
+    execute if data storage arena-boss: {Animation:{Name:"Burning_Pillar"}} run scoreboard players operation $DamageDealt ArenaBoss.Temp *= #2 Constant
+    execute if data storage arena-boss: {Animation:{Name:"Burning_Pillar"}} run scoreboard players operation $DamageDealt ArenaBoss.Temp /= #3 Constant
+
     # エンチャントによって変更
     scoreboard players set $DamageMultiple ArenaBoss.Temp 100
 
     execute store result score $EnchLvl.FireAspect ArenaBoss.Temp run data get entity @s SelectedItem.tag.Enchantments[{id:"minecraft:fire_aspect"}].lvl -10
-    execute store result score $EnchLvl.Riptide ArenaBoss.Temp run data get entity @s SelectedItem.tag.Enchantments[{id:"minecraft:riptide"}].lvl 15
+    execute store result score $EnchLvl.Riptide ArenaBoss.Temp run data get entity @s SelectedItem.tag.Enchantments[{id:"minecraft:riptide"}].lvl 16.66
 
     scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.FireAspect ArenaBoss.Temp
     scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.Riptide ArenaBoss.Temp

@@ -10,4 +10,4 @@ execute at @e[tag=ArenaBoss.Part04,distance=..2] rotated ~45 ~ run particle dust
 
 # マグマ
 particle falling_lava ~ ~ ~ 0.25 1 0.25 0 1
-execute if predicate arena:trisect run particle lava ~ ~1 ~ 0 0 0 0 1
+execute if predicate arena:1-n/03 run particle lava ~ ~1 ~ 0 0 0 0 1

@@ -26,3 +26,6 @@ kill @e[tag=ArenaBoss.Minion]
 
 # loot
 loot spawn ~ ~ ~ loot arena-boss:drop_item/fire
+
+scoreboard players set $AnimationTimer ArenaBoss 0
+scoreboard players set $AnimationTimer ArenaBoss 0

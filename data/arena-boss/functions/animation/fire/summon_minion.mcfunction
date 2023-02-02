@@ -24,7 +24,7 @@ data modify storage arena-boss: SummonMinion set value false
 execute if score $MinionCount ArenaBoss.Temp matches ..12 run data modify storage arena-boss: SummonMinion set value true
 
 execute store result score $Health ArenaBoss.Temp run data get storage arena-boss: Health 100
-scoreboard players add $Health ArenaBoss.Temp 4000
+scoreboard players add $Health ArenaBoss.Temp 24000
 
 execute if data storage arena-boss: {SummonMinion:false} store result storage arena-boss: Health float 0.01 run scoreboard players get $Health ArenaBoss.Temp
 execute if data storage arena-boss: {SummonMinion:false} run tag @e[tag=ArenaBoss.Minion,limit=4,sort=random] add ArenaBoss.Temp
