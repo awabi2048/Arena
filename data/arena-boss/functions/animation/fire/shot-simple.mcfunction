@@ -46,5 +46,5 @@ execute if score $AnimationTimer ArenaBoss matches 15..22 run function arena-bos
 execute if score $AnimationTimer ArenaBoss matches 22 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float
+execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float01
 execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular

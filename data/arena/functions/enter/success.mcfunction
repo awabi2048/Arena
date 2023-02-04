@@ -7,7 +7,7 @@
     execute as @a[distance=..3.5] if score @s arena matches 1.. run tag @s add Arena.Player
     execute as @a[distance=..3.5] if score @s arena matches 1.. run scoreboard players set @s Arena 0
 
-    scoreboard players remove @a[tag=Arena.Player,scores={Arena=0}] arena 1
+    scoreboard players remove @a[tag=Arena.Player,scores={Arena=0},tag=!Arena.Debug] arena 1
 
 # APが足りれば入場
 scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena

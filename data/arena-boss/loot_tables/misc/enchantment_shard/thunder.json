@@ -1,0 +1,65 @@
+{
+    "type": "minecraft:generic",
+    "pools": [
+      {
+        "rolls": 1,
+        "entries": [
+          {
+            "type": "minecraft:item",
+            "name": "minecraft:firework_star"
+          }
+        ]
+      }
+    ],
+    "functions": [
+      {
+        "function": "minecraft:set_nbt",
+        "tag": "{KotaItems:{ID:\"EnchantmentShard-Thunder\"},CustomModelData:301003,Enchantments:[{}]}"
+      },
+      {
+        "function": "minecraft:set_name",
+        "entity": "this",
+        "name": 
+        [
+            {
+          "text": "エンチャントシャード",
+          "color": "white",
+          "bold": true,
+          "italic": false
+            },
+            {
+          "text": "【",
+          "color": "#ddd605",
+          "bold": true,
+          "italic": false
+            },
+            {
+                "text": "雷",
+                "color": "yellow",
+                "bold": true,
+                "italic": false
+            },
+            {
+                "text": "】",
+                "color": "#ddd605",
+                "bold": true,
+                "italic": false
+            }
+        ]
+      },
+      {
+        "function": "minecraft:set_lore",
+        "entity": "this",
+        "lore": [
+          [
+            {
+              "text": "ボスエンチャントの付与と強化に使用できる。",
+              "color": "gray",
+              "italic": false
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  

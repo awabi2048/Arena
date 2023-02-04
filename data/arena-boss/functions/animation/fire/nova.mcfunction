@@ -43,5 +43,5 @@ execute if score $AnimationTimer ArenaBoss matches 71 run data modify entity @e[
 execute if score $AnimationTimer ArenaBoss matches 80 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float
+execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float01
 execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular

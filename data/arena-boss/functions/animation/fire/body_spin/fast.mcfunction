@@ -1,4 +1,4 @@
-# パーツぐるぐる (激速)
+# パーツぐるぐる (速)
 # 棒
 execute as @e[tag=ArenaBoss.Part01,distance=..2] at @s run tp @s ~ ~ ~ ~24 ~
 execute as @e[tag=ArenaBoss.Part02,distance=..2] at @s run tp @s ~ ~ ~ ~-18 ~

@@ -7,6 +7,6 @@ function arena-boss:animation/fire/body_spin/normal
 function arena-boss:animation/fire/particle/regular
 
 # ふわふわ
-execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float
+execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float01
 
 
