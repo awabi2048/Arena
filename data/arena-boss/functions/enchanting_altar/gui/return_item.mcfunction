@@ -1,20 +1,8 @@
-# GUI内の空欄部分に入れられたアイテムを返却
+## アイテムをまとめて返却
 data modify storage arena-boss:temp Altar.Items set from entity @e[tag=ArenaBoss.Altar.Menu,distance=..3,limit=1] Items
 
 data remove storage arena-boss:temp Altar.Items[{Slot:0b}]
 data remove storage arena-boss:temp Altar.Items[{Slot:23b}]
-
-# モードによって返却する・しないアイテムを指定
-# 場外スロットのみ
-execute if data storage arena-boss:temp {Altar:{ReturnMode:"OutSide"}} run data remove storage arena-boss:temp Altar.Items[{Slot:10b}]
-execute if data storage arena-boss:temp {Altar:{ReturnMode:"OutSide"}} run data remove storage arena-boss:temp Altar.Items[{Slot:11b}]
-execute if data storage arena-boss:temp {Altar:{ReturnMode:"OutSide"}} run data remove storage arena-boss:temp Altar.Items[{Slot:12b}]
-
-execute if data storage arena-boss:temp {Altar:{ReturnMode:"OutSide"}} run data remove storage arena-boss:temp Altar.Items[{Slot:17b}]
-
-# モードリセット
-data modify storage arena-boss:temp Altar.ReturnMode set value none
-
 
 # シュルカーボックスにloot tableで
 execute in minecraft:overworld run setblock 0 -64 0 shulker_box

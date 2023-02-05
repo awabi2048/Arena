@@ -12,22 +12,23 @@ execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:5s}} run data m
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:6s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "VI"
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "VII"
 
-# 適当なLoreの行を削除
-execute unless data storage arena-boss:temp {Altar:{EnchantmentLevel:"I"}} run data remove entity @s Items[{Slot:16b}].tag.display.Lore[0]
+# 余計なLoreデータを持っているかを記録
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:"I"}} run data modify entity @s Items[{Slot:16b}].tag.KotaItems.data.HasExtraLore set value false
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:"I"}} if data storage arena-boss:temp Altar.ResourceItem[0].tag.display.Lore[0] run data modify entity @s Items[{Slot:16b}].tag.KotaItems.data.HasExtraLore set value true
 
 # Item Modifierで変換
 data modify storage arena-boss:temp Altar.EnchantmentId set from storage arena-boss:temp Altar.ResourceItem[0].tag.KotaItems.BossEnchantment.id
 
-execute in minecraft:overworld run setblock 0 -64 0 chest
-execute in minecraft:overworld run item replace block 0 -64 0 container.0 with stone
-
-execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Fire"}} run item modify block 0 -64 0 container.0 arena-boss:altar/set_lore/fire
-execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Water"}} run item modify block 0 -64 0 container.0 arena-boss:altar/set_lore/water
-execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Thunder"}} run item modify block 0 -64 0 container.0 arena-boss:altar/set_lore/thunder
-execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Earth"}} run item modify block 0 -64 0 container.0 arena-boss:altar/set_lore/earth
+execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Fire"}} run item modify entity @s container.16 arena-boss:altar/set_lore/fire
+execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Water"}} run item modify entity @s container.16 arena-boss:altar/set_lore/water
+execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Thunder"}} run item modify entity @s container.16 arena-boss:altar/set_lore/thunder
+execute if data storage arena-boss:temp {Altar:{EnchantmentId:"Earth"}} run item modify entity @s container.16 arena-boss:altar/set_lore/earth
 
 
+execute unless data storage arena-boss:temp {Altar:{EnchantmentLevel:"I"}} run data remove entity @s Items[{Slot:16b}].tag.display.Lore[0]
 
-# 複数行ある場合は入れ替えを実施
-execute if data storage arena-boss:temp Altar.ResourceItem[0].tag.display.Lore[1] run data modify entity @s Items[{Slot:16b}].tag.display.Lore prepend from entity @s Items[{Slot:16b}].tag.display.Lore[-1]
-execute if data storage arena-boss:temp Altar.ResourceItem[0].tag.display.Lore[1] run data remove entity @s Items[{Slot:16b}].tag.display.Lore[-1]
+# 別のLoreデータがある場合は入れ替え
+data modify storage arena-boss:temp Altar.HasExtraLore set from entity @s Items[{Slot:16b}].tag.KotaItems.data.HasExtraLore
+
+execute if data storage arena-boss:temp {Altar:{HasExtraLore:true}} run data modify entity @s Items[{Slot:16b}].tag.display.Lore prepend from entity @s Items[{Slot:16b}].tag.display.Lore[-1]
+execute if data storage arena-boss:temp {Altar:{HasExtraLore:true}} run data remove entity @s Items[{Slot:16b}].tag.display.Lore[-1]

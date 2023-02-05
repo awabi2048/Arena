@@ -1,18 +1,18 @@
 # tick
 # 場外スロットに入れられたアイテムの返却
-data modify storage arena-boss:temp Altar.Items set from entity @e[tag=ArenaBoss.Altar.Menu,distance=..3,limit=1] Items
+data modify storage arena-boss:temp Altar.Item set from entity @e[tag=ArenaBoss.Altar.Menu,distance=..3,limit=1] Items
 
-data remove storage arena-boss:temp Altar.Items[{Slot:0b}]
-data remove storage arena-boss:temp Altar.Items[{Slot:10b}]
-data remove storage arena-boss:temp Altar.Items[{Slot:11b}]
-data remove storage arena-boss:temp Altar.Items[{Slot:12b}]
+data remove storage arena-boss:temp Altar.Item[{Slot:0b}]
+data remove storage arena-boss:temp Altar.Item[{Slot:10b}]
+data remove storage arena-boss:temp Altar.Item[{Slot:11b}]
+data remove storage arena-boss:temp Altar.Item[{Slot:12b}]
 
-execute if data storage arena-boss: {Altar:{HasOutput:true}} run data remove storage arena-boss:temp Altar.Items[{Slot:16b}]
+execute if data storage arena-boss: {Altar:{HasOutput:true}} run data remove storage arena-boss:temp Altar.Item[{Slot:16b}]
 
-data remove storage arena-boss:temp Altar.Items[{Slot:23b}]
+data remove storage arena-boss:temp Altar.Item[{Slot:23b}]
 
-execute if data storage arena-boss:temp Altar.Items[0] run data modify storage arena-boss:temp Altar.ReturnMode set value "OutSide"
-execute if data storage arena-boss:temp Altar.Items[0] run function arena-boss:enchanting_altar/gui/return_item
+execute if data storage arena-boss:temp Altar.Item[0] run data modify storage arena-boss:temp Altar.ReturnMode set value "OutSide"
+execute if data storage arena-boss:temp Altar.Item[0] run function arena-boss:enchanting_altar/gui/has_extra_item
 
 # GUI表示取られたときの検知
 execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{tag:{CustomModelData:201990001}}] run function arena-boss:enchanting_altar/gui/place_gui

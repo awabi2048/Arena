@@ -14,4 +14,12 @@
     - 入場待機場所の近くにコマンドブロックを接続したボタンを設置(コマンド: function arena:entrance/_)
     
 ### 動作環境
-- Minecraft JE -1.19
+- Minecraft JE 1.19.2 -
+
+### Special Thanks (敬称略, アルファベット順)
+- ayupara
+- elecams
+- Kizuna_nAI
+- kokuwa
+- Youshow322
+- yuu2132

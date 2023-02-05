@@ -79,6 +79,16 @@ execute unless data storage arena-boss:temp Altar.Operation run data modify stor
 
     execute if data storage arena-boss:temp {Altar:{Operation:Enhance}} if data storage arena-boss:temp {Altar:{HasError:true}} run function arena:stop_process
 
+
+## 最大レベルに達していないか確認
+# エラー出力
+data modify storage arena-boss:temp Altar.EnchantmentLevel set from storage arena-boss:temp Altar.ResourceItem[0].tag.KotaItems.BossEnchantment.lvl 
+
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: エンチャントは既に最大レベルに達しています。","color": "red"}]
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
+
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run function arena:stop_process
+
 ## エンチャントシャードの個数が足りているか確認
 
 # 分かりやすいようにスコアで取得
