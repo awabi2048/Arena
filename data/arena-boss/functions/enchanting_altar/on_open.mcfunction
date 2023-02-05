@@ -32,4 +32,4 @@ execute at @e[tag=ArenaBoss.Altar.Core] positioned ~ ~2 ~ run particle enchant ~
 data modify entity @e[tag=ArenaBoss.Altar.Menu,limit=1] Items set value []
 
 item replace entity @e[tag=ArenaBoss.Altar.Menu] container.0 with orange_dye{display:{Name:'{"text":" "}'},CustomModelData:201990001}
-item replace entity @e[tag=ArenaBoss.Altar.Menu] container.23 with sculk_shrieker{display:{Name:'{"text":"合成","color": "light_purple","bold": true,"italic": false}'}}
+item replace entity @e[tag=ArenaBoss.Altar.Menu] container.23 with sculk_shrieker{display:{Name:'{"text":"合成","color": "light_purple","bold": true,"italic": false}'},KotaItems:{ID:"EnchantmentAltar.ButtonCraft"}}

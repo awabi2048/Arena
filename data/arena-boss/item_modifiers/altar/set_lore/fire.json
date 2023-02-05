@@ -1,0 +1,22 @@
+[
+  {
+    "function": "minecraft:set_lore",
+    "entity": "this",
+    "lore": [
+      [
+        {
+          "text": "焦熱 ",
+          "color": "gold",
+          "italic": false
+        },
+        {
+          "nbt": "Altar.EnchantmentLevel",
+          "storage": "arena-boss:temp",
+          "color": "gold",
+          "italic": false
+        }
+      ]
+    ],
+    "replace": false
+  }
+]

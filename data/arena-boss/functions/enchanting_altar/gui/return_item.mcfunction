@@ -37,6 +37,11 @@ data modify storage arena-boss:temp Altar.Items append from storage arena-boss:t
 data modify storage arena-boss:temp Altar.Items append from storage arena-boss:temp Altar.ItemsAll[{Slot:11b}]
 data modify storage arena-boss:temp Altar.Items append from storage arena-boss:temp Altar.ItemsAll[{Slot:12b}]
 
+execute if data storage arena-boss: {Altar:{HasOutput:true}} run data remove storage arena-boss:temp Altar.Items[{Slot:16b}]
+
 data modify storage arena-boss:temp Altar.Items append from storage arena-boss:temp Altar.ItemsAll[{Slot:23b}]
 
 data modify entity @e[tag=ArenaBoss.Altar.Menu,distance=..3,limit=1] Items set from storage arena-boss:temp Altar.Items
+
+# 成果物が自動回収されないよう
+data modify storage arena-boss: Altar.HasOutput set value false

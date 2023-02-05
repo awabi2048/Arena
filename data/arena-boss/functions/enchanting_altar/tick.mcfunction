@@ -7,6 +7,8 @@ data remove storage arena-boss:temp Altar.Items[{Slot:10b}]
 data remove storage arena-boss:temp Altar.Items[{Slot:11b}]
 data remove storage arena-boss:temp Altar.Items[{Slot:12b}]
 
+execute if data storage arena-boss: {Altar:{HasOutput:true}} run data remove storage arena-boss:temp Altar.Items[{Slot:16b}]
+
 data remove storage arena-boss:temp Altar.Items[{Slot:23b}]
 
 execute if data storage arena-boss:temp Altar.Items[0] run data modify storage arena-boss:temp Altar.ReturnMode set value "OutSide"
@@ -19,7 +21,7 @@ execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items
 execute as @a[tag=Arena.AltarOpener] at @s anchored eyes positioned ^ ^ ^10 if data entity @e[tag=ArenaBoss.Altar.Menu,limit=1] {PortalCooldown:0} unless entity @e[tag=ArenaBoss.Altar.CloseDetector,distance=..0.001] run function arena-boss:enchanting_altar/on_close
 
 # クラフト時
-execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{Slot:23b}] run function arena-boss:enchanting_altar/crafting/_
+execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{Slot:23b,tag:{KotaItems:{ID:"EnchantmentAltar.ButtonCraft"}}}] run function arena-boss:enchanting_altar/crafting/_
 
 # 見た目
 execute if entity @p[distance=..4] run function arena-boss:enchanting_altar/visual/_

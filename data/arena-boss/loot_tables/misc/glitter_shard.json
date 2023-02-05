@@ -14,7 +14,7 @@
     "functions": [
       {
         "function": "minecraft:set_nbt",
-        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Fire\"}},CustomModelData:301001,Enchantments:[{}]}"
+        "tag": "{KotaItems:{ID:\"GlitterShard\"},CustomModelData:302001}"
       },
       {
         "function": "minecraft:set_name",
@@ -22,28 +22,10 @@
         "name": 
         [
             {
-          "text": "エンチャントシャード",
-          "color": "white",
+          "text": "煌めく小片",
+          "color": "light_purple",
           "bold": true,
           "italic": false
-            },
-            {
-          "text": "【",
-          "color": "gold",
-          "bold": true,
-          "italic": false
-            },
-            {
-                "text": "炎",
-                "color": "red",
-                "bold": true,
-                "italic": false
-            },
-            {
-                "text": "】",
-                "color": "gold",
-                "bold": true,
-                "italic": false
             }
         ]
       },
@@ -53,7 +35,12 @@
         "lore": [
           [
             {
-              "text": "ボスエンチャントの付与と強化に使用できる。",
+              "text": "クラフトアイテム。\n",
+              "color": "gray",
+              "italic": false
+            },
+            {
+              "text": "ボスエンチャントの付与と強化にも使用できる。",
               "color": "gray",
               "italic": false
             }

@@ -14,7 +14,7 @@
     "functions": [
       {
         "function": "minecraft:set_nbt",
-        "tag": "{KotaItems:{ID:\"EnchantmentShard-Water\"},CustomModelData:301002,Enchantments:[{}]}"
+        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Water\"}},CustomModelData:301002,Enchantments:[{}]}"
       },
       {
         "function": "minecraft:set_name",
