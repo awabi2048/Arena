@@ -82,6 +82,7 @@ execute unless data storage arena-boss:temp Altar.Operation run data modify stor
 
 ## 最大レベルに達していないか確認
 # エラー出力
+data modify storage arena-boss:temp Altar.EnchantmentLevel set value 0s
 data modify storage arena-boss:temp Altar.EnchantmentLevel set from storage arena-boss:temp Altar.ResourceItem[0].tag.KotaItems.BossEnchantment.lvl 
 
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: エンチャントは既に最大レベルに達しています。","color": "red"}]

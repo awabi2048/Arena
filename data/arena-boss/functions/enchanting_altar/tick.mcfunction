@@ -14,6 +14,9 @@ data remove storage arena-boss:temp Altar.Item[{Slot:23b}]
 execute if data storage arena-boss:temp Altar.Item[0] run data modify storage arena-boss:temp Altar.ReturnMode set value "OutSide"
 execute if data storage arena-boss:temp Altar.Item[0] run function arena-boss:enchanting_altar/gui/has_extra_item
 
+# 出力品なかったらフラグ解除
+execute unless data entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items[{Slot:16b}] run data modify storage arena-boss: Altar.HasOutput set value false
+
 # GUI表示取られたときの検知
 execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{tag:{CustomModelData:201990001}}] run function arena-boss:enchanting_altar/gui/place_gui
 

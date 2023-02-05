@@ -5,7 +5,7 @@ data modify storage arena-boss:temp Altar.PlaceItem set value []
 data modify storage arena-boss:temp Altar.ReturnItem set value []
 data modify storage arena-boss:temp Altar.RecipeItem set value {}
 
-    # レシピアイテム
+    ## レシピアイテム
         # シャード・小片
         data modify storage arena-boss:temp Altar.RecipeItem.EnchantmentShard append from storage arena-boss:temp Altar.Item[{tag:{KotaItems:{ID:"EnchantmentShard"}}}]
         data modify storage arena-boss:temp Altar.RecipeItem.GlitterShard append from storage arena-boss:temp Altar.Item[{tag:{KotaItems:{ID:"GlitterShard"}}}]
@@ -78,8 +78,8 @@ data modify storage arena-boss:temp Altar.PlaceItem append value {id:"minecraft:
 data modify storage arena-boss:temp Altar.PlaceItem append value {id:"minecraft:sculk_shrieker",Count:1b,tag:{display:{Name:'{"text":"合成","color": "light_purple","bold": true,"italic": false}'},KotaItems:{ID:"EnchantmentAltar.ButtonCraft"}},Slot:23b}
 
 # Itemsに書き換え
-data modify entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items set from storage arena-boss:temp Altar.PlaceItem
-
 execute unless data entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items[{Slot:10b}] run data modify entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items append from storage arena-boss:temp Altar.PlaceItem[{Slot:10b}]
 execute unless data entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items[{Slot:11b}] run data modify entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items append from storage arena-boss:temp Altar.PlaceItem[{Slot:11b}]
 execute unless data entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items[{Slot:12b}] run data modify entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items append from storage arena-boss:temp Altar.PlaceItem[{Slot:12b}]
+
+execute as @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] run function arena-boss:enchanting_altar/gui/clear_blank_slot
