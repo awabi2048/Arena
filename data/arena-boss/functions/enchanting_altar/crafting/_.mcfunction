@@ -29,7 +29,7 @@ data modify storage arena-boss:temp Altar.ResourceItem append from storage arena
     execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:wooden_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
     execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:stone_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
     execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:iron_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
-    execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:gold_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
+    execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:golden_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
     execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:diamond_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
     execute if data storage arena-boss:temp {Altar:{ResourceItem1:"minecraft:netherite_sword"}} run data modify storage arena-boss:temp Altar.Craftable[0] set value true
 

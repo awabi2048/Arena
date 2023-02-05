@@ -14,7 +14,7 @@ data modify storage arena-boss:temp Altar.RecipeItem set value {}
         data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:wooden_sword"}]
         data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:stone_sword"}]
         data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:iron_sword"}]
-        data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:gold_sword"}]
+        data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:golden_sword"}]
         data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:diamond_sword"}]
         data modify storage arena-boss:temp Altar.RecipeItem.Sword append from storage arena-boss:temp Altar.Item[{id:"minecraft:netherite_sword"}]
 
@@ -51,7 +51,7 @@ data modify storage arena-boss:temp Altar.RecipeItem set value {}
         data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:wooden_sword"}]
         data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:stone_sword"}]
         data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:iron_sword"}]
-        data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:gold_sword"}]
+        data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:golden_sword"}]
         data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:diamond_sword"}]
         data remove storage arena-boss:temp Altar.ExtraItem[{id:"minecraft:netherite_sword"}]
 
@@ -59,12 +59,12 @@ data modify storage arena-boss:temp Altar.RecipeItem set value {}
     data modify storage arena-boss:temp Altar.ReturnItem append from storage arena-boss:temp Altar.ExtraItem[]
 
 ## いらないアイテムを返却
-setblock 0 -64 0 shulker_box
-data modify block 0 -64 0 Items set from storage arena-boss:temp Altar.ReturnItem
+execute in minecraft:overworld run setblock 0 -64 0 shulker_box
+execute in minecraft:overworld run data modify block 0 -64 0 Items set from storage arena-boss:temp Altar.ReturnItem
 
-loot give @p[tag=Arena.AltarOpener] mine 0 -64 0 debug_stick
+execute as @p[tag=Arena.AltarOpener] in minecraft:overworld run loot give @s mine 0 -64 0 debug_stick
 
-setblock 0 -64 0 bedrock
+execute in minecraft:overworld run setblock 0 -64 0 bedrock
 
 
 ## レシピアイテムなら枠に自動で移動 (便利！！！！)

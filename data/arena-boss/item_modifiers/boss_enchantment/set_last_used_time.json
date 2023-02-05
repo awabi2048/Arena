@@ -1,0 +1,17 @@
+[
+    {
+      "function": "minecraft:copy_nbt",
+      "source": {
+        "type": "minecraft:storage",
+        "source": "arena-boss:temp"
+      },
+      "ops": [
+        {
+          "source": "LastUsedTime",
+          "target": "KotaItems.data.BossEnchantment.LastUsedTime",
+          "op": "replace"
+        }
+      ]
+    }
+  ]
+  

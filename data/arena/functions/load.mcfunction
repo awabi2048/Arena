@@ -41,6 +41,8 @@ scoreboard players set #3 Constant 3
 scoreboard players set #4 Constant 4
 scoreboard players set #5 Constant 5
 scoreboard players set #6 Constant 6
+scoreboard players set #7 Constant 7
+scoreboard players set #10 Constant 10
 scoreboard players set #15 Constant 15
 scoreboard players set #20 Constant 20
 scoreboard players set #60 Constant 60

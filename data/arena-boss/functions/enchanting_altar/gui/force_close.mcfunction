@@ -1,6 +1,4 @@
 # 強制的にGUI閉ざす
-execute at @e[tag=Arena.Temp] run tp @e[tag=Arena.CloseGUI] ~ ~ ~ ~ ~
-
-kill @e[tag=Arena.Temp]
+execute as @e[tag=Arena.CloseGUI] at @s run tp @s ~ ~-100 ~
 
 tag @a[tag=Arena.CloseGUI] remove Arena.CloseGUI

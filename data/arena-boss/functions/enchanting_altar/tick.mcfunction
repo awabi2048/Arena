@@ -18,13 +18,13 @@ execute if data storage arena-boss:temp Altar.Item[0] run function arena-boss:en
 execute unless data entity @e[tag=ArenaBoss.Altar.Menu,sort=nearest,limit=1] Items[{Slot:16b}] run data modify storage arena-boss: Altar.HasOutput set value false
 
 # GUI表示取られたときの検知
-execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{tag:{CustomModelData:201990001}}] run function arena-boss:enchanting_altar/gui/place_gui
+execute if data storage arena-boss: {Altar:{GUIPlaced:true}} as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{tag:{CustomModelData:201990001}}] run function arena-boss:enchanting_altar/gui/place_gui
 
 # 閉じたこと検知
 execute as @a[tag=Arena.AltarOpener] at @s anchored eyes positioned ^ ^ ^10 if data entity @e[tag=ArenaBoss.Altar.Menu,limit=1] {PortalCooldown:0} unless entity @e[tag=ArenaBoss.Altar.CloseDetector,distance=..0.001] run function arena-boss:enchanting_altar/on_close
 
 # クラフト時
-execute as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{Slot:23b,tag:{KotaItems:{ID:"EnchantmentAltar.ButtonCraft"}}}] run function arena-boss:enchanting_altar/crafting/_
+execute if data storage arena-boss: {Altar:{GUIPlaced:true}} as @e[tag=ArenaBoss.Altar.Menu,distance=..3] unless data entity @s Items[{Slot:23b,tag:{KotaItems:{ID:"EnchantmentAltar.ButtonCraft"}}}] run function arena-boss:enchanting_altar/crafting/_
 
 # 見た目
 execute if entity @p[distance=..4] run function arena-boss:enchanting_altar/visual/_

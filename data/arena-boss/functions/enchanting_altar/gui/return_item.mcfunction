@@ -10,8 +10,11 @@ execute in minecraft:overworld run setblock 0 -64 0 shulker_box
 execute in minecraft:overworld run data modify block 0 -64 0 Items set from storage arena-boss:temp Altar.Items
 
 execute as @p[tag=Arena.AltarOpener] in minecraft:overworld run loot spawn 0 -63 0 mine 0 -64 0 debug_stick
+execute in minecraft:overworld positioned 0 -63 0 as @e[type=item,distance=..0.1] run tag @s add Arena.ReturnedItem
 execute in minecraft:overworld positioned 0 -63 0 as @e[type=item,distance=..0.1] run data modify entity @s PickupDelay set value 0
-execute in minecraft:overworld positioned 0 -63 0 run tp @e[type=item] @a[tag=Arena.AltarOpener,limit=1]
+execute in minecraft:overworld positioned 0 -63 0 run tp @e[tag=Arena.ReturnedItem] @a[tag=Arena.AltarOpener,limit=1]
+
+tag @e[tag=Arena.ReturnedItem] remove Arena.ReturnedItem
 
 execute in minecraft:overworld run setblock 0 -64 0 bedrock
 

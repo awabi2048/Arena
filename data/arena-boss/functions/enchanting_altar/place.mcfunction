@@ -12,8 +12,14 @@ summon armor_stand ~ ~-0.5 ~ {Tags:["ArenaBoss.Altar.Part04","ArenaBoss.Altar.El
 summon armor_stand ~ ~-0.5 ~ {Tags:["ArenaBoss.Altar.Part05","ArenaBoss.Altar.Element","ArenaBoss.Altar.Element-Ring"],Invisible:true,Marker:true,ArmorItems:[{},{},{},{id:"minecraft:orange_dye",tag:{CustomModelData:201050001},Count:1b}]}
 
 # メニュー
-summon chest_minecart ~ ~-0.25 ~ {Tags:["ArenaBoss.Altar.Menu","ArenaBoss.Altar.Element"],CustomDisplayTile:true,DisplayState:{Name:"minecraft:air"},CustomName:'[{"text":"|||","color": "black","bold": true,"obfuscated": true},{"text":"エンチャントの祭壇","color": "dark_purple","bold": true,"obfuscated": false},{"text":"|||","color": "black","bold": true,"obfuscated": true}]',NoGravity:true}
-team join NoCollision @e[tag=ArenaBoss.Altar.Menu,limit=1] 
+summon chest_minecart ~ ~-0.25 ~ {Tags:["ArenaBoss.Altar.Menu","ArenaBoss.Altar.Element"],Silent:true,CustomDisplayTile:true,DisplayState:{Name:"minecraft:air"},CustomName:'[{"text":"|||","color": "black","bold": true,"obfuscated": true},{"text":"エンチャントの祭壇","color": "dark_purple","bold": true,"obfuscated": false},{"text":"|||","color": "black","bold": true,"obfuscated": true}]',NoGravity:true}
+
+# トロッコが動かないように設定
+setblock ~ ~ ~ rail
+setblock ~1 ~ ~ black_carpet
+setblock ~ ~ ~1 black_carpet
+setblock ~ ~ ~-1 black_carpet
+setblock ~-1 ~ ~ black_carpet
 
 # tellraw
 tellraw @s [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エンチャントの祭壇を設置しました。"}]
