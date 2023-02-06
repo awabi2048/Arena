@@ -21,4 +21,4 @@ data modify entity @s data.Arena.PlayerCount set value -1
 data modify entity @s data.Arena.Difficulty set value 0
 data modify entity @s data.Arena.LastMobType set value [-1,-1,-1]
 
-function arena:endless/boss/reset
+# ストラクチャーのリセット

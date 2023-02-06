@@ -23,4 +23,4 @@ schedule function arena:record/update_ranking 1t
 
 # まだ取り出せるデータがあれば再帰
 data remove entity @s data.Arena.DeadPlayerData[0]
-execute if data entity @s data.Arena.DeadPlayerData[0] run function arena:record/endless/add
+execute if data entity @s data.Arena.DeadPlayerData[0] run function arena:record/add_endless
