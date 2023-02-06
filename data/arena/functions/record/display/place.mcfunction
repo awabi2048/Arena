@@ -10,8 +10,9 @@ execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon arm
 execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ^1 ^ ^ {Tags:["Arena.RankingDisplay.PageNote"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":">>","color": "white","bold": true}',CustomNameVisible:true}
 
 # 説明
-execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ~ ~-0.25 ~ {Tags:["Arena.RankingDisplay.Note-Exp"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"ハードモード・ソロクリア時","color": "green","bold": true}',CustomNameVisible:true}
-execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ~ ~-0.5 ~ {Tags:["Arena.RankingDisplay.Note-Exp"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"にタイムが掲載されます。","color": "green","bold": true}',CustomNameVisible:true}
+execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ~ ~-0.25 ~ {Tags:["Arena.RankingDisplay.Note-Exp"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"通常アリーナについては、","color": "green","bold": true}',CustomNameVisible:true}
+execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ~ ~-0.5 ~ {Tags:["Arena.RankingDisplay.Note-Exp"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"ハードモード・ソロクリア時に","color": "green","bold": true}',CustomNameVisible:true}
+execute at @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] run summon armor_stand ~ ~-0.75 ~ {Tags:["Arena.RankingDisplay.Note-Exp"],Marker:1b,Small:1b,Invisible:1b,CustomName:'{"text":"タイムが掲載されます。","color": "green","bold": true}',CustomNameVisible:true}
 
 # データ読み込み
 execute as @e[tag=Arena.RankingDisplay.Core,sort=nearest,limit=1] at @s run function arena:record/display/reflesh
