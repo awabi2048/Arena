@@ -6,7 +6,7 @@ advancement revoke @s only arena:player_killed
 execute if data entity @e[tag=Arena.Core,sort=nearest,limit=1] {data:{Arena:{StageType:Endless,Wave:-1}}} run advancement grant @s only arena:display/endless/young_challenger
 
 # エンドレス: 死んだ者からデータをマーカーに一時的に保管
-tag @s add Arena.DeadPlayer
+execute if score @s Arena matches ..-1 run tag @s add Arena.DeadPlayer
 
 # 記録作成
     # 現在のウェーブを記録
