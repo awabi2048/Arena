@@ -1,17 +1,16 @@
 {
     "display": {
       "icon": {
-        "item": "minecraft:nether_star"
+        "item": "minecraft:beacon"
       },
       "title": {
-        "text": "最高の称号",
-        "color": "light_purple"
+        "text": "100ウェーブ到達(仮)"
       },
-      "description": "エンドレスアリーナをクリアする",
-      "frame": "challenge",
+      "description": "エンドレスアリーナでウェーブ100に到達する",
       "show_toast": true,
       "announce_to_chat": true,
-      "hidden": false
+      "hidden": true,
+      "frame": "challenge"
     },
     "parent": "arena:display/endless/first_join",
     "criteria": {

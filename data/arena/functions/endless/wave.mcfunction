@@ -2,7 +2,9 @@
 
 # モブ召喚
     ## 召喚モブ選択
-    function arena:endless/select_mob
+    function arena:rng
+    scoreboard players operation $Random Arena %= #6 Constant
+    execute store result entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.MobType int 1 run scoreboard players get $Random Arena
 
     ## 難易度を無効化
     data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Difficulty set value -1

@@ -29,19 +29,19 @@
             },
             {
           "text": "【",
-          "color": "gold",
+          "color": "red",
           "bold": true,
           "italic": false
             },
             {
                 "text": "炎",
-                "color": "red",
+                "color": "gold",
                 "bold": true,
                 "italic": false
             },
             {
                 "text": "】",
-                "color": "gold",
+                "color": "red",
                 "bold": true,
                 "italic": false
             }

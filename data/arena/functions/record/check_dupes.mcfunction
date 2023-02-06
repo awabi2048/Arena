@@ -18,7 +18,8 @@ execute if data storage arena:temp {MergingRecord:{CompareSucceeded:true}} run d
     execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} store result score $DupeCheck.OldData Arena.Temp run data get storage arena:temp PlayerData[0].weight
     execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} store result score $DupeCheck.NewData Arena.Temp run data get storage arena:temp MergingRecord.CompareTarget.weight
 
-    execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} if score $DupeCheck.OldData Arena.Temp > $DupeCheck.NewData Arena.Temp run data modify storage arena:temp PlayerData[0] set from storage arena:temp MergingRecord.PlayerData
+    execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} unless data storage arena:temp {MergingRecord:{PlayerData:{Type:"エンドレス"}}} if score $DupeCheck.OldData Arena.Temp > $DupeCheck.NewData Arena.Temp run data modify storage arena:temp PlayerData[0] set from storage arena:temp MergingRecord.PlayerData
+    execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} if data storage arena:temp {MergingRecord:{PlayerData:{Type:"エンドレス"}}} if score $DupeCheck.OldData Arena.Temp < $DupeCheck.NewData Arena.Temp run data modify storage arena:temp PlayerData[0] set from storage arena:temp MergingRecord.PlayerData
 
 execute if data storage arena:temp {MergingRecord:{CompareSucceeded:false}} run data modify storage arena:temp MergingRecord.ComparedPlayerData append from storage arena:temp PlayerData[]
 

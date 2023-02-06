@@ -97,11 +97,11 @@ execute store result score $EnchantmentLevelBefore ArenaBoss.Temp run data get s
 
     # 強化処理時
         # レベル別で必要個数設定 (単純関数化するのが難しいため全探索)
-        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 1 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 4
-        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 2 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 7
-        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 3 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 10
-        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 4 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 15
-        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 5 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 30
+        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 1 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 3
+        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 2 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 6
+        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 3 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 9
+        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 4 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 16
+        execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 5 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 28
         execute if score $EnchantmentLevelBefore ArenaBoss.Temp matches 6 run scoreboard players set $E.ShardRequired ArenaBoss.Temp 64
 
     # 付与処理時

@@ -1,12 +1,12 @@
 {
     "display": {
       "icon": {
-        "item": "minecraft:oak_sign"
+        "item": "minecraft:enchanting_table"
       },
       "title": {
-        "text": "こた鯖の猛者たち"
+        "text": "祭壇を開く(仮)"
       },
-      "description": "エンドレスアリーナランキングを見よう!",
+      "description": "エンチャントの祭壇を開く。",
       "show_toast": true,
       "announce_to_chat": true
     },

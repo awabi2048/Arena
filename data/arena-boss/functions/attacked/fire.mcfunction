@@ -14,10 +14,13 @@
     scoreboard players set $DamageMultiple ArenaBoss.Temp 100
 
     execute store result score $EnchLvl.FireAspect ArenaBoss.Temp run data get entity @s SelectedItem.tag.Enchantments[{id:"minecraft:fire_aspect"}].lvl -10
-    execute store result score $EnchLvl.Riptide ArenaBoss.Temp run data get entity @s SelectedItem.tag.Enchantments[{id:"minecraft:riptide"}].lvl 16.66
+
+    execute store result score $EnchLvl.BE:Fire ArenaBoss.Temp if data entity @s {SelectedItem:{tag:{KotaItems:{BossEnchantment:{id:"Fire"}}}}} run data get entity @s SelectedItem.tag.KotaItems.BossEnchantment.lvl -8.571
+    execute store result score $EnchLvl.BE:Water ArenaBoss.Temp if data entity @s {SelectedItem:{tag:{KotaItems:{BossEnchantment:{id:"Water"}}}}} run data get entity @s SelectedItem.tag.KotaItems.BossEnchantment.lvl 17.143
 
     scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.FireAspect ArenaBoss.Temp
-    scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.Riptide ArenaBoss.Temp
+    scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.BE:Fire ArenaBoss.Temp
+    scoreboard players operation $DamageMultiple ArenaBoss.Temp += $EnchLvl.BE:Water ArenaBoss.Temp
 
     scoreboard players operation $DamageDealt ArenaBoss.Temp *= $DamageMultiple ArenaBoss.Temp
     scoreboard players operation $DamageDealt ArenaBoss.Temp /= #100 Constant

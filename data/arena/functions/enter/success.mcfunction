@@ -14,11 +14,10 @@ scoreboard players operation @a[tag=Arena.Player,scores={Arena=0}] Arena = @e[ta
 
     # リセットして看板設置
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run function arena:reset
-    execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s positioned ~ ~1 ~2 run function arena:click_sign
+    execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} positioned ~ ~1 ~2 run function arena:click_sign
 
     # TPしてから
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena run tp @a[tag=Arena.Player,distance=..3.5] @s
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s run playsound entity.experience_orb.pickup master @a ~ ~ ~ 5 2
     execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Normal}}} run tellraw @a[tag=Arena.Player,distance=..20] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"看板を右クリックでモブの種類を、\n素手でシフト右クリックで難易度を変更できます","color":"yellow"}]
-    execute as @e[tag=Arena.Core] if score @s Arena = @e[tag=Arena.Entrance,sort=nearest,limit=1] Arena at @s if data entity @s {data:{Arena:{StageType:Endless}}} as @a[distance=..20] unless score @s Arena.MaxStageReached matches 1.. run scoreboard players set @s Arena.MaxStageReached 0
-    
+

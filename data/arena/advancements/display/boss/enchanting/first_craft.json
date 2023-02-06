@@ -1,0 +1,21 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:firework_star",
+        "nbt": "{CustomModelData:302001}"
+      },
+      "title": {
+        "text": "合成をする(仮)"
+      },
+      "description": "エンチャントの祭壇で合成を行う。",
+      "show_toast": true,
+      "announce_to_chat": true
+    },
+    "parent": "arena:display/boss/enchanting/open_gui",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+        }
+      }
+    }
+  

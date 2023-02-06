@@ -17,7 +17,8 @@ execute unless data storage arena:temp {MergingRecord:{PlayerData:{Type:"エン�
 #Memo: ソートは赤石氏作のAiMathライブラリを使用
 data modify storage math: in set from storage arena:temp PlayerData
 
-function #math:sort/ascend
+execute unless data storage arena:temp {MergingRecord:{PlayerData:{Type:"エンドレス"}}} run function #math:sort/ascend
+execute if data storage arena:temp {MergingRecord:{PlayerData:{Type:"エンドレス"}}} run function #math:sort/descend
 
 data modify storage arena:temp PlayerData set from storage math: out
 
@@ -54,8 +55,6 @@ execute in minecraft:overworld if data storage arena:temp PlayerData[4] run data
 
 execute in minecraft:overworld run setblock 0 -64 0 bedrock
 
-# ランキングを初期化
-data modify storage arena: Ranking set value {Zombie:[],Skeleton:[],Blaze:[],Spider:[],Slime:[],Creeper:[],Guardian:[],Endless:[]}
 
 # 取得データを適切なパスに格納
 execute if data storage arena:temp {MergingRecord:{PlayerData:{Type:"ゾンビ"}}} run data modify storage arena: Ranking.Zombie set from storage arena:temp Ranking

@@ -1,5 +1,5 @@
-# エンドレス時のステータス倍率設定 (現: 1.00 + Wave数*0.08)
-execute store result score $AttributesMultiple Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -8
+# エンドレス時のステータス倍率設定 (現: 1.00 + Wave数*0.15)
+execute store result score $AttributesMultiple Arena.Temp run data get entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.Wave -15
 scoreboard players add $AttributesMultiple Arena.Temp 100
 
 # 通常エンドレスのデータ取得

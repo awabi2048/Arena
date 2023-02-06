@@ -1,0 +1,23 @@
+{
+    "display": {
+      "icon": {
+        "item": "minecraft:sculk_shrieker",
+        "nbt": "{Enchantments:[{}]}"
+      },
+      "title": {
+        "text": "最大レベル合成をする(仮)"
+      },
+      "description": "エンチャントの祭壇で最大レベルのエンチャントを作成する。",
+      "show_toast": true,
+      "announce_to_chat": true,
+      "hidden": true,
+      "frame": "challenge"
+    },
+    "parent": "arena:display/boss/enchanting/first_craft",
+    "criteria": {
+      "requirement": {
+        "trigger": "minecraft:impossible"
+        }
+      }
+    }
+  

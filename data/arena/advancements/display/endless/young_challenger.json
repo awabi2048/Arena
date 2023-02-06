@@ -11,7 +11,7 @@
       "announce_to_chat": true,
       "hidden": true
     },
-    "parent": "arena:display/first_join",
+    "parent": "arena:display/endless/first_join",
     "criteria": {
       "requirement": {
         "trigger": "minecraft:impossible"
