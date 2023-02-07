@@ -4,6 +4,9 @@ execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Cor
 # 開始時の処理
     # 看板リセット
     execute if score $Wave Arena.Temp matches 0 at @e[tag=Arena.Core,sort=nearest,limit=1] run setblock ~ ~1 ~2 air 
+    
+    # データ残っていたらマージ処理
+    execute if score $Wave Arena.Temp matches 0 as @e[tag=Arena.Core,sort=nearest,limit=1] unless data entity @s {data:{Arena:{DeadPlayerData:[]}}} run function arena:record/add_endless
 
     # 一時データのリセット
     execute if score $Wave Arena.Temp matches 0 run data modify entity @e[tag=Arena.Core,sort=nearest,limit=1] data.Arena.DeadPlayerData set value []

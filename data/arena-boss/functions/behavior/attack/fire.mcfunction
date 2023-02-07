@@ -7,7 +7,7 @@ data modify storage arena-boss: Animation.LastActivated set from storage arena-b
 execute unless data storage arena-boss: {Animation:{Name:"Regular"}} run function arena:stop_process
 
 # 特殊攻撃: 爆縮移動
-execute if score $HealthPercent ArenaBoss.Temp matches ..75 if predicate arena:1-n/02 unless data storage arena-boss: {Animation:{LastActivated:"Implosion"}} at @e[tag=ArenaBoss.Core] unless entity @a[tag=Arena.Player,distance=..10] run data modify storage arena-boss: Animation.Name set value "Implosion"
+execute if score $HealthPercent ArenaBoss.Temp matches ..80 if predicate arena:1-n/02 unless data storage arena-boss: {Animation:{LastActivated:"Implosion"}} at @e[tag=ArenaBoss.Core] unless entity @a[tag=Arena.Player,distance=..10] run data modify storage arena-boss: Animation.Name set value "Implosion"
 
 data modify storage arena-boss: Animation.LastActivated set from storage arena-boss: Animation.Name
 execute unless data storage arena-boss: {Animation:{Name:"Regular"}} run function arena:stop_process
