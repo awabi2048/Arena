@@ -6,4 +6,7 @@ execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Cor
 scoreboard players operation $TicketCount Arena.Temp = $Wave Arena.Temp
 scoreboard players operation $TicketCount Arena.Temp /= #1000 Constant
 
+scoreboard players add $TicketCount Arena.Temp 4
+
+
 loot give @a[tag=Arena.Player,distance=..32] loot arena:ticket/hard
