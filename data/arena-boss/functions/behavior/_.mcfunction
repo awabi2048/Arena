@@ -18,6 +18,3 @@ execute if score $Random Arena matches 1..99 run function arena-boss:behavior/at
     
 
 
-
-
-

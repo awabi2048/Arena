@@ -9,3 +9,4 @@ execute store result score $MaxHealth ArenaBoss.Temp run data get storage arena-
 scoreboard players operation $HealthPercent ArenaBoss.Temp /= $MaxHealth ArenaBoss.Temp
 
 execute if data storage arena-boss: {Name:Fire} run function arena-boss:behavior/attack/fire
+execute if data storage arena-boss: {Name:Water} run function arena-boss:behavior/attack/water
