@@ -11,6 +11,9 @@ execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:4s}} run data m
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:5s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "V"
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:6s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "VI"
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "VII"
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:8s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "VIII"
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:9s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "IX"
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:10s}} run data modify storage arena-boss:temp Altar.EnchantmentLevel set value "X"
 
 # 余計なLoreデータを持っているかを記録
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:"I"}} run data modify entity @s Items[{Slot:16b}].tag.KotaItems.data.HasExtraLore set value false

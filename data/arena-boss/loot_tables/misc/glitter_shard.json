@@ -22,10 +22,7 @@
         "name": 
         [
             {
-          "text": "上質な紫結晶片",
-          "color": "aqua",
-          "bold": true,
-          "italic": false
+              "translate": "arena.item.name.glitter_shard"
             }
         ]
       },
@@ -35,9 +32,7 @@
         "lore": [
           [
             {
-              "text": "洗練された上質な結晶片。閃々と輝いている。",
-              "color": "gray",
-              "italic": false
+              "translate": "arena.item.lore.glitter_shard"
             }
           ]
         ]

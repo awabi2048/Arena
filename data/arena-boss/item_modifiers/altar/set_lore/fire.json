@@ -5,15 +5,8 @@
     "lore": [
       [
         {
-          "text": "焦熱 ",
-          "color": "gold",
-          "italic": false
-        },
-        {
-          "nbt": "Altar.EnchantmentLevel",
-          "storage": "arena-boss:temp",
-          "color": "gold",
-          "italic": false
+          "translate": "arena.boss.enchantment_altar.enchantment.fire",
+          "with": [{"nbt":"Altar.EnchantmentLevel","storage": "arena-boss:temp","color": "gold", "italic": false}]
         }
       ]
     ],

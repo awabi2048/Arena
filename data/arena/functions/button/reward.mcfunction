@@ -1,5 +1,5 @@
 # プレイヤーに通知
-tellraw @a[tag=Arena.Player,distance=..32] [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text":"報酬が配布されました！もう一度ボタンを押すと退出します","color":"yellow"}]
+tellraw @a[tag=Arena.Player,distance=..32] [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.reward_given"}]
 playsound entity.player.levelup master @a[tag=Arena.Player,distance=..32] ~ ~ ~ 1 1.75
 
 # 報酬配布

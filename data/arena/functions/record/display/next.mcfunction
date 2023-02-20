@@ -1,6 +1,6 @@
 ## ページ更新時処理 (戻る)
 # トリガー解除
-advancement revoke @s only arena:misc/page_next
+advancement revoke @s only arena:misc/ranking_display/page_next
 
 # ページ変更
 execute store result score $DisplayPage Arena.Temp run data get entity @e[tag=Arena.RankingDisplay.Core,limit=1] data.Arena.RankingDisplay.Page

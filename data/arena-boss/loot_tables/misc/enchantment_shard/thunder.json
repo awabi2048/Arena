@@ -14,7 +14,7 @@
     "functions": [
       {
         "function": "minecraft:set_nbt",
-        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Thunder\"}},CustomModelData:301003,Enchantments:[{}]}"
+        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Thunder\"}},CustomModelData:301003}"
       },
       {
         "function": "minecraft:set_name",
@@ -22,28 +22,7 @@
         "name": 
         [
             {
-          "text": "エンチャントシャード",
-          "color": "white",
-          "bold": true,
-          "italic": false
-            },
-            {
-          "text": "【",
-          "color": "#ddd605",
-          "bold": true,
-          "italic": false
-            },
-            {
-                "text": "雷",
-                "color": "yellow",
-                "bold": true,
-                "italic": false
-            },
-            {
-                "text": "】",
-                "color": "#ddd605",
-                "bold": true,
-                "italic": false
+              "translate": "arena.item.name.enchantment_shard.thunder"
             }
         ]
       },
@@ -53,9 +32,7 @@
         "lore": [
           [
             {
-              "text": "ボスエンチャントの付与と強化に使用できる。",
-              "color": "gray",
-              "italic": false
+              "translate": "arena.item.lore.enchantment_shard"
             }
           ]
         ]

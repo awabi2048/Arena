@@ -14,7 +14,7 @@
     "functions": [
       {
         "function": "minecraft:set_nbt",
-        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Fire\"}},CustomModelData:301001,Enchantments:[{}]}"
+        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Fire\"}},CustomModelData:301001}"
       },
       {
         "function": "minecraft:set_name",
@@ -22,28 +22,7 @@
         "name": 
         [
             {
-          "text": "エンチャントシャード",
-          "color": "white",
-          "bold": true,
-          "italic": false
-            },
-            {
-          "text": "【",
-          "color": "red",
-          "bold": true,
-          "italic": false
-            },
-            {
-                "text": "炎",
-                "color": "gold",
-                "bold": true,
-                "italic": false
-            },
-            {
-                "text": "】",
-                "color": "red",
-                "bold": true,
-                "italic": false
+              "translate": "arena.item.name.enchantment_shard.fire"
             }
         ]
       },
@@ -53,9 +32,7 @@
         "lore": [
           [
             {
-              "text": "ボスエンチャントの付与と強化に使用できる。",
-              "color": "gray",
-              "italic": false
+              "translate": "arena.item.lore.enchantment_shard"
             }
           ]
         ]

@@ -14,7 +14,7 @@
     "functions": [
       {
         "function": "minecraft:set_nbt",
-        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Earth\"}},CustomModelData:301004,Enchantments:[{}]}"
+        "tag": "{KotaItems:{ID:\"EnchantmentShard\",data:{AvailableEnchantment:\"Earth\"}},CustomModelData:301004}"
       },
       {
         "function": "minecraft:set_name",
@@ -22,28 +22,7 @@
         "name": 
         [
             {
-          "text": "エンチャントシャード",
-          "color": "white",
-          "bold": true,
-          "italic": false
-            },
-            {
-          "text": "【",
-          "color": "dark_green",
-          "bold": true,
-          "italic": false
-            },
-            {
-                "text": "地",
-                "color": "green",
-                "bold": true,
-                "italic": false
-            },
-            {
-                "text": "】",
-                "color": "dark_green",
-                "bold": true,
-                "italic": false
+              "translate": "arena.item.name.enchantment_shard.earth"
             }
         ]
       },
@@ -53,9 +32,7 @@
         "lore": [
           [
             {
-              "text": "ボスエンチャントの付与と強化に使用できる。",
-              "color": "gray",
-              "italic": false
+              "translate": "arena.item.lore.enchantment_shard"
             }
           ]
         ]

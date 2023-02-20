@@ -3,7 +3,9 @@ scoreboard objectives add Arena dummy
 scoreboard objectives add Arena.Temp dummy
 scoreboard objectives add Arena.MaxStageReached dummy
 
-execute unless data storage arena: Core run function arena:setup/mob_attributes
+# セットアップ
+execute unless data storage arena:core MobInfo run function arena:setup/mob_attributes
+data modify storage arena:core MaxPlayerCount set value 4
 
 # 定数設定
 scoreboard players set #-1 Arena -1

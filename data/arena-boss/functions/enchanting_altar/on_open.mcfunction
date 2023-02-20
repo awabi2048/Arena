@@ -4,7 +4,7 @@ advancement revoke @s only arena-boss:enchanting_altar/on_open
 
 # 他に開いているプレイヤーがいればエラー, 無理やりGUI閉ざす
 execute if entity @a[tag=Arena.AltarOpener] run playsound entity.enderman.teleport master @s ~ ~ ~ 1 0.5
-execute if entity @a[tag=Arena.AltarOpener] run tellraw @s [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: 既に他のプレイヤーがメニューを開いています。","color": "red"}]
+execute if entity @a[tag=Arena.AltarOpener] run tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.someone_already_opened_gui"}]
 
 execute if entity @a[tag=Arena.AltarOpener] run tp @s ~ ~100.5 ~
 

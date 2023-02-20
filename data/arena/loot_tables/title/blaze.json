@@ -9,20 +9,18 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{BlockEntityTag:{Base:1,Patterns:[{Color:4,Pattern:\"ss\"},{Color:1,Pattern:\"hh\"},{Color:4,Pattern:\"sku\"},{Color:4,Pattern:\"cre\"},{Color:14,Pattern:\"bo\"}],id:\"minecraft:banner\"},Damage:0,RepairCost:40,HideFlags:127}"
+                "tag": "{Arena:Title-Blaze,BlockEntityTag:{Base:1,Patterns:[{Color:4,Pattern:\"ss\"},{Color:1,Pattern:\"hh\"},{Color:4,Pattern:\"sku\"},{Color:4,Pattern:\"cre\"},{Color:14,Pattern:\"bo\"}],id:\"minecraft:banner\"},Damage:0,RepairCost:40,HideFlags:127}"
               },
               {
                 "function": "minecraft:set_lore",
                 "entity": "this",
                 "lore": [
                   {
-                    "text": "MOB:ブレイズ",
-                    "italic": false
+                    "translate": "arena.item.lore.title-0",
+                    "with": [{"translate":"entity.minecraft.blaze","color": "dark_purple", "italic": false}]
                   },
                   {
-                    "text": "※エンチャントを付与するとクラフトができなくなります！",
-                    "color": "red",
-                    "italic": false
+                    "translate": "arena.item.lore.title-1"
                   }
                 ]
               },
@@ -30,10 +28,7 @@
                 "function": "minecraft:set_name",
                 "entity": "this",
                 "name": {
-                  "text": "アリーナ討伐の称号",
-                  "color": "gold",
-                  "italic": false,
-                  "bold": true
+                  "text": "arena.item.name.title"
                 }
               }
             ]

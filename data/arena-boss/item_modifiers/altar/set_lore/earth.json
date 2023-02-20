@@ -5,15 +5,8 @@
     "lore": [
       [
         {
-          "text": "大地 ",
-          "color": "green",
-          "italic": false
-        },
-        {
-          "nbt": "Altar.EnchantmentLevel",
-          "storage": "arena-boss:temp",
-          "color": "green",
-          "italic": false
+          "translate": "arena.boss.enchantment_altar.enchantment.earth",
+          "with": [{"nbt":"Altar.EnchantmentLevel","storage": "arena-boss:temp","color": "green", "italic": false}]
         }
       ]
     ],

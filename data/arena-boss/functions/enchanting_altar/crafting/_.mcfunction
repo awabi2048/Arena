@@ -51,7 +51,7 @@ data modify storage arena-boss:temp Altar.ResourceItem append from storage arena
     execute store success storage arena-boss:temp Altar.HasError byte 1 run data modify storage arena-boss:temp Altar.Craftable[] set value true
 
     # エラー出力
-    execute if data storage arena-boss:temp {Altar:{HasError:true}} run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: クラフトレシピが不正です。","color": "red"}]
+    execute if data storage arena-boss:temp {Altar:{HasError:true}} run tellraw @a[tag=Arena.AltarOpener] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.invalid_recipe"}]
     execute if data storage arena-boss:temp {Altar:{HasError:true}} run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
 
     execute if data storage arena-boss:temp {Altar:{HasError:true}} run function arena:stop_process
@@ -74,7 +74,7 @@ execute unless data storage arena-boss:temp Altar.Operation run data modify stor
     execute store success storage arena-boss:temp Altar.HasError byte 1 run data modify storage arena-boss:temp Altar.ShardEnchantment set from storage arena-boss:temp Altar.WaeponEnchantment
 
     # エラー出力
-    execute if data storage arena-boss:temp {Altar:{Operation:Enhance}} if data storage arena-boss:temp {Altar:{HasError:true}} run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: 異なる種類のボスエンチャントを付与することはできません。","color": "red"}]
+    execute if data storage arena-boss:temp {Altar:{Operation:Enhance}} if data storage arena-boss:temp {Altar:{HasError:true}} run tellraw @a[tag=Arena.AltarOpener] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.cannot_put_different_enchantments"}]
     execute if data storage arena-boss:temp {Altar:{Operation:Enhance}} if data storage arena-boss:temp {Altar:{HasError:true}} run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
 
     execute if data storage arena-boss:temp {Altar:{Operation:Enhance}} if data storage arena-boss:temp {Altar:{HasError:true}} run function arena:stop_process
@@ -85,7 +85,7 @@ execute unless data storage arena-boss:temp Altar.Operation run data modify stor
 data modify storage arena-boss:temp Altar.EnchantmentLevel set value 0s
 data modify storage arena-boss:temp Altar.EnchantmentLevel set from storage arena-boss:temp Altar.ResourceItem[0].tag.KotaItems.BossEnchantment.lvl 
 
-execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: エンチャントは既に最大レベルに達しています。","color": "red"}]
+execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run tellraw @a[tag=Arena.AltarOpener] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.already_reached_max_level","with":[{"text": "7","color": "red","italic": false}]}]
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
 
 execute if data storage arena-boss:temp {Altar:{EnchantmentLevel:7s}} run function arena:stop_process
@@ -115,7 +115,7 @@ execute store result score $EnchantmentLevelBefore ArenaBoss.Temp run data get s
     scoreboard players operation $E.ShardShortage ArenaBoss.Temp = $E.ShardRequired ArenaBoss.Temp
     scoreboard players operation $E.ShardShortage ArenaBoss.Temp -= $E.ShardPlaced ArenaBoss.Temp
     
-    execute if score $E.ShardRequired ArenaBoss.Temp > $E.ShardPlaced ArenaBoss.Temp run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: エンチャントシャードが","color": "red"},{"score":{"name": "$E.ShardShortage","objective": "ArenaBoss.Temp"},"color": "red","bold": true,"underlined": true},{"text": "個","color": "red","bold": true,"underlined": true},{"text": "不足しています。","color": "red","bold": false}]
+    execute if score $E.ShardRequired ArenaBoss.Temp > $E.ShardPlaced ArenaBoss.Temp run tellraw @a[tag=Arena.AltarOpener] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.not_enough_resource","with":[{"translate": "arena.item.name.enchantment_shard","color": "red","bold": true,"underlined": true},{"score":{"name": "$E.ShardShortage","objective": "ArenaBoss.Temp"},"color": "red","bold": true,"underlined": true}]}]
     execute if score $E.ShardRequired ArenaBoss.Temp > $E.ShardPlaced ArenaBoss.Temp run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
 
     execute if score $E.ShardRequired ArenaBoss.Temp > $E.ShardPlaced ArenaBoss.Temp run function arena:stop_process
@@ -143,7 +143,7 @@ execute store result score $EnchantmentLevelBefore ArenaBoss.Temp run data get s
     scoreboard players operation $G.ShardShortage ArenaBoss.Temp = $G.ShardRequired ArenaBoss.Temp
     scoreboard players operation $G.ShardShortage ArenaBoss.Temp -= $G.ShardPlaced ArenaBoss.Temp
     
-    execute if score $G.ShardRequired ArenaBoss.Temp > $G.ShardPlaced ArenaBoss.Temp run tellraw @a[tag=Arena.AltarOpener] [{"text": " ["},{"text": "Arena","color": "red"},{"text": "] "},{"text": "エラー: 煌めく小片が","color": "red"},{"score":{"name": "$G.ShardShortage","objective": "ArenaBoss.Temp"},"color": "red","bold": true,"underlined": true},{"text": "個","color": "red","bold": true,"underlined": true},{"text": "不足しています。","color": "red","bold": false}]
+    execute if score $G.ShardRequired ArenaBoss.Temp > $G.ShardPlaced ArenaBoss.Temp run tellraw @a[tag=Arena.AltarOpener] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.enchantment_altar.message.error.not_enough_resource","with":[{"translate": "arena.item.name.glitter_shard","color": "red","bold": true,"underlined": true},{"score":{"name": "$G.ShardShortage","objective": "ArenaBoss.Temp"},"color": "red","bold": true,"underlined": true}]}]
     execute if score $G.ShardRequired ArenaBoss.Temp > $G.ShardPlaced ArenaBoss.Temp run playsound entity.enderman.teleport master @a[tag=Arena.AltarOpener] ~ ~ ~ 1 0.5
 
     execute if score $G.ShardRequired ArenaBoss.Temp > $G.ShardPlaced ArenaBoss.Temp run function arena:stop_process

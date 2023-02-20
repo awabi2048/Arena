@@ -5,13 +5,13 @@ execute store result score $Wave Arena.Temp run data get entity @e[tag=Arena.Cor
 execute if score $Wave Arena.Temp matches ..-1 run scoreboard players set $Wave Arena.Temp 5
 
 # MobTypeで絞り込み
-execute if score $MobType Arena.Temp matches 0 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Zombie
-execute if score $MobType Arena.Temp matches 1 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Skeleton
-execute if score $MobType Arena.Temp matches 2 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Blaze
-execute if score $MobType Arena.Temp matches 3 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Spider
-execute if score $MobType Arena.Temp matches 4 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Slime
-execute if score $MobType Arena.Temp matches 5 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Creeper
-execute if score $MobType Arena.Temp matches 6 run data modify storage arena:temp MobInfo set from storage arena: Core.MobInfo.Guardian
+execute if score $MobType Arena.Temp matches 0 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Zombie
+execute if score $MobType Arena.Temp matches 1 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Skeleton
+execute if score $MobType Arena.Temp matches 2 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Blaze
+execute if score $MobType Arena.Temp matches 3 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Spider
+execute if score $MobType Arena.Temp matches 4 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Slime
+execute if score $MobType Arena.Temp matches 5 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Creeper
+execute if score $MobType Arena.Temp matches 6 run data modify storage arena:temp MobInfo set from storage arena:core MobInfo.Guardian
 
 # Wave数で絞り込み
 execute if score $Wave Arena.Temp matches 1 run data modify storage arena:temp MobInfo.SummonCount set from storage arena:temp MobInfo.SummonCount[0]

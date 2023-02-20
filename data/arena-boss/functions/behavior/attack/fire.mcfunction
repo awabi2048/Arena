@@ -30,11 +30,12 @@ execute if score $HealthPercent ArenaBoss.Temp matches ..25 if predicate arena:1
 data modify storage arena-boss: Animation.LastActivated set from storage arena-boss: Animation.Name
 execute unless data storage arena-boss: {Animation:{Name:"Regular"}} run function arena:stop_process
 
-
 # 通常ショット
 function arena:rng
 execute at @e[tag=ArenaBoss.Core] if entity @a[tag=ArenaBoss.Target,distance=..8] if score $Random Arena matches 1..75 run data modify storage arena-boss: Animation.Name set value "Shot-Normal"
 execute at @e[tag=ArenaBoss.Core] if entity @a[tag=ArenaBoss.Target,distance=..8] if score $Random Arena matches 76..99 run data modify storage arena-boss: Animation.Name set value "Shot-Simple"
 
 
+# 眼の前に壁があったら浮上
+execute at @e[tag=ArenaBoss.Core] unless block ^ ^ ^0.25 air run data modify storage arena-boss: Animation.Name set value "Float"
 

@@ -1,3 +1,3 @@
 # 既に入場している人がいます！
-tellraw @s [{"text":"[","color": "white"},{"text":"Arena","color": "red"},{"text":"] ","color": "white"},{"text": "すでに入場している人がいます","color": "red"}]
+tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.game.message.error.someone_already_playing"}]
 playsound entity.experience_orb.pickup master @s ~ ~ ~ 1 0.5

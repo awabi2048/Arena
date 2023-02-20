@@ -9,16 +9,14 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{Arena:Ticket1}"
+                "tag": "{Arena:TicketEasy,CustomModelData:310001}"
               },
               {
                 "function": "minecraft:set_lore",
                 "entity": "this",
                 "lore": [
                   {
-                    "text": "アリーナのショップで装備と交換できるチケット",
-                    "color": "gold",
-                    "italic": false
+                    "translate": "arena.item.lore.ticket-reward"
                   }
                 ]
               },
@@ -26,9 +24,7 @@
                 "function": "minecraft:set_name",
                 "entity": "this",
                 "name": {
-                  "text": "アリーナチケット【初級】",
-                  "color": "green",
-                  "italic": false
+                  "translate": "arena.item.name.ticket-easy"
                 }
               },
               {
