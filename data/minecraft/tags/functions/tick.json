@@ -1,6 +1,5 @@
 {
   "values": [
-    "arena:tick",
-    "arena-boss:tick"
+    "arena:tick"
   ]
 }

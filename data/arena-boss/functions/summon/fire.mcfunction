@@ -21,9 +21,6 @@ summon wither_skeleton ~ ~ ~ {Tags:["ArenaBoss.Hitbox","ArenaBoss.Element"],Sile
 # ふわふわ
 summon marker ~ ~ ~ {Tags:["ArenaBoss.Extra01","ArenaBoss.Element"]}
 
-# Motion用
-summon armor_stand ~ ~ ~ {Tags:["ArenaBoss.Motion","ArenaBoss.Element"],Invisible:true}
-
 
 # Health
 data modify storage arena-boss: Health set value 2500.0f

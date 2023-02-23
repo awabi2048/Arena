@@ -1,28 +1,31 @@
 # 移動時処理
 
 # 距離に応じた速度で移動
-execute as @e[tag=ArenaBoss.Motion] at @s if entity @a[tag=ArenaBoss.Target,distance=4..8] facing entity @a[tag=ArenaBoss.Target,limit=1] eyes rotated ~ 0 if block ^ ^ ^0.0625 air run tp @s ^ ^ ^0.0625 ~ ~ 
-execute as @e[tag=ArenaBoss.Motion] at @s if entity @a[tag=ArenaBoss.Target,distance=8..24] facing entity @a[tag=ArenaBoss.Target,limit=1] eyes rotated ~ 0 if block ^ ^ ^0.125 air run tp @s ^ ^ ^0.125 ~ ~
+execute if entity @a[tag=ArenaBoss.Target,distance=4..8] facing entity @a[tag=ArenaBoss.Target,limit=1] eyes rotated ~ 0 run tp @s ^ ^ ^0.0625 ~ ~ 
+execute if entity @a[tag=ArenaBoss.Target,distance=8..24] facing entity @a[tag=ArenaBoss.Target,limit=1] eyes rotated ~ 0 run tp @s ^ ^ ^0.125 ~ ~
 
-execute as @e[tag=ArenaBoss.Part08] at @s rotated as @e[tag=ArenaBoss.Core] run tp @s ~ ~ ~ ~ ~
+execute unless block ~ ~ ~ air run tp @s ~ ~1 ~
+execute if block ~ ~-0.25 ~ air run tp @s ~ ~-0.125 ~
+
+execute as @e[tag=ArenaBoss.Part08,distance=..2] positioned as @s in minecraft:arena run tp @s ~ ~ ~ ~ ~
 
 
 # 位置同期
-data modify entity @e[tag=ArenaBoss.Part08,limit=1] Rotation[0] set from entity @e[tag=ArenaBoss.Motion,limit=1] Rotation[0]
+data modify entity @e[tag=ArenaBoss.Part08,limit=1] Rotation[0] set from entity @e[tag=ArenaBoss.Core,limit=1] Rotation[0]
 
-execute as @e[tag=ArenaBoss.Core] positioned as @e[tag=ArenaBoss.Motion,limit=1] in minecraft:arena run tp @s ~ ~ ~
-execute as @e[tag=ArenaBoss.Hitbox] positioned as @e[tag=ArenaBoss.Core] in minecraft:arena run tp @s ~ ~ ~
+execute positioned as @s as @s in minecraft:arena run tp @s ~ ~ ~
+execute positioned as @s as @e[tag=ArenaBoss.Hitbox] in minecraft:arena run tp @s ~ ~ ~
 
-execute as @e[tag=ArenaBoss.Element-Parts] positioned as @e[tag=ArenaBoss.Extra01] in minecraft:arena run tp @s ~ ~-0.25 ~
+execute as @e[tag=ArenaBoss.Element-Parts] positioned as @e[tag=ArenaBoss.Extra01] in minecraft:arena run tp @s ~ ~ ~
 
-data modify entity @e[tag=ArenaBoss.Extra01,limit=1] Pos[0] set from entity @e[tag=ArenaBoss.Motion,limit=1] Pos[0]
-data modify entity @e[tag=ArenaBoss.Extra01,limit=1] Pos[2] set from entity @e[tag=ArenaBoss.Motion,limit=1] Pos[2]
+data modify entity @e[tag=ArenaBoss.Extra01,limit=1] Pos[0] set from entity @e[tag=ArenaBoss.Core,limit=1] Pos[0]
+data modify entity @e[tag=ArenaBoss.Extra01,limit=1] Pos[2] set from entity @e[tag=ArenaBoss.Core,limit=1] Pos[2]
 
 # ハメられてたら離脱
-execute at @e[tag=ArenaBoss.Core] if entity @a[tag=Arena.Player,distance=..5] run scoreboard players add $PlayerCloseTime ArenaBoss 1
-execute at @e[tag=ArenaBoss.Core] unless entity @a[tag=Arena.Player,distance=..5] run scoreboard players set $PlayerCloseTime ArenaBoss 0
+execute if entity @a[tag=Arena.Player,distance=..5] run scoreboard players add $PlayerCloseTime ArenaBoss 1
+execute unless entity @a[tag=Arena.Player,distance=..5] run scoreboard players set $PlayerCloseTime ArenaBoss 0
 
 execute if score $PlayerCloseTime ArenaBoss matches 200.. if data storage arena-boss: {Animation:{Name:"Regular"}} run data modify storage arena-boss: Animation.Name set value "Escape"
 
 # 意図せず構成エンティティの距離が離れてしまった場合
-execute at @e[tag=ArenaBoss.Core] unless entity @e[tag=ArenaBoss.Extra01,distance=..2.5] run tp @e[tag=ArenaBoss.Element] ~ ~ ~
+execute unless entity @e[tag=ArenaBoss.Extra01,distance=..0.5] run tp @e[tag=ArenaBoss.Element] ~ ~ ~

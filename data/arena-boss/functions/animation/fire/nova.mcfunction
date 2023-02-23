@@ -5,7 +5,7 @@ scoreboard players add $AnimationTimer ArenaBoss 1
 # ここからアニメーション
 #
 # 空中tp
-execute if score $AnimationTimer ArenaBoss matches 1..10 as @e[tag=ArenaBoss.Motion] run tp @s ~ ~0.75 ~ 
+execute if score $AnimationTimer ArenaBoss matches 1..10 as @e[tag=ArenaBoss.Core,distance=..2] run tp @s ~ ~0.25 ~ 
 
 
 # いい感じの球体パーティクル
@@ -36,12 +36,11 @@ execute if score $AnimationTimer ArenaBoss matches 68..71 run playsound entity.l
 # 各種フラグ設定
 execute if score $AnimationTimer ArenaBoss matches 1 run data modify storage arena-boss: Animation.Flag.NoMove set value true
 
-execute if score $AnimationTimer ArenaBoss matches 1 run data modify entity @e[tag=ArenaBoss.Motion,limit=1] NoGravity set value true
-execute if score $AnimationTimer ArenaBoss matches 71 run data modify entity @e[tag=ArenaBoss.Motion,limit=1] NoGravity set value false
+execute if score $AnimationTimer ArenaBoss matches 1 run data modify entity @e[tag=ArenaBoss.Core,limit=1] NoGravity set value true
+execute if score $AnimationTimer ArenaBoss matches 71 run data modify entity @e[tag=ArenaBoss.Core,limit=1] NoGravity set value false
 
 # リセット
 execute if score $AnimationTimer ArenaBoss matches 80 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Extra01] at @s run function arena-boss:animation/library/float01
-execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular
+function arena-boss:animation/fire/particle/regular

@@ -16,7 +16,7 @@ execute if score $AnimationTimer ArenaBoss matches 10 run playsound block.beacon
 execute if score $AnimationTimer ArenaBoss matches 20 run playsound entity.enderman.teleport master @a ~ ~ ~ 1 0.6
 
 # tp & 置き土産(デバフ爆弾)
-execute if score $AnimationTimer ArenaBoss matches 20 run tp @e[tag=ArenaBoss.Motion] @e[tag=ArenaBoss.EscapeTo,sort=random,limit=1]
+execute if score $AnimationTimer ArenaBoss matches 20 run tp @e[tag=ArenaBoss.Core] @e[tag=ArenaBoss.EscapeTo,sort=random,limit=1]
 
 execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] slowness 20 3
 execute if score $AnimationTimer ArenaBoss matches 20 run effect give @a[tag=Arena.Player,distance=..4] darkness 10 2
@@ -31,7 +31,7 @@ execute if score $AnimationTimer ArenaBoss matches 20 run scoreboard players set
 execute if score $AnimationTimer ArenaBoss matches 20 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular
+function arena-boss:animation/fire/particle/regular
 
 # 動き停止
 execute if score $AnimationTimer ArenaBoss matches 1 run data modify storage arena-boss: Animation.Flag.NoMove set value true

@@ -1,7 +1,6 @@
 # 柱爆破
 # kill
 kill @s
-kill @e[tag=ArenaBoss.Skill03]
 
 # 演出
 particle dripping_lava ~ ~ ~ 0.25 3 0.25 1 200

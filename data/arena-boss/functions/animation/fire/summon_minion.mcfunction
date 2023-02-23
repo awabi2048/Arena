@@ -53,7 +53,7 @@ execute if score $AnimationTimer ArenaBoss matches 30 run summon wither_skeleton
 execute if score $AnimationTimer ArenaBoss matches 40 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular
+function arena-boss:animation/fire/particle/regular
 
 # 動き停止
 execute if score $AnimationTimer ArenaBoss matches 1 run data modify storage arena-boss: Animation.Flag.NoMove set value true

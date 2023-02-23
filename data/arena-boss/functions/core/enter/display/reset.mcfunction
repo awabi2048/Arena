@@ -30,10 +30,10 @@ execute at @e[tag=ArenaBoss.StageSelector.Core] run summon armor_stand ~-0.5 ~-0
 
 execute at @e[tag=ArenaBoss.StageSelector.Core] run summon armor_stand ~ ~0.9 ~ {Tags:["ArenaBoss.StageSelector.Display-Note"],Marker:true,Invisible:true,CustomNameVisible:true}
 
-execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~-1 ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.PagePrev"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}]}
-execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~1 ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.PageNext"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}]}
+execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~-1 ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.PagePrev"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}],PersistenceRequired:true}
+execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~1 ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.PageNext"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}],PersistenceRequired:true}
 
-execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~ ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.Confirm"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}]}
+execute at @e[tag=ArenaBoss.StageSelector.Core] run summon slime ~ ~-0.5 ~ {Tags:["ArenaBoss.StageSelector.Confirm"],CustomNameVisible:true,ActiveEffects:[{Id:14,ShowParticles:false,Duration:2147483647}],NoAI:true,NoGravity:true,Silent:true,Health:1024.0f,Attributes:[{Base:1024.0d,Name:"minecraft:generic.max_health"}],PersistenceRequired:true}
 
 execute at @e[tag=ArenaBoss.StageSelector.Core] run summon armor_stand ~-1 ~-0.66 ~ {Tags:["ArenaBoss.StageSelector.Display-Page"],Marker:true,Invisible:true,CustomNameVisible:true,CustomName:'{"text":">>","color": "white","bold": true}'}
 execute at @e[tag=ArenaBoss.StageSelector.Core] run summon armor_stand ~1 ~-0.66 ~ {Tags:["ArenaBoss.StageSelector.Display-Page"],Marker:true,Invisible:true,CustomNameVisible:true,CustomName:'{"text":"<<","color": "white","bold": true}'}

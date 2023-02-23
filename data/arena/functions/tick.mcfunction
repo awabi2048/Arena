@@ -22,3 +22,7 @@ execute as @a[tag=Arena.Debug,tag=Arena.DebugBoss] at @s run title @s actionbar 
 
 ## デバッグツール
 execute at @a[tag=Arena.Debug] as @e[type=potion,distance=..2.5] if data entity @s {Item:{tag:{Arena:{Item:DebugTool}}}} as @p[tag=Arena.Debug] run function arena:debug/tool/used_general
+
+
+# ボス
+execute at @r[tag=Arena.Player,scores={Arena=101..}] as @e[tag=Arena.Core,sort=nearest,limit=1] run function arena-boss:tick
