@@ -19,7 +19,7 @@ execute if score $AnimationTimer ArenaBoss matches 30 run playsound entity.withe
 execute if score $AnimationTimer ArenaBoss matches 20 run particle end_rod ~ ~ ~ 0 0 0 0.15 50
 
 # 規定数より多ければ回復に転用
-execute store result score $MinionCount ArenaBoss.Temp if entity @e[tag=ArenaBoss.Minion]
+execute store result score $MinionCount ArenaBoss.Temp if entity @e[tag=ArenaBoss.Minion,distance=..64]
 data modify storage arena-boss: SummonMinion set value false
 execute if score $MinionCount ArenaBoss.Temp matches ..12 run data modify storage arena-boss: SummonMinion set value true
 

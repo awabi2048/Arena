@@ -3,8 +3,8 @@
 execute if score $StartTimer ArenaBoss matches 100 run data modify storage arena-boss:temp StartCountdown set value 5
 
 # 通知
-execute as @a[tag=Arena.Player,distance=..64] run tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_countdown","with":[{"nbt":"StartCountdown","storage":"arena-boss:temp","color": "yellow","bold": true}]}]
-execute as @a[tag=Arena.Player,distance=..64] at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 0.75
+execute as @a[tag=Arena.Player] if score @s Arena matches 101.. run tellraw @s [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_countdown","with":[{"nbt":"StartCountdown","storage":"arena-boss:temp","color": "yellow","bold": true}]}]
+execute as @a[tag=Arena.Player] if score @s Arena matches 101.. at @s run playsound block.note_block.pling master @s ~ ~ ~ 1 0.75
 
 # カウントを進行・再帰
 execute store result storage arena-boss:temp StartCountdown int 0.99999 run data get storage arena-boss:temp StartCountdown

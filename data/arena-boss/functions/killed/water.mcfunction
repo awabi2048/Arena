@@ -24,12 +24,4 @@ kill @e[tag=ArenaBoss.SkillMarker]
 tp @e[tag=ArenaBoss.Minion] ~ ~-300 ~
 kill @e[tag=ArenaBoss.Minion]
 
-# loot
-loot spawn ~ ~ ~ loot arena-boss:drop_item/fire
-
 scoreboard players set $AnimationTimer ArenaBoss 0
-
-# フラグ解除
-data modify storage arena-boss: Status.IsPlaying set value false
-data modify storage arena-boss: Status.StageID set value none
-

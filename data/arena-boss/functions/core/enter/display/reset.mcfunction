@@ -51,7 +51,7 @@ data modify entity @e[tag=ArenaBoss.StageSelector.Display-1-0,limit=1] CustomNam
 data modify entity @e[tag=ArenaBoss.StageSelector.Display-2-0,limit=1] CustomName set value '{"text": "最大入場者数:", "color": "white", "bold": true}'
 
 # 変数を代入
-data modify entity @e[tag=ArenaBoss.StageSelector.Display-0,limit=1] CustomName set from storage arena:core Boss.StageInfo[0].DisplayData.Name
+data modify entity @e[tag=ArenaBoss.StageSelector.Display-0,limit=1] CustomName set from storage arena:core Boss.StageInfo[0].Name
 
 execute in minecraft:overworld run data modify entity @e[tag=ArenaBoss.StageSelector.Display-1-1,limit=1] CustomName set from block 0 -64 0 Text1
 execute in minecraft:overworld run data modify entity @e[tag=ArenaBoss.StageSelector.Display-2-1,limit=1] CustomName set from block 0 -63 0 Text1

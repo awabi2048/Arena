@@ -13,7 +13,7 @@
         "entries": [
           {
             "type": "minecraft:loot_table",
-            "name": "arena-boss:misc/enchantment_shard/fire",
+            "name": "arena-boss:misc/enchantment_shard/water",
             "functions": [
               {
                 "function": "minecraft:set_count",

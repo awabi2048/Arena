@@ -13,6 +13,9 @@ execute if score $Page ArenaBoss.Temp matches -1 run scoreboard players operatio
 
 execute store result entity @e[tag=ArenaBoss.StageSelector.Core,limit=1] data.Arena.Page int 1 run scoreboard players get $Page ArenaBoss.Temp
 
+# 食らったダメージを打ち消し
+data modify entity @e[tag=ArenaBoss.StageSelector.PagePrev,limit=1] Health set value 1024.0f
+
 # 表示内容更新
 data modify storage arena:temp Boss.StageInfo prepend from storage arena:temp Boss.StageInfo[-1]
 data remove storage arena:temp Boss.StageInfo[-1]

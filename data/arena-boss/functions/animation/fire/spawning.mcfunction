@@ -2,7 +2,6 @@
 
 # ここからアニメーション
 #
-
 scoreboard players add $AnimationTimer ArenaBoss 1
 
 # 回転
@@ -34,10 +33,10 @@ execute if score $AnimationTimer ArenaBoss matches 60 run playsound entity.blaze
 execute if score $AnimationTimer ArenaBoss matches 60 run playsound entity.lightning_bolt.thunder master @a ~ ~ ~ 5 0.5
 
 # くるくるパーティクル
-execute if score $AnimationTimer ArenaBoss matches 20 as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Boss}}} at @s run summon marker ~3 ~3 ~3 {Tags:["ArenaBoss.SkillMarker"]}
-execute if score $AnimationTimer ArenaBoss matches 20 as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Boss}}} at @s run summon marker ~-3 ~3 ~3 {Tags:["ArenaBoss.SkillMarker"]}
-execute if score $AnimationTimer ArenaBoss matches 20 as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Boss}}} at @s run summon marker ~3 ~3 ~-3 {Tags:["ArenaBoss.SkillMarker"]}
-execute if score $AnimationTimer ArenaBoss matches 20 as @e[tag=Arena.Core] if data entity @s {data:{Arena:{StageType:Boss}}} at @s run summon marker ~-3 ~3 ~-3 {Tags:["ArenaBoss.SkillMarker"]}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon marker ~3 ~3 ~3 {Tags:["ArenaBoss.SkillMarker"]}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon marker ~-3 ~3 ~3 {Tags:["ArenaBoss.SkillMarker"]}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon marker ~3 ~3 ~-3 {Tags:["ArenaBoss.SkillMarker"]}
+execute if score $AnimationTimer ArenaBoss matches 20 run summon marker ~-3 ~3 ~-3 {Tags:["ArenaBoss.SkillMarker"]}
 
 execute if score $AnimationTimer ArenaBoss matches 21..60 at @e[tag=ArenaBoss.SkillMarker] run particle flame ~ ~ ~ ^ ^ ^1000000000 0.0000000005 0
 execute if score $AnimationTimer ArenaBoss matches 21..60 at @e[tag=ArenaBoss.SkillMarker] run particle soul_fire_flame ~ ~ ~ ^0.5 ^ ^1000000000 0.0000000002 0
@@ -45,16 +44,16 @@ execute if score $AnimationTimer ArenaBoss matches 21..60 at @e[tag=ArenaBoss.Sk
 execute if score $AnimationTimer ArenaBoss matches 21..60 at @e[tag=ArenaBoss.SkillMarker] run particle dripping_lava ~ ~ ~ 0 0 0 0 2
 execute if score $AnimationTimer ArenaBoss matches 21..60 at @e[tag=ArenaBoss.SkillMarker] run particle lava ~ ~ ~ 0 0 0 1 1
 
-execute if score $AnimationTimer ArenaBoss matches 21..60 as @e[tag=ArenaBoss.SkillMarker] at @s run tp @s ^0.25 ^ ^0.125 facing entity @e[tag=Arena.Core,sort=nearest,limit=1] feet
+execute if score $AnimationTimer ArenaBoss matches 21..60 as @e[tag=ArenaBoss.SkillMarker] at @s run tp @s ^0.25 ^ ^0.125 facing entity @e[tag=ArenaBoss.StageCore,sort=nearest,limit=1] feet
 
 # summon
-execute if score $AnimationTimer ArenaBoss matches 60 at @e[tag=Arena.Core,sort=nearest,limit=1] run function arena-boss:summon/fire
+execute if score $AnimationTimer ArenaBoss matches 60 run function arena-boss:summon/fire
 
 # リセット
 execute if score $AnimationTimer ArenaBoss matches 80 run function arena-boss:animation/reset
 
 # その他
-execute as @e[tag=ArenaBoss.Core] at @s run function arena-boss:animation/fire/particle/regular
+execute as @e[tag=ArenaBoss.Core,distance=..64] at @s run function arena-boss:animation/fire/particle/regular
 
 # 動き停止
 execute if score $AnimationTimer ArenaBoss matches 1 run data modify storage arena-boss: Animation.Flag.NoMove set value true

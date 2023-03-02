@@ -11,7 +11,7 @@ execute at @e[tag=Arena.Core] as @e[type=slime,distance=..32,tag=!Arena.Mob] run
 execute as @e[tag=Arena.Timer] if data entity @s {PortalCooldown:0} run kill @s
 
 # 会場から離れたプレイヤーのタグ除去, スコアリセット
-execute at @e[tag=Arena.Core] as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena unless score @s Arena matches 0 run tag @s[distance=32..] remove Arena.Player
+execute at @e[tag=Arena.Core] as @a[tag=Arena.Player] if score @s Arena = @e[tag=Arena.Core,sort=nearest,limit=1] Arena unless score @s Arena matches 0 run tag @s[distance=128..] remove Arena.Player
 execute as @a[tag=!Arena.Player] run scoreboard players set @s Arena 0
 
 # デバッグ用
@@ -23,6 +23,8 @@ execute as @a[tag=Arena.Debug,tag=Arena.DebugBoss] at @s run title @s actionbar 
 ## デバッグツール
 execute at @a[tag=Arena.Debug] as @e[type=potion,distance=..2.5] if data entity @s {Item:{tag:{Arena:{Item:DebugTool}}}} as @p[tag=Arena.Debug] run function arena:debug/tool/used_general
 
+# エンチャントの祭壇
+execute in minecraft:arena positioned 0 0 0 as @e[tag=ArenaBoss.Altar.Core,distance=0..] at @s run function arena-boss:enchanting_altar/tick
 
 # ボス
-execute at @r[tag=Arena.Player,scores={Arena=101..}] as @e[tag=Arena.Core,sort=nearest,limit=1] run function arena-boss:tick
+execute at @r[tag=Arena.Player,scores={Arena=101..}] as @e[tag=Arena.Core,sort=nearest,limit=1] at @s run function arena-boss:tick

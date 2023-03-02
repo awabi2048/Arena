@@ -4,6 +4,9 @@ advancement revoke @s only arena-boss:stage_entering/confirm
 
 data modify storage arena:temp Enterable set value true
 
+# 食らったダメージを打ち消し
+data modify entity @e[tag=ArenaBoss.StageSelector.Confirm,limit=1] Health set value 1024.0f
+
 # 演出
 playsound ui.button.click master @a ~ ~ ~ 1 1
 
@@ -34,18 +37,23 @@ playsound ui.button.click master @a ~ ~ ~ 1 1
     execute if data storage arena:temp {Enterable:false} run function arena:stop_process
 
 ## 問題なければ入場処理
+# 入場ステージの情報を保存
+data modify storage arena-boss: Status.ActiveStageInfo set from storage arena:temp Boss.StageInfo[0]
+
 # 入場ステージの番号を取得
-execute store result score $StageID ArenaBoss run data get entity @e[tag=ArenaBoss.StageSelector.Core,limit=1] data.Arena.StageInfo.StageID
+execute store result score $StageID ArenaBoss run data get storage arena-boss: Status.ActiveStageInfo.StageID
 
 # フラグを設定
 data modify storage arena-boss: Status.IsPlaying set value true
-data modify storage arena-boss: Status.StageID set from entity @e[tag=ArenaBoss.StageSelector.Core,limit=1] data.Arena.StageInfo.StageID
 
 # ステージ番号・タグをプレイヤーに設定
 scoreboard players add $StageID ArenaBoss 100
 
 execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run scoreboard players operation @a[distance=..3.5] Arena = $StageID ArenaBoss
 execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tag @a[distance=..3.5] add Arena.Player
+
+# APを減算
+execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run scoreboard players operation @a[distance=..3.5] arena -= $TicketRequired ArenaBoss.Temp
 
 # 通知
 execute at @e[tag=ArenaBoss.Entrance,sort=nearest,limit=1] run tellraw @a[distance=..3.5] [{"translate":"arena.game.message.prefix"},{"translate":"arena.boss.game.message.start_announce","with":[{"text":"40","color": "gold","bold": true,"underlined": true}]}]
