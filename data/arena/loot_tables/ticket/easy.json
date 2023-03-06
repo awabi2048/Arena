@@ -9,7 +9,7 @@
             "functions": [
               {
                 "function": "minecraft:set_nbt",
-                "tag": "{Arena:TicketEasy,CustomModelData:320001}"
+                "tag": "{Arena:TicketEasy,CustomModelData:30001}"
               },
               {
                 "function": "minecraft:set_lore",
