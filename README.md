@@ -19,6 +19,7 @@
 ### Special Thanks (敬称略, アルファベット順)
 - ayupara
 - elecams
+- Hiroki1003
 - Kizuna_nAI
 - kokuwa
 - Youshow322
